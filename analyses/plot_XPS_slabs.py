@@ -4,26 +4,18 @@ import numpy
 import sys
 import argparse
 
-def gaussian(x, mu, sigma=0.2):
-    return 1/(sigma*numpy.sqrt(2*numpy.pi))*numpy.exp(-.5*((x-mu)/sigma)**2)
+from XPS.commons import create_spectrum
 
 def plot_slab(ax, data: pandas.DataFrame, system: str, atom: str, ref: float, xrange: tuple):
-    lspace = numpy.linspace(*xrange, 201)
+    x = numpy.linspace(*xrange, 201)
     
     for i, subsystem in enumerate([3, 4, 5, 6, 7, 8]):
         if subsystem == 8 and 'CaH2' in system:
             continue
         
-        subdata = data[data['System'] == '{}/{}'.format(system, subsystem)]
-        subdata = subdata[subdata['Atom'] == atom]
+        subdata = data[(data['System'] == '{}/{}'.format(system, subsystem)) & (data['Atom'] == atom)]
         
-        yspace = numpy.zeros(lspace.shape)
-        N = 0
-        for BE, n in zip(subdata['BE'], subdata['N']):
-            yspace += gaussian(lspace, BE - ref) * n
-            N += n
-        
-        ax.plot(lspace, i + yspace / N, '-')
+        ax.plot(x, i + create_spectrum(subdata, x, ref), '-')
         ax.text(xrange[1] - .25, i + .25, subsystem * (4 if system == 'CaH2' else 2))
     
     ax.text(xrange[0], 6.5, '{} / {}{}s'.format(system.replace('H2', 'H$_2$'), atom, 2 if atom == 'Ca' else 1), fontsize=12)
@@ -50,6 +42,7 @@ plot_slab(ax3, data, 'CaO', 'Ca', REF_CA, (-1.5, 1.5))
 plot_slab(ax4, data, 'CaO', 'O', REF_O, (-9, -6))
 
 [ax.set_xlabel('$\\Delta$BE (eV)') for ax in [ax3, ax4]]
+[ax.yaxis.set_major_formatter('') for ax in [ax1, ax3]]
 
 plt.tight_layout()
 figure.savefig(args.output)
