@@ -219,15 +219,17 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 \clearpage
 \subsection{Binding energies of slabs}
 
-The impact of slab thickness on the resulting spectra is assessed in Fig.~\ref{fig:slabsthickness}. Increasing the slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use the slabs with the fewest number of layers to save computation time. 
+Despite the fact that the SJ\textsuperscript{n} protocol works better in gas phase, literature recommend the SJ one when it comes to solid \cite{olovssonCorelevelShiftsComplex2006}, which correctlty reproduce experimental trends. The final state (FS), scheme can also be used, where 1 electron  is added to the valence band instead of $\frac{1}{2}$ in SJ \cite{trinhEvaluatingStructureCatalysts2013a,vandenbosscheEffectsNonlocalExchange2014}.
 
-It should also be noted that the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between our reference (water, for oxygen) and the value of O1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}, further validating the use of the SJ\textsuperscript{n} protocol.
+The impact of slab thickness on the resulting spectra is assessed in Fig.~\ref{fig:slabsthickness}, using the SJ protocol. Increasing the slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use the slabs with the fewest number of layers to save computation time. 
+
+Comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca2s binding energies are similar with both protocols, differences appears for Ca2s in \ce{CaH2} (where bulk and surface features are more pronounced) as well as O1s in CaO (where the difference between bulk and surface is less important). It should also be noted that this protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O1s) and the value of O1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.
 
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{Figure5}
-	\caption{Impact of the slab thickness (indicated as the number of layers) on the resulting XPS spectra (as computed with the SJ\textsuperscript{n} protocol).}
+	\caption{Impact of the slab thickness (indicated as the number of layers) on the resulting XPS spectra (as computed with the SJ protocol).}
 	\label{fig:slabsthickness}
 \end{figure}
 
@@ -251,5 +253,14 @@ It should also be noted that the SJ\textsuperscript{n} protocol predicts a diffe
 	\caption{Comparison between experimental and calculated gas phase \dbe{}, as computed with the SJ (blue) and SJ\textsubscript{n} (orange) protocols on the different atoms, and by shifting the BE by $E_F$ in Eq.~\eqref{eq:xpsbe}. For each of them, the error (as mean $\pm$ standard deviation) for both protocols is given.}
 	\label{fig:xps_C185_fermi}
 \end{figure}
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\linewidth]{FigureA3}
+	\caption{Impact of the slab thickness (indicated as the number of layers) on the resulting XPS spectra (as computed with the SJ\textsuperscript{n} protocol).}
+	\label{fig:slabsthicknessSJn}
+\end{figure}
+
 	
 \end{document}
