@@ -182,7 +182,7 @@ where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^
 	\label{tab:surf}
 \end{table}
 
-Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, following its documented favorability \cite{deleeuwDensityFunctionalTheory2000}, the adsorption of water on the CaO surface was investigated. An additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was optimized. Compounds \textbf{a}-\textbf{i} (Fig.~\ref{fig:THFdegradation}) were subsequently introduced on both sides of the slab (initially approximately \SI{5}{\angstrom} away), followed by a final optimization (with frozen cell parameters). Finally, binding energies were computed for each relevant atom.
+Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, following its documented favorability \cite{deleeuwDensityFunctionalTheory2000}, the adsorption of water on the CaO surface was investigated. An additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was optimized. Compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were subsequently introduced on both sides of the slab (initially approximately \SI{5}{\angstrom} away), followed by a final optimization (with frozen cell parameters). Finally, binding energies were computed for each relevant atom.
 
 \section{Results}
 
@@ -219,11 +219,12 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 \clearpage
 \subsection{Binding energies of slabs}
 
-Despite the fact that the SJ\textsuperscript{n} protocol works better in gas phase, literature recommend the SJ one when it comes to solid \cite{olovssonCorelevelShiftsComplex2006}, which correctlty reproduce experimental trends. The final state (FS), scheme can also be used, where 1 electron  is added to the valence band instead of $\frac{1}{2}$ in SJ \cite{trinhEvaluatingStructureCatalysts2013a,vandenbosscheEffectsNonlocalExchange2014}.
+Although the SJ\textsuperscript{n} protocol performs better in the gas phase, literature recommends using the SJ protocol for solids, as it correctly reproduces experimental trends \cite{olovssonCorelevelShiftsComplex2006}. An alternative approach, the final state (FS) scheme, can also be used, where one electron is added to the valence band instead of $\frac{1}{2}$ as in the SJ protocol \cite{trinhEvaluatingStructureCatalysts2013a,vandenbosscheEffectsNonlocalExchange2014}.
 
-The impact of slab thickness on the resulting spectra is assessed in Fig.~\ref{fig:slabsthickness}, using the SJ protocol. Increasing the slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use the slabs with the fewest number of layers to save computation time. 
+The impact of slab thickness on the resulting spectra is therefore assessed using the SJ protocol, as shown in Fig.~\ref{fig:slabsthickness}. Increasing slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use slabs with the fewest number of layers to save computation time.
 
-Comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca2s binding energies are similar with both protocols, differences appears for Ca2s in \ce{CaH2} (where bulk and surface features are more pronounced) as well as O1s in CaO (where the difference between bulk and surface is less important). It should also be noted that this protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O1s) and the value of O1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.
+A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca 2s binding energies are similar with both protocols, differences appear for Ca 2s in \ce{CaH2} (where bulk and surface features are more pronounced) and for O 1s in CaO (where the difference between bulk and surface is less significant). Notably, the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O 1s) and the value of O 1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.
+
 
 
 \begin{figure}[!h]
@@ -236,13 +237,61 @@ Comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthickness
 
 \subsection{Adsorption on slab: geometrical and energetic aspects}
 
+The optimized geometries of compounds \textbf{a}-\textbf{j} adsorbed on slabs are shown in Figs.~\ref{fig:distsad}-\ref{fig:distsij}. The interaction energy, calculated as $\Delta E_{int} = E_{X@Y} - E_Y - 2E_X$ (where $E_X$ is the energy of an adsorbate and $E_Y$ is the energy of the substrate), is provided in Table \ref{tab:int}. There are three modes of interaction between the substrate and the adsorbate: \begin{inparaenum}[i)]
+	\item van der Waals (vdW),
+	\item hydrogen bonding (HB), and
+	\item chemisorption.
+\end{inparaenum}
+Hydrocarbons primarily interact through vdW forces, as evidenced by the large distances between the adsorbate and the substrate (Fig.~\ref{fig:distsad}). Notably, with bare Ca, the interaction energies are substantial (exceeding \SI{60}{\kilo\joule\per\mole}). These energies are higher than those observed for HB interactions (ranging from 30 to \SI{50}{\kilo\joule\per\mole}), which occur between \ce{CaO.H2O} and polar carbohydrates. Additionally, these carbohydrates exhibit significant interaction energies with other substrates (Ca, CaO, and \ce{CaH2}) together with small distances, indicating chemisorption. This is particularly pronounced with the bare Ca substrate, where strong Ca-O interactions are present, and in cases where proton transfer is feasible, such as between \ce{CaH2} and compounds \textbf{e} or \textbf{f}, or between compounds \textbf{i} or \textbf{j} and CaO.
+
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=.7\linewidth]{Figure6}
-	\caption{Distances between adsorbate (hydrocabrons, \textbf{a}-\textbf{d}) and substrate, as measured by representative distances (in \si{\angstrom}) between one atom of each entity.}
+	\caption{Distances between adsorbate (hydrocabrons, \textbf{a}-\textbf{d}) and substrates, as measured by representative distances (in \si{\angstrom}) between one atom of each entity.}
 	\label{fig:distsad}
 \end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=.7\linewidth]{Figure7}
+\caption{Distances between adsorbate (polar carbohydrates, \textbf{e}-\textbf{h}) and substrates, as measured by representative distances (in \si{\angstrom}) between one atom of each entity.}
+\label{fig:distseh}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=.7\linewidth]{Figure8}
+\caption{Distances between adsorbate (protic carbohydrates, \textbf{i}-\textbf{j}) and substrates, as measured by representative distances (in \si{\angstrom}) between one atom of each entity.}
+\label{fig:distsij}
+\end{figure}
+
+\begin{table}
+	\centering
+	\begin{tabular}{>{\bfseries}lcccc}
+		\toprule
+		& Ca & \ce{CaO} & \ce{CaO.H2O} & \ce{CaH2} \\
+		\midrule
+		& \multicolumn{4}{c}{Hydrocarbons} \\
+		a & -101.5 & -60.2 & -40.8 & -67.0 \\
+		b & -111.2 & -78.9 & -56.2 & -76.0 \\
+		c & -137.6 & -69.7 & -38.4 & -91.4 \\
+		d & -140.7 & -89.8 & -52.5 & -96.9 \\
+		\midrule
+		& \multicolumn{4}{c}{Polar carbohydrates} \\
+		e & -430.6 & -62.6 & -30.9 & -198.1 \\
+		f & -239.4 & -70.9 & -34.4 & -302.1 \\
+		g & -321.3 & -109.4 & -44.8 & -145.9 \\
+		h & -215.3 & -121.6 & -55.6 & -152.6 \\
+		\midrule
+		& \multicolumn{4}{c}{Protic carbohydrates} \\
+		i & -223.2 & -207.4 & -121.5 & -176.9 \\
+		j & -475.4 & -532.5 & -223.8 & -437.6 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Interaction energy ($\Delta E_{int}$, in \si{\kilo\joule\per\mole}) between the adsorbate and the substrate.}
+	\label{tab:int}
+\end{table}
 
 
 \clearpage
