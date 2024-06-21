@@ -18,7 +18,7 @@ def plot_slab(ax, data: pandas.DataFrame, system: str, atom: str, ref: float, xr
         ax.plot(x, i + create_spectrum(subdata, x, ref), '-')
         ax.text(xrange[1] - .25, i + .25, subsystem * (4 if system == 'CaH2' else 2))
     
-    ax.text(xrange[1], 6.5, '{} / {}{}s'.format(system.replace('H2', 'H$_2$'), atom, 2 if atom == 'Ca' else 1), fontsize=12)
+    ax.text(xrange[1], 6.5, '{} / {} {}s'.format(system.replace('H2', 'H$_2$'), atom, 2 if atom == 'Ca' else 1), fontsize=12)
 
         
 parser = argparse.ArgumentParser()

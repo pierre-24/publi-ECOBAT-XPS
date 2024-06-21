@@ -15,7 +15,7 @@ def plot_atom(ax, data: pandas.DataFrame, atom: str, ref: pandas.DataFrame):
     err_SJ = subdata['Exp'] - ref['Exp'] - (subdata['SJ'] - ref['SJ'])
     err_SJn = subdata['Exp'] - ref['Exp'] - (subdata['SJn'] - ref['SJn'])
     
-    ax.text(-4, 8, '{}1s (N={})'.format(atom, len(err_SJ)), fontsize=12)
+    ax.text(-4, 8, '{} 1s (N={})'.format(atom, len(err_SJ)), fontsize=12)
     ax.text(-2, 6, '(SJ) {:.2f} $\\pm$ {:.2f}'.format(numpy.mean(err_SJ), numpy.std(err_SJ)), color='tab:blue')
     ax.text(1, -4, '(SJ$^n$) {:.2f} $\\pm$ {:.2f}'.format(numpy.mean(err_SJn), numpy.std(err_SJn)), color='tab:orange')
     
