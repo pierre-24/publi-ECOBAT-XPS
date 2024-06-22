@@ -182,7 +182,7 @@ where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^
 	\label{tab:surf}
 \end{table}
 
-Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, given that it is documented favorability \cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated: an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was optimized. Compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were subsequently introduced on both sides of the slab (initially approximately \SI{6}{\angstrom} away from the surface), followed by a final optimization (with frozen cell parameters). Finally, binding energies were computed for each relevant atom.
+Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, given that it is documented favorability \cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated: an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was optimized. Compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were subsequently introduced on both sides of the slab (initially approximately \SI{6}{\angstrom} away from the surface), followed by a final optimization (with frozen cell parameters, and the two central layers kept frozen). Finally, binding energies were computed for each relevant atom.
 
 \section{Results}
 
@@ -260,6 +260,9 @@ The optimized geometries of compounds \textbf{a}-\textbf{j} adsorbed on slabs ar
 
 Hydrocarbons primarily interact through vdW forces, as evidenced by the large distances between the adsorbate and the substrate (Fig.~\ref{fig:distsad}). Notably, with bare Ca, the interaction energies are substantial (exceeding \SI{60}{\kilo\joule\per\mole}). These energies are higher than those observed for HB interactions (ranging from 30 to \SI{50}{\kilo\joule\per\mole}), which occur between \ce{CaO.H2O} and polar carbohydrates. Additionally, these carbohydrates exhibit significant interaction energies ($>\SI{200}{\kilo\joule\per\mole}$) with other substrates (Ca, CaO, and \ce{CaH2}) together with small distances, indicating chemisorption. This is particularly pronounced with the bare Ca substrate, where strong Ca-O interactions are present, and in cases where proton transfer is feasible, such as between \ce{CaH2} and compounds \textbf{e} or \textbf{f}, or between compounds \textbf{i} or \textbf{j} and CaO. Compound \textbf{i} and \textbf{j} also have larger energies because of the multiple interactions with the surface.
 
+The reactions that are observed between the substrate and certain adsorbates provide valuable insights into potential degradation mechanisms. Proton transfers with CaO support the hypothesis of hydroxyl formation on the slab surface. Additionally, reactions involving hydrogen from \ce{CaH2} suggest that this surface may be unstable under specific conditions.
+
+
 
 \begin{figure}[!h]
 	\centering
@@ -328,11 +331,19 @@ Two important observations should be noted: first, these binding energies are lo
 \end{figure}
 
 \clearpage
-Turning to the impact of adsorption, bare results are provided in Figs.~\ref{fig:spectraXPSadsab}-\ref{fig:spectraXPSadsij}.
+
+The impact of adsorption on binding energies is detailed in Figs.~\ref{fig:spectraXPSadsab}-\ref{fig:spectraXPSadsij}. For Ca 2s, adsorption-induced changes are minimal, with slightly more noticeable effects on the CaO slab, though not significant enough to be detectable experimentally. However, more substantial changes are observed for the other atoms studied: 
+First, interaction with bare Ca results in a shift to lower binding energies in C 1s and a shift to higher binding energies in O 1s (when available), indicating electron transfer between the slab and the adsorbate. This suggests that interactions with hydrocarbons may involve more than just van der Waals forces. Then, hydrogen bond formation at the surface of \ce{CaO.H2O} causes a slight shift to higher O 1s \dbe{}, which increases with the strength of the bond (\textit{e.g.}, \textbf{f}-\textbf{h}).
+Furthermore, proton transfers, seen in the interactions between \textbf{e} and \textbf{f} with \ce{CaH2} and between \textbf{i} and \textbf{j} with CaO, lead to significant changes in C 1s and O 1s binding energies, consistent with changes in hybridization. Finally, C 1s binding energies also change when unsaturated hydrocarbons (\textbf{c} and \textbf{d}) interact with \ce{CaH2}, suggesting a modification of the carbon's chemical environment, which may not be immediately apparent when inspecting the geometries.
+These findings demonstrate that XPS binding energies are highly sensitive to changes in the chemical environment of the atoms.
 
 \clearpage
 \bibliographystyle{unsrt}
 \bibliography{biblio}
+
+% ----------------------------------------------------
+% ----------------------------------------------------
+% ----------------------------------------------------
 
 \clearpage
 \appendix

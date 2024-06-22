@@ -11,7 +11,7 @@ FAC = 3
 
 SLBS = [('Ca', 'tab:blue'), ('CaO', 'tab:red'), ('CaO_OH2', 'tab:green'), ('CaH2', 'tab:pink')]
 
-def plot(ax, data: pandas.DataFrame, data_ref: pandas.DataFrame, adsorbate: str, atom: str, ref: float, xrange: tuple):
+def plot(ax, data: pandas.DataFrame, data_ref: pandas.DataFrame, data_align: pandas.DataFrame, adsorbate: str, atom: str, ref: float, xrange: tuple):
     x = numpy.linspace(*xrange, 501)
     
     mins, maxes = [], []
@@ -20,10 +20,15 @@ def plot(ax, data: pandas.DataFrame, data_ref: pandas.DataFrame, adsorbate: str,
         subdata = data[(data['System'] == '{}@{}'.format(adsorbate, slab)) & (data['Atom'] == atom)]
         subdata_ref = data_ref[(data_ref['System'] == '{}@{}'.format(adsorbate, slab)) & (data_ref['Atom'] == atom)]
         
-        mins.extend([subdata['BE'].min() - ref, subdata_ref['BE'].min() - ref])
-        maxes.extend([subdata['BE'].max() - ref, subdata_ref['BE'].max() - ref])
+        align = data_align[(data_align['System'] == '{}@{}'.format(adsorbate, slab))].iloc[0]['Ref']
+        sa = data[(data['System'] == '{}@{}'.format(adsorbate, slab)) & (data['Atoms'].str.contains(align))].iloc[0]['BE']
+        sr = data_ref[(data_ref['System'] == '{}@{}'.format(adsorbate, slab)) & (data_ref['Atoms'].str.contains(align))].iloc[0]['BE']
+        iref = sr - sa
         
-        spectrum = create_spectrum(subdata, x, ref)
+        mins.extend([subdata['BE'].min() - ref -iref, subdata_ref['BE'].min() - ref])
+        maxes.extend([subdata['BE'].max() - ref - iref, subdata_ref['BE'].max() - ref])
+        
+        spectrum = create_spectrum(subdata, x, ref - iref)
         spectrum_ref = create_spectrum(subdata_ref, x, ref)
         
         ax.plot(x, FAC * i + spectrum_ref, '--', color=color)
@@ -49,6 +54,7 @@ def plot(ax, data: pandas.DataFrame, data_ref: pandas.DataFrame, adsorbate: str,
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', default='../data/Data_XPS_slab_adsorbate_SJ.csv')
 parser.add_argument('-ir', '--input-ref', default='../data/Data_XPS_slab_adsorbate_ref_SJ.csv')
+parser.add_argument('-ia', '--input-align', default='../data/align_SJ.csv')
 parser.add_argument('-t', '--type', default='SJ')
 parser.add_argument('-a', '--adsorbate', default='C2H4')
 parser.add_argument('-n', '--name', default='C2H4')
@@ -59,6 +65,7 @@ args = parser.parse_args()
 
 data = pandas.read_csv(args.input)
 data_ref = pandas.read_csv(args.input_ref)
+data_align = pandas.read_csv(args.input_align)
 
 if args.type == 'SJn':
     REF_Ca = 426.56
@@ -72,9 +79,9 @@ else:
 figure = plt.figure(figsize=(10, 7))
 ax1, ax2, ax3 = figure.subplots(1, 3, sharey=True)
 
-plot(ax1, data, data_ref, args.adsorbate, 'Ca', REF_Ca, (-5, 5))
-plot(ax2, data, data_ref, args.adsorbate, 'C', REF_C, (-10, 10))
-plot(ax3, data, data_ref, args.adsorbate, 'O', REF_O, (-10, 10))
+plot(ax1, data, data_ref, data_align, args.adsorbate, 'Ca', REF_Ca, (-5, 5))
+plot(ax2, data, data_ref, data_align, args.adsorbate, 'C', REF_C, (-10, 10))
+plot(ax3, data, data_ref, data_align, args.adsorbate, 'O', REF_O, (-10, 10))
 
 [ax.invert_xaxis() for ax in [ax1, ax2, ax3]]
 [ax.set_xlabel('$\\Delta$BE (eV)') for ax in [ax1, ax2, ax3]]
