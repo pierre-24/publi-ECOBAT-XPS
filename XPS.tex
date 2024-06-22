@@ -146,7 +146,7 @@ For the calculation of binding energies (BE), VASP allows targeting a specific o
 \end{equation}
 where $E_F$ is the Fermi energy. To ensure consistency across different systems, results for slabs are shifted by the Fermi energy (computed by setting \texttt{EFERMI = MIDGAP} in the VASP input to account for Gaussian smearing). Applying this correction in the gas phase, however, leads to inconsistent results, as shown in Fig.~\ref{fig:xps_C185_fermi}. Additionally, this correction yields incoherent results for bulk systems, as the Fermi level is not well-defined by VASP in such cases.
 
-To obtain a spectrum, a Gaussian function centered at each computed \dbe is used. Unless otherwise specified, the parameter $\sigma = \SI{0.2}{\electronvolt}$ is employed.
+To obtain a spectrum, a Gaussian function centered at each computed \dbe{} is used. Unless otherwise specified, the parameter $\sigma = \SI{0.2}{\electronvolt}$ is employed.
 
 \paragraph{Binding energies of molecules in the gas phase.}
 To evaluate the accuracy of the SJ and SJ\textsuperscript{n} methods, the results from Belafont \textit{et al.} \cite{pueyobellafontPredictingCoreLevel2017}, which compare experimental and theoretical calculations of gas-phase \dbe, are replicated. Their dataset comprises 184 experimental absolute binding energies (BEs) (Fig.~\ref{fig:core185}) from 68 molecules, including carbon (N=107), nitrogen (N=20), oxygen (N=22), boron (N=20), and fluorine (N=15) atoms. Following molecular optimization, each molecule is placed in a cubic box with a side length of \SI{20}{\angstrom}, and the BEs are computed for each atom of interest.
@@ -182,7 +182,7 @@ where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^
 	\label{tab:surf}
 \end{table}
 
-Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, following its documented favorability \cite{deleeuwDensityFunctionalTheory2000}, the adsorption of water on the CaO surface was investigated. An additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was optimized. Compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were subsequently introduced on both sides of the slab (initially approximately \SI{5}{\angstrom} away), followed by a final optimization (with frozen cell parameters). Finally, binding energies were computed for each relevant atom.
+Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, given that it is documented favorability \cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated: an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was optimized. Compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were subsequently introduced on both sides of the slab (initially approximately \SI{6}{\angstrom} away from the surface), followed by a final optimization (with frozen cell parameters). Finally, binding energies were computed for each relevant atom.
 
 \section{Results}
 
@@ -234,13 +234,11 @@ The second and third effects combine to produce large binding energies (in compa
 \end{figure}
 
 \clearpage
-\subsection{Binding energies of slabs}
+\subsection{Binding energies of bare slabs}
 
 Although the SJ\textsuperscript{n} protocol performs better in the gas phase, literature recommends using the SJ protocol for solids, as it correctly reproduces experimental trends \cite{olovssonCorelevelShiftsComplex2006}. An alternative approach, the final state (FS) scheme, can also be used, where one electron is added to the valence band instead of $\frac{1}{2}$ as in the SJ protocol \cite{trinhEvaluatingStructureCatalysts2013a,vandenbosscheEffectsNonlocalExchange2014}.
 
 The impact of slab thickness on the resulting spectra is therefore assessed using the SJ protocol, as shown in Fig.~\ref{fig:slabsthickness}. Increasing slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use slabs with the fewest number of layers to save computation time.
-
-A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca 2s binding energies are similar with both protocols, differences in the shape of the spectra appear for Ca 2s in \ce{CaH2} (where bulk and surface features are more pronounced) and for O 1s in CaO (where the difference between bulk and surface is less significant). Notably, the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O 1s) and the value of O 1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.
 
 
 \begin{figure}[!h]
@@ -250,6 +248,7 @@ A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthickne
 	\label{fig:slabsthickness}
 \end{figure}
 
+A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca 2s binding energies are similar with both protocols, differences in the shape of the spectra appear for Ca 2s in \ce{CaH2} (where bulk and surface features are more pronounced) and for O 1s in CaO (where the difference between bulk and surface is less significant). Notably, the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O 1s) and the value of O 1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.\footnote{Cette comparaison est dangereuse, voire casse-gueule. En effet, le résultat en phase gas n'as pas été \textit{shifté} par $E_F$, le résultat pour le slab, oui. Donc....?}
 
 \subsection{Adsorption on slab: geometrical and energetic aspects}
 
@@ -283,7 +282,7 @@ Hydrocarbons primarily interact through vdW forces, as evidenced by the large di
 \label{fig:distsij}
 \end{figure}
 
-\begin{table}
+\begin{table}[!h]
 	\centering
 	\begin{tabular}{>{\bfseries}lcccc}
 		\toprule
@@ -310,6 +309,26 @@ Hydrocarbons primarily interact through vdW forces, as evidenced by the large di
 	\label{tab:int}
 \end{table}
 
+\clearpage
+\subsection{Binding energies of adsorbate on slabs}
+
+Since directly comparing molecules in the gas phase with those adsorbed on a slab is methodologically questionable (\textit{vide infra}), the binding energies before and after adsorption will be discussed. For the former, the geometries where the molecules are \SI{6}{\angstrom} from the slab surface are used. The XPS spectra of the adsorbates (computed using the results where these molecules are on top of bare Ca) are analyzed in Fig.~\ref{fig:adsorbare}. The C 1s spectra can be divided into three parts (in agreement with the trends reported in Fig.~\ref{fig:trends}): \begin{inparaenum}[i)]
+	\item unsaturated carbons, with the lowest binding energies (\textit{e.g.}, \textbf{c} and \textbf{d}),
+	\item aliphatic carbons (\textit{e.g.}, \textbf{a} and \textbf{b}), and
+	\item carbons with neighboring oxygen atoms, with the highest binding energies (\textit{e.g.}, \textbf{g}).
+\end{inparaenum}
+Similarly, the O 1s spectra can be divided into two categories, depending on the hybridization of the oxygen. The lowest binding energies are associated with \ce{C=O} (\textit{e.g.}, \textbf{f} and \textbf{g}).
+
+Two important observations should be noted: first, these binding energies are lower than those predicted in the gas phase.\footnote{Encore une fois, comparaison casse-gueule ;)} It is difficult at this time to determine whether this is due to the methodology (SJ vs. SJ\textsuperscript{n}, $E_F$ or not) or the presence of the Ca slab. One way to address this question would be to study the impact of the distance between the molecule and the slab. Second, the results for \textbf{e} (\ce{CO2}) do not follow the aforementioned trends (its O 1s binding energy is surprisingly large), indicating that further investigation definitely is required (could it be that since it is smaller, it feels less the slab?).
+
+\begin{figure}[!h]
+	\includegraphics[width=\linewidth]{Figure10}
+	\caption{XPS spectra (as computed with the SJ protocol) of the adsosorbates \textbf{a}-\textbf{j} before adsorption.}
+	\label{fig:adsorbare}
+\end{figure}
+
+\clearpage
+Turning to the impact of adsorption, bare results are provided in Figs.~\ref{fig:spectraXPSadsab}-\ref{fig:spectraXPSadsij}.
 
 \clearpage
 \bibliographystyle{unsrt}
@@ -347,7 +366,7 @@ Hydrocarbons primarily interact through vdW forces, as evidenced by the large di
 	\includegraphics[width=.9\linewidth]{Figure#1a}
 	\includegraphics[width=.9\linewidth]{Figure#1b}
 	\caption{Difference (dotted line) between the XPS spectrum before (dashed line) and after (plain line) adsorption for compounds \textbf{#2} (top) and \textbf{#3} (bottom) on the different substrates.}
-	\label{fig:spectraXPSab#2#3}
+	\label{fig:spectraXPSads#2#3}
 \end{figure}
 }
 
