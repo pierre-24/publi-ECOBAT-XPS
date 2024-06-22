@@ -1,7 +1,6 @@
 import pandas
 import matplotlib.pyplot as plt
 import numpy
-import sys
 import argparse
 
 def plot_atom(ax, data: pandas.DataFrame, atom: str, ref: pandas.DataFrame):
@@ -30,11 +29,11 @@ args = parser.parse_args()
 data = pandas.read_csv(args.input)
 
 REFS = {  # references
-    'B': data.iloc[0],
-    'C': data.iloc[35],
-    'F': data.iloc[127],
-    'N': data.iloc[142],
-    'O': data.iloc[162]
+    'B': data[(data['Molecule'] == 'molecule_001') & (data['Atom' ] == 'B')].iloc[0],
+    'C': data[(data['Molecule'] == 'molecule_011') & (data['Atom' ] == 'C')].iloc[0],
+    'F': data[(data['Molecule'] == 'molecule_055') & (data['Atom' ] == 'F')].iloc[0],
+    'N': data[(data['Molecule'] == 'molecule_018') & (data['Atom' ] == 'N')].iloc[0],
+    'O': data[(data['Molecule'] == 'molecule_036') & (data['Atom' ] == 'O')].iloc[0]
 }
 
 # print(REFS)

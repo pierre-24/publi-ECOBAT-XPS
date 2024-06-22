@@ -195,7 +195,7 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 \begin{figure}[!h]
 	\centering
 	 \includegraphics[width=.8\linewidth]{Figure4}
-	 \caption{Comparision between experimental and calculated gas phase \dbe{}, as computed with the SJ (blue) and SJ\textsubscript{n} (orange) protocols on the different atoms. For each of them, the error (as mean $\pm$ standard deviation) for both protocols is given.}
+	 \caption{Comparision between experimental and calculated gas phase \dbe{}, as computed with the SJ (blue) and SJ\textsuperscript{n} (orange) protocols on the different atoms. For each of them, the error (as mean $\pm$ standard deviation) for both protocols is given.}
 	 \label{fig:xps_C185}
 \end{figure}
 
@@ -205,16 +205,33 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 		\toprule
 		& Reference & BE (exp.)  & BE (SJ\textsuperscript{n})  & $\Delta$(SJ\textsuperscript{n}- exp.)\\
 		\midrule
-		B1s & \ce{(BH2)2} & 196.50 & 201.47 & 4.97\\
-		C1s & \ce{CH4} & 290.90 & 297.04 & 6.14\\
-		N1s & \ce{NH3} & 405.60 & 413.58 & 7.98\\
-		O1s & \ce{H2O} & 539.70 & 548.79 & 9.09\\
-		F1s & \ce{HF} & 694.23 & 704.78 &10.55\\
+		B 1s & \ce{(BH2)2} & 196.50 & 201.47 & 4.97\\
+		C 1s & \ce{CH4} & 290.90 & 297.04 & 6.14\\
+		N 1s & \ce{NH3} & 405.60 & 413.58 & 7.98\\
+		O 1s & \ce{H2O} & 539.70 & 548.79 & 9.09\\
+		F 1s & \ce{HF} & 694.23 & 704.78 &10.55\\
 		\bottomrule
 	\end{tabular}
 	\caption{Comparison between experimental (from Ref.~\cite{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the SJ\textsuperscript{n} protocol) absolute BE.}
 	\label{tab:xpssjn}
 \end{table}
+
+\clearpage
+These results also indicate that the \dbe{} can serve as a measure of the local chemical environment. As shown in Fig.~\ref{fig:trends}, three key factors can impact \dbe{}: \begin{inparaenum}[i)]
+	\item the hybridization of the atom, which plays a moderate role in this set of compounds,
+	\item the electronegativity of neighboring atoms, which generally increases the binding energy or carbon (as observed with carbon), and
+	\item the number of electronegative neighbors, as demonstrated, for example, in the \ce{CF_xH_{4-x}} series (\textbf{11}, \textbf{57}-\textbf{60}), where \dbe{} increases by \SI{10}{\electronvolt} from $x=0$ (\ce{CH4}) to $x=4$ (\ce{CF4}).
+\end{inparaenum}
+The second and third effects combine to produce large binding energies (in comparison to the reference) in compounds containing oxygen and fluorine. On the other hand, the binding energies for boron are systematically smaller than the reference, \textbf{1} (\ce{B2H4}), thought carbon has a larger electronegativity than boron.
+
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\linewidth]{Figure5}
+	\caption{ Trends among \dbe{} for of \textbf{1}-\textbf{67} (as computed with the SJ\textsuperscript{n} protocol). Each bar represent the minimum and maximum \dbe{} computed for each atom, with a given hybdrization (C, N, O) and neighbors (C).}
+	\label{fig:trends}
+\end{figure}
 
 \clearpage
 \subsection{Binding energies of slabs}
@@ -223,13 +240,12 @@ Although the SJ\textsuperscript{n} protocol performs better in the gas phase, li
 
 The impact of slab thickness on the resulting spectra is therefore assessed using the SJ protocol, as shown in Fig.~\ref{fig:slabsthickness}. Increasing slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use slabs with the fewest number of layers to save computation time.
 
-A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca 2s binding energies are similar with both protocols, differences appear for Ca 2s in \ce{CaH2} (where bulk and surface features are more pronounced) and for O 1s in CaO (where the difference between bulk and surface is less significant). Notably, the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O 1s) and the value of O 1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.
-
+A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca 2s binding energies are similar with both protocols, differences in the shape of the spectra appear for Ca 2s in \ce{CaH2} (where bulk and surface features are more pronounced) and for O 1s in CaO (where the difference between bulk and surface is less significant). Notably, the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O 1s) and the value of O 1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.
 
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=\linewidth]{Figure5}
+	\includegraphics[width=\linewidth]{Figure6}
 	\caption{Impact of the slab thickness (indicated as the number of layers) on the resulting XPS spectra (as computed with the SJ protocol).}
 	\label{fig:slabsthickness}
 \end{figure}
@@ -242,26 +258,27 @@ The optimized geometries of compounds \textbf{a}-\textbf{j} adsorbed on slabs ar
 	\item hydrogen bonding (HB), and
 	\item chemisorption.
 \end{inparaenum}
-Hydrocarbons primarily interact through vdW forces, as evidenced by the large distances between the adsorbate and the substrate (Fig.~\ref{fig:distsad}). Notably, with bare Ca, the interaction energies are substantial (exceeding \SI{60}{\kilo\joule\per\mole}). These energies are higher than those observed for HB interactions (ranging from 30 to \SI{50}{\kilo\joule\per\mole}), which occur between \ce{CaO.H2O} and polar carbohydrates. Additionally, these carbohydrates exhibit significant interaction energies with other substrates (Ca, CaO, and \ce{CaH2}) together with small distances, indicating chemisorption. This is particularly pronounced with the bare Ca substrate, where strong Ca-O interactions are present, and in cases where proton transfer is feasible, such as between \ce{CaH2} and compounds \textbf{e} or \textbf{f}, or between compounds \textbf{i} or \textbf{j} and CaO.
+
+Hydrocarbons primarily interact through vdW forces, as evidenced by the large distances between the adsorbate and the substrate (Fig.~\ref{fig:distsad}). Notably, with bare Ca, the interaction energies are substantial (exceeding \SI{60}{\kilo\joule\per\mole}). These energies are higher than those observed for HB interactions (ranging from 30 to \SI{50}{\kilo\joule\per\mole}), which occur between \ce{CaO.H2O} and polar carbohydrates. Additionally, these carbohydrates exhibit significant interaction energies ($>\SI{200}{\kilo\joule\per\mole}$) with other substrates (Ca, CaO, and \ce{CaH2}) together with small distances, indicating chemisorption. This is particularly pronounced with the bare Ca substrate, where strong Ca-O interactions are present, and in cases where proton transfer is feasible, such as between \ce{CaH2} and compounds \textbf{e} or \textbf{f}, or between compounds \textbf{i} or \textbf{j} and CaO. Compound \textbf{i} and \textbf{j} also have larger energies because of the multiple interactions with the surface.
 
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=.7\linewidth]{Figure6}
+	\includegraphics[width=.7\linewidth]{Figure7}
 	\caption{Distances between adsorbate (hydrocabrons, \textbf{a}-\textbf{d}) and substrates, as measured by representative distances (in \si{\angstrom}) between one atom of each entity.}
 	\label{fig:distsad}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=.7\linewidth]{Figure7}
+\includegraphics[width=.7\linewidth]{Figure8}
 \caption{Distances between adsorbate (polar carbohydrates, \textbf{e}-\textbf{h}) and substrates, as measured by representative distances (in \si{\angstrom}) between one atom of each entity.}
 \label{fig:distseh}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=.7\linewidth]{Figure8}
+\includegraphics[width=.7\linewidth]{Figure9}
 \caption{Distances between adsorbate (protic carbohydrates, \textbf{i}-\textbf{j}) and substrates, as measured by representative distances (in \si{\angstrom}) between one atom of each entity.}
 \label{fig:distsij}
 \end{figure}
