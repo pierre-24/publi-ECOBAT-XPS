@@ -50,11 +50,11 @@ ax2, ax3 = figure.subplots(1, 2, sharey=True)
 
 ax2.set_ylim(0, len(args.systems) * FAC)
 
-plot_atom(ax2, data, args.systems, 'C', REF_C, (-4, 6))
-plot_atom(ax3, data, args.systems, 'O', REF_O, (-9, 1))
+plot_atom(ax2, data, args.systems, 'C', REF_C, (-4, 6) if args.type == 'SJ' else (-6,4))
+plot_atom(ax3, data, args.systems, 'O', REF_O, (-9, 1) if args.type == 'SJ' else (-11,-1))
 
 for i, name in enumerate(args.names):
-    ax2.text(5.75, i * FAC + .1, name)
+    ax2.text(5.75 if args.type == 'SJ' else 3.75, i * FAC + .1, name)
 
 [ax.invert_xaxis() for ax in [ax2, ax3]]
 [ax.set_xlabel('$\\Delta$BE (eV)') for ax in [ax2, ax3]]

@@ -97,7 +97,7 @@ ax1.set_ylim(-3, FAC * 4 + .5)
 
 plot(ax1, data, data_ref, data_align, args.adsorbate, 'Ca', REF_Ca, (-5, 5))
 plot(ax2, data, data_ref, data_align, args.adsorbate, 'C', REF_C, (-10, 10))
-plot(ax3, data, data_ref, data_align, args.adsorbate, 'O', REF_O, (-10, 10))
+plot(ax3, data, data_ref, data_align, args.adsorbate, 'O', REF_O, (-15, 0))
 
 [ax.invert_xaxis() for ax in [ax1, ax2, ax3]]
 [ax.set_xlabel('$\\Delta$BE (eV)') for ax in [ax1, ax2, ax3]]
