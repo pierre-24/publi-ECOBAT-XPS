@@ -5,7 +5,7 @@
 - [ ] Properly discuss $E_{ref}$
 - [ ] Fig. or Figure?
 - [ ] Improve introduction. In particular, tell a bit more about SEI of CIBs and previous attempts. Also, introduce a bit better the goals of the paper.
-- [ ] Create SI (appendix do not work with achemso).
+- [x] Create SI (appendix does not work with achemso).
 - [ ] Move some stuffs in SI.
 - [ ] Conclude & abstract (& keywords?)
 - [ ] Aknowledgements

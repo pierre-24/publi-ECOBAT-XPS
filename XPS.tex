@@ -349,29 +349,6 @@ First, interaction with bare Ca results in a shift to lower binding energies in 
 Furthermore, proton transfers, seen in the interactions between \textbf{e} and \textbf{f} with \ce{CaH2} and between \textbf{i} and \textbf{j} with CaO, lead to significant changes in C 1s and O 1s binding energies, consistent with changes in hybridization. Finally, C 1s binding energies also change when unsaturated hydrocarbons (\textbf{c} and \textbf{d}) interact with \ce{CaH2}, suggesting a modification of the carbon's chemical environment, which may not be immediately apparent when inspecting the geometries.
 These findings demonstrate that XPS binding energies are highly sensitive to changes in the chemical environment of the atoms.
 
-\subsection{Comparison to experiment}
-
-Experimental C 1s and O 1s XPS spectra of Ca aged in THF, provided by the team of Prof. A. Vlad, are presented in Fig.~\ref{fig:exp}. The C 1s spectrum shows a peak around \SI{285}{\electronvolt}, which is \SI{5}{\electronvolt} lower than the gas phase reference, \ce{CH4}. Similarly, the O 1s peak appears around \SI{532}{\electronvolt}, \SI{7}{\electronvolt} lower than the reference, \ce{H2O}. Both peaks are relatively broad, suggesting the presence of additional features with similar \dbe{}. Notably, this O 1s value closely matches that of CaO \cite{cristHandbookMonochromaticXPS1999}, but our calculations indicate it is also close to \ce{sp^2} oxygens (e.g., \textbf{f}, \textbf{g}), implying significant degradation would be required.
-
-Among the various possibilities (Fig.~\ref{fig:poss}), the \ce{CaO.H2O} slab produces a too broad peak for O 1s. Additionally, the experimental O 1s spectrum is skewed to the left, better reproduced by \ce{HO(C4H8O)_2H}@CaO. Regarding C 1s, THF@Ca displays only one peak, while the others show two peaks (one for C-C and another, with higher \dbe{}, for C-O). Again, \ce{HO(C4H8O)_2H}@CaO provides a better match to the experimental spectra, although the relative intensities of the peaks do not perfectly align with the experiment. This balance is influenced by the proton transfer between terminal -OH in \textbf{h} and CaO, which could indicates that the polymer chain are not very long experimentally, with a lot of terminations.
-
-Note that while it change the value of the binding energies (which becomes more negative\footnote{Mais... Trop négative par rapport à la Fig.~\ref{fig:slabsthicknessSJn}?}), the SJ\textsuperscript{n} protocol does not impact these features (see Fig.~\ref{fig:possSJn}).
-
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=.6\linewidth]{Figure11}
-	\caption{Experimental spectra of Ca pellet after aging in THF for 1 day (private communication). The peak assignation was automatically added by the XPS analysis software, and is not necessarily correct.}
-	\label{fig:exp}
-\end{figure}
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=.8\linewidth]{Figure12}
-	\caption{XPS spectra (as computed with the SJ protocol, using $\sigma=\SI{0.6}{\electronvolt}$) of the adsorbates \textbf{h} and \textbf{j} on Ca, CaO and \ce{CaO.H2O}.}
-	\label{fig:poss}
-\end{figure}
-
 \clearpage
 \section{Conclusions}
 XPS offers valuable insights into the chemical environment of atoms and the changes they undergo during adsorption. However, careful consideration must be given to the methodologies employed, as direct comparisons between results can be challenging due to potential inconsistencies across different systems.
@@ -386,58 +363,5 @@ Furthermore, another objective is to investigate the behavior of \ce{BH4} and \c
 
 \clearpage
 \bibliography{biblio}
-
-% ----------------------------------------------------
-% ----------------------------------------------------
-% ----------------------------------------------------
-
-\clearpage
-\appendix
-\counterwithin{figure}{section}
-\section{Appendix}
-\begin{figure}[!h]
-	\includegraphics[width=\linewidth]{FigureA1}
-	\caption{Evolution of the surface energy for slabs of Ca, CaO, and \ce{CaH2} with increasing thickness ($N$) , as estimated by least-square fit of Eq.~\eqref{eq:surf}. For CaO, the surface energies of (110) and (111) are larger than \SI{1.25}{\joule\per\meter\squared}.}
-	\label{fig:surf}
-\end{figure}
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=.8\linewidth]{FigureA2}
-	\caption{Comparison between experimental and calculated gas phase \dbe{}, as computed with the SJ (blue) and SJ\textsubscript{n} (orange) protocols on the different atoms, and by shifting the BE by $E_F$ in Eq.~\eqref{eq:xpsbe}. For each of them, the error (as mean $\pm$ standard deviation) for both protocols is given.}
-	\label{fig:xps_C185_fermi}
-\end{figure}
-
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=\linewidth]{FigureA3}
-	\caption{Impact of the slab thickness (indicated as the number of layers) on the resulting XPS spectra (as computed with the SJ\textsuperscript{n} protocol).}
-	\label{fig:slabsthicknessSJn}
-\end{figure}
-
-
-\newcommand{\XPSsa}[3]{
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=.85\linewidth]{Figure#1a}
-	\includegraphics[width=.85\linewidth]{Figure#1b}
-	\caption{Difference (dotted line) between the XPS spectrum before (dashed line) and after (plain line) adsorption for compounds \textbf{#2} (top) and \textbf{#3} (bottom) on the different substrates.}
-	\label{fig:spectraXPSads#2#3}
-\end{figure}
-}
-
-\XPSsa{A4}{a}{b}
-\XPSsa{A5}{c}{d}
-\XPSsa{A6}{e}{f}
-\XPSsa{A7}{g}{h}
-\XPSsa{A8}{i}{j}
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=.8\linewidth]{FigureA9}
-	\caption{XPS spectra (as computed with the SJ\textsuperscript{n} protocol, using $\sigma=\SI{0.6}{\electronvolt}$) of the adsorbates \textbf{h} and \textbf{j} on Ca, CaO and \ce{CaO.H2O}.}
-	\label{fig:possSJn}
-\end{figure}
 	
 \end{document}

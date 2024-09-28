@@ -46,4 +46,12 @@ jobs:
           asset_name: Main_Text.pdf
           tag: ${{ env.REF }}
           overwrite: true
+      - name: Upload SI
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: XPS_SI.pdf
+          asset_name: Supporting_info.pdf
+          tag: ${{ env.REF }}
+          overwrite: true
 
