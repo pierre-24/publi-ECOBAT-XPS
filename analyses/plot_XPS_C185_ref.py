@@ -58,7 +58,7 @@ parser.add_argument('-o', '--output', default='Data_XPS_C185.pdf')
 args = parser.parse_args()
 
 if len(args.inputs) != len(args.names):
-    raise Exception('len(inputs) and len(names) do not match')
+    raise Exception('len({}) and len({}) do not match'.format(repr(args.inputs), repr(args.names)))
 
 data_ref = pandas.read_csv(args.ref)
 
