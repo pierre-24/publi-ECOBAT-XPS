@@ -1,13 +1,7 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\documentclass[journal=jpccck,manuscript=article]{achemso}
+
 \usepackage{hyperref}
 
-\usepackage{setspace}
 \usepackage{siunitx}
 \DeclareSIUnit\rydberg{Ry}
 \usepackage{tikz}
@@ -17,12 +11,18 @@
 \usepackage{rotating}
 \usepackage{chngcntr}
 
-\title{Prediction of XPS binding energies for molecules grafted on calcium surfaces}
-\author{Pierre Beaujean}
-\date{Version of \today}
 
-\allowdisplaybreaks
-\onehalfspacing
+\author{Pierre Beaujean}
+\affiliation[Unamur]
+{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
+
+
+\author{Benoît Champagne}
+\affiliation[Unamur]
+{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
+\email{benoit.champagne@unamur.be}
+
+\title{Prediction of XPS binding energies for molecules grafted on calcium surfaces}
 
 \def\dbe{\ensuremath{\Delta\text{BE}}}
 
@@ -31,25 +31,26 @@
 
 \section{Introduction}
 
-Batteries are one of the key enabling technologies for transitioning to a climate-neutral society. Since their market introduction, lithium-ion batteries (LIBs) have developed into a very mature technology and are currently used in numerous applications. However, despite their established performance, LIBs are unlikely to meet the foreseen objectives required for large-scale applications due to three key issues:
-\begin{inparaenum}[(i)]
-	\item availability of raw materials (currently involving rare-earth metals),
-	\item low energetic density, and
-	\item poor sustainability over a large number of cycles.
+Batteries represent a crucial technology for the transition to a climate-neutral society. Since their market introduction, lithium-ion batteries (LIBs) have evolved into a highly mature technology, currently utilized in a wide range of applications. Despite their established performance, LIBs face significant limitations that hinder their suitability for large-scale applications, primarily due to three fundamental issues:
+\begin{inparaenum}[(i)] 
+	\item limited availability of raw materials, 
+	\item insufficient energy density, and 
+	\item inadequate sustainability across an extended number of cycles. 
 \end{inparaenum}
 
-The ECOBAT project aims to address the second point by using divalent cations, such as \ce{Ca^2+}. However, due to its high reactivity, specially designed electrolytes are required to achieve a reversible mechanism. Understanding the chemistry of its solid-electrolyte interphase (SEI) is also crucial.
+Addressing the second point can be achieved through the use of divalent cations, such as \ce{Ca^2+}. However, its elevated reactivity demands the design of specialized electrolytes to support a reversible mechanism. Additionally, detailed insight into the chemistry of the solid-electrolyte interphase (SEI) remains crucial.
+In the literature, calcium-ion batteries (CIBs) utilize electrolytes such as dimethyl ether (DME), ethylene carbonate (EC), glyme, or tetrahydrofuran (THF), often in combination with weakly coordinating anions like \ce{BH4-} or \ce{BF4-} \cite{zhaoRevealingSolidElectrolyte2022,taghavi-kahaghPoweringFutureComprehensive2023}. Although both experimental \cite{melemedImpactDifferentialCa22023} and quantum chemistry \cite{hahnCriticalRoleConfigurational2020,liepinyaComputationalComparisonEther2021,pathreekerWhyTetrahydrofuranGood2021,yamijalaStabilityCalciumIon2021} studies on SEI formation exist, greater insight can be gained by combining experimental spectra with theoretical calculations.
 
-In the literature, calcium batteries (CIBs) use carbonate-containing electrolytes such as dimethyl ether (DME), ethylene carbonate (EC), glyme, or tetrahydrofuran (THF), mixed with weakly coordinated anions such as \ce{BH4-} or \ce{BF4-} \cite{zhaoRevealingSolidElectrolyte2022,taghavi-kahaghPoweringFutureComprehensive2023}. While there are experimental \cite{melemedImpactDifferentialCa22023} and theoretical \cite{hahnCriticalRoleConfigurational2020,liepinyaComputationalComparisonEther2021,pathreekerWhyTetrahydrofuranGood2021,yamijalaStabilityCalciumIon2021} studies on SEI formation, a better understanding can be achieved by combining experimental spectra with theoretical calculations using spectroscopic tools.
 
-X-ray photoelectron spectroscopy (XPS) is a surface-sensitive, quantitative spectroscopy that allows for the identification of elements within the material or at its surface. It belongs to the family of photoemission spectroscopies, where the energy of electrons emitted by the photoelectric effect is analyzed. Specifically, XPS uses a beam of soft X-rays (\SI{100}{\electronvolt} < $h\nu$ < \SI{10}{\kilo\electronvolt}), enabling the probing of core electrons (low principal quantum number) \cite{stevieIntroductionXrayPhotoelectron2020}. It is routinely used to gain understanding of SEI composition, both experimentally \cite{melemedImpactDifferentialCa22023} and theoretically \cite{ebadiInsightsLiMetalOrganic2019}.
+X-ray photoelectron spectroscopy (XPS) is a surface-sensitive, quantitative spectroscopy that allows for the identification of elements within the material or at its surface. It belongs to the family of photoemission spectroscopies, where the energy of electrons emitted by the photoelectric effect is analyzed. Specifically, XPS uses a beam of soft X-rays ($\SI{100}{\electronvolt} < h\nu < \SI{10}{\kilo\electronvolt}$), enabling the probing of core electrons (low principal quantum number) \cite{stevieIntroductionXrayPhotoelectron2020}. It is routinely used to gain understanding on the SEI composition, both experimentally \cite{melemedImpactDifferentialCa22023} and with calculations \cite{ebadiInsightsLiMetalOrganic2019}.
 
-This study focuses on the XPS spectra resulting from the degradation of THF as a model system. Different possible degradation products (Fig.~\ref{fig:THFdegradation}) will be considered on various calcium substrates, including calcium oxide and hydride.
+This study investigates the XPS spectra associated with the degradation and polymerization of THF, using it as a model system. Various potential degradation products (Fig.~\ref{fig:THFdegradation}), as well as the polymerization into poly(tetramethylene ether) glycol (PTMEG), are examined on different calcium substrates, including calcium oxide and calcium hydride.
+
 
 \begin{figure}
 	\centering
 	\includegraphics{Figure1}
-	\caption{The main degradation pathway of THF leads to THF polymer (black). Compound \textbf{a}-\textbf{j} (blue) are considered in this study: \textbf{j} is used as a model for the THF polymer, while fragmentation may lead to (un)saturated hydrocarbons (\textbf{a}-\textbf{d}) or carbohydrates (\textbf{e}-\textbf{i}).}
+	\caption{The main polymerization pathway of THF leads to PTMEG (black). \textbf{j} is used as a model for the PTMEG, while fragmentation can lead to (un)saturated hydrocarbons (\textbf{a}-\textbf{d}) or carbohydrates (\textbf{e}-\textbf{i}).}
 	\label{fig:THFdegradation}
 \end{figure}
 
@@ -59,26 +60,25 @@ In XPS spectroscopy, the conservation of energy is described by the equation:
 \begin{equation}
 	h\nu = \text{BE} + E_{\text{kin}} + \phi, \label{eq:xps}
 \end{equation}
-where BE is the binding energy of the electron, $E_{\text{kin}}$ is the kinetic energy of the emitted electron (measured by the detector), and $\phi$ is the work function, which accounts for surface effects and detector contributions. Using a source of monochromatic X-rays (such as Al $K_\alpha$, $h\nu = \SI{1486.7}{\electronvolt}$), it is possible to determine BE from $E_{\text{kin}}$ \cite{vinesPredictionCoreLevel2018}. The binding energy depends on how tightly the electron is bound to its orbital, making it sensitive to the oxidation state and chemical environment of the originating atom. Generally, more electronegative surroundings result in higher BE, providing information on the atom's environment, much like chemical shifts in NMR.
+where BE is the binding energy of the electron, $E_{\text{kin}}$ is the kinetic energy of the emitted electron (measured by the detector), and $\phi$ is the work function, which accounts for surface effects and detector contributions. Using a source of monochromatic X-rays (such as Al $K_\alpha$, $h\nu = \SI{1486.7}{\electronvolt}$), it is possible to determine BE from $E_{\text{kin}}$ \cite{vinesPredictionCoreLevel2018}. The binding energy depends on how tightly the electron is bound in its orbital, making it sensitive to the oxidation state and chemical environment of the originating atom. Generally, more electronegative surroundings result in higher BE, providing information on the atom's environment, much like chemical shifts in NMR.
 
 From a quantum chemistry perspective, binding energy is akin to the ionization energy of core electrons:
 \begin{equation}
 	\text{BE}_i = E^{N-1}_i(\text{final}) - E^{N}(\text{initial}), \label{eq:dscf}
 \end{equation}
-where $E^{N}$ and $E^{N-1}$ are the energies of the initial $N$-electron non-ionized state and the final $N-1$ electron ionized state with a core hole on atom $i$. While these energies could be obtained through (relativistic) multi-configuration approaches, this is impractical for large systems. Even CIS or TD excitations are challenging to target, as they correspond to highly excited states \cite{vinesPredictionCoreLevel2018}.
+where $E^{N}$ and $E^{N-1}_i$ are the energies of the initial $N$-electron non-ionized state and the final $N-1$ electron ionized state with a core hole on atom $i$. While these energies could be obtained through (relativistic) multi-configuration approaches, this is impractical for large systems. Even CIS or TD-DFT based calculations of excitation energies are challenging, as they correspond to highly excited states \cite{vinesPredictionCoreLevel2018}.
 
-For gas-phase molecules, classical quantum chemistry tools can be utilized. At the HF level, core-level BE can be approximated using Koopmans' theorem, which correlates to the orbital energy of the removed electron. This is known as the initial state (IS) or frozen orbitals (FO) approach. However, relaxation effects are neglected. More accurate values can be obtained using Eq.~\eqref{eq:dscf}, by computing the energy difference between initial and final states at the HF level, known as the $\Delta$SCF approach, which includes final state (FS) effects. While this method may provide quantitative agreement in some cases, electron correlation effects are significant, necessitating the use of density functional theory (DFT), for which Koopmans' theorem no longer applies \cite{pueyobellafontPredictingCoreLevel2017}.
+For gas-phase molecules, classical quantum chemistry tools can be utilized. At the HF level, core-level BE can be approximated using Koopmans' theorem, which correlates BEs to the orbital energy of the removed electron. This is known as the initial state (IS) or frozen orbitals (FO) approach. However, electronic relaxation effects are neglected. More accurate values can be obtained using Eq.~\eqref{eq:dscf}, by computing the energy difference between initial and final states at the HF level, known as the $\Delta$SCF approach, which includes final state (FS) effects. While this method may provide quantitative agreement in some cases, electron correlation effects are significant, necessitating the use of density functional theory (DFT), for which Koopmans' theorem no longer applies \cite{pueyobellafontPredictionCoreLevel2015,pueyobellafontPredictingCoreLevel2017}.
 
-Treating solids or surfaces adds complexity. Generally, only valence levels are explicitly treated, with pseudopotentials (PPs) modeling core electrons. The projected augmented wave (PAW) method maps results to all-electron wave functions using specially designed PPs and transformations \cite{blochlProjectorAugmentedwaveMethod1994}. In codes like CP2K or VASP, a core hole can be generated, neglecting the relaxation of other core electrons but including valence electron relaxation. This limits the accuracy of absolute BE descriptions.
-
-Another challenge arises with periodic boundary conditions, where the core hole is periodically repeated, creating an infinitely charged system. Two approaches can address this: 
-\begin{inparaenum}[a)]
+Treating solids or surfaces adds further complexity. Generally, only valence levels are explicitly treated, with pseudopotentials (PPs) modeling core electrons. The projected augmented wave (PAW) method maps results to all-electron wavefunctions using specially designed PPs and transformations \cite{blochlProjectorAugmentedwaveMethod1994}. A core hole can be generated, neglecting the relaxation of other core electrons but including valence electron relaxation. This limits the accuracy of absolute BE descriptions.
+A complementary challenge arises due to the use of periodic boundary conditions (PBC), since the core hole is periodically repeated, creating an infinitely charged system. Two approaches can address this: 
+\begin{inparaenum}[(i)]
 	\item add the excited electron to the bottom of the conduction band (or LUMO for isolated molecules), or 
 	\item remove the excited electron from the system and use a background counter-charge.
 \end{inparaenum}
-The first approach underestimates BEs, resembling absorption processes, while the second induces physically incorrect effects, further complicating absolute BE prediction.
+The first approach underestimates BEs, resembling absorption processes, while the second induces physically incorrect effects, further complicating absolute BE prediction.\cite{olovssonCorelevelShiftsComplex2006}
 
-However, relative BE can be estimated by computing wave functions for a fractional number of electrons using Slater transition state theory and Janak's theorem \cite{janakProofThatFrac1978}, resulting in the Slater-Janak (SJ) approach \cite{hiraoImprovedSlaterTransition2021}. In this work, BE are computed with a half-electron placed either in the conduction band or in the vacuum, referred to as the SJ and SJ\textsuperscript{n} approaches, respectively (Fig.~\ref{fig:method}).
+However, relative BE can be estimated by computing wavefunctions for a fractional number of electrons using Slater transition state theory and Janak's theorem \cite{janakProofThatFrac1978}, resulting in the Slater-Janak (SJ) approach \cite{hiraoImprovedSlaterTransition2021}. In this work, BE are computed with a half-electron placed either in the conduction band or in the vacuum, referred to as the SJ and SJ\textsuperscript{n} approaches\cite{pueyobellafontPredictingCoreLevel2017}, respectively (Fig.~\ref{fig:method}).
 	
 	\begin{figure}[!h]
 		\centering
@@ -86,7 +86,7 @@ However, relative BE can be estimated by computing wave functions for a fraction
 			\draw (0,0) node[left]{$\varepsilon_i$}-- node[midway,below=.25cm]{IS / FO} +(1,0);
 			\draw (0,1) node[left]{HOMO}-- +(1,0);
 			\draw (0,1.5) node[left]{LUMO}-- +(1,0);
-			\draw[dotted] (0,2.5) node[left]{\textit{vacuum}}-- +(1,0);
+			\draw[dotted] (0,2.5) node[left]{$E_\infty$}-- +(1,0);
 			\fill (.25,0) circle (.1cm);
 			\fill (.75,0) circle (.1cm);
 			\fill (.25,1) circle (.1cm);
@@ -124,48 +124,58 @@ However, relative BE can be estimated by computing wave functions for a fraction
 				\fill (.25,2.6) arc (-90:-270:.1);
 			\end{scope}
 		\end{tikzpicture}
-		\caption{Approaches to compute BE as the energy of the molecular orbital where the core hole is located: initial state (IS, also referred to as frozen orbitals, FO) and Slater-Janak (SJ). When the electron is further removed from the system (and conceptually pushed to the vacuum), JS\textsuperscript{n} is noted. Adapted from Ref.~\cite{pueyobellafontPredictingCoreLevel2017}.}
+		\caption{Approaches to compute BE as the energy of the molecular orbital where the core hole is located: initial state (IS, also referred to as frozen orbitals, FO) and Slater-Janak (SJ). When the electron is further removed from the system (and conceptually pushed to the vacuum, $E_\infty$), JS\textsuperscript{n} is noted. Adapted from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}.}
 		\label{fig:method}
 	\end{figure}
 
-Finally, while the determination of absolute binding energies (BE) is challenging from a theoretical perspective, the measurement or calculation of the work function, $\phi$ in Eq.~\eqref{eq:xps}, is also complex. As a result, both experimentalists and quantum chemists often focus on the relative binding energy, $\Delta\text{BE}$, which is the difference in binding energy for a given atom with respect to a reference compound \cite{vinesPredictionCoreLevel2018}. In this contribution, relative BE values are computed as $\Delta\text{BE}_i = \text{BE}_i - \text{BE}(\text{ref})$, using the calculated or experimental BE values for \ce{CH4}, \ce{NH3}, \ce{H2O}, \ce{B2H6}, and \ce{HF} as references for carbon, nitrogen, oxygen, boron, and fluorine, respectively. The experimental values are taken from Ref.~\cite{pueyobellafontPredictingCoreLevel2017}. For calcium, the innermost atom of a 1x1 Ca slab containing 16 layers (\textit{vide infra}) is used as the reference.
+Finally, while the determination of absolute binding energies (BE) is challenging from a theoretical perspective, the measurement or calculation of the work function, $\phi$ in Eq.~\eqref{eq:xps}, is also complex. As a result, both experimentalists and quantum chemists often focus on the relative binding energy, $\Delta\text{BE}$, which is the difference in binding energy for a given atom with respect to a reference compound \cite{vinesPredictionCoreLevel2018}. In this contribution, relative BE values are computed as:\begin{equation}
+	\Delta\text{BE}_i = \text{BE}_i - \text{BE}(\text{ref}), \label{eq:dbe}
+\end{equation} 
+using the calculated or experimental BE values for \ce{CH4}, \ce{NH3}, \ce{H2O}, \ce{B2H6}, and \ce{HF} as references for carbon, nitrogen, oxygen, boron, and fluorine, respectively. The experimental values are taken from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}. For calcium, the innermost atom of a 1x1 Ca slab containing 16 layers (\textit{vide infra}) is used as reference.
 
 	
 \section{Computational details}
 
-Unless otherwise stated, all calculations were performed using the PBE-D3 level of theory with VASP (version 6.4.1) and the projector-augmented wave (PAW) method \cite{blochlProjectorAugmentedwaveMethod1994}. The energy convergence criterion was set to \SI{e-4}{\electronvolt}, with a cutoff of \SI{550}{\electronvolt} for the kinetic energy of the plane waves. Gaussian smearing of the valence electrons, with a width of \SI{0.2}{\electronvolt}, was applied. Brillouin zone integration was performed at the gamma point for molecules in the gas phase, using a 4x4x4 Monkhorst-Pack k-point mesh for bulk calculations, and a 4x4x1 mesh for slab calculations. The \texttt{Ca\_sv} pseudopotential was employed to model calcium.
+Unless otherwise stated, all calculations were performed using the PBE-D3 level of theory with VASP (version 6.4.1) and the projector-augmented wave (PAW) method \cite{blochlProjectorAugmentedwaveMethod1994}. The energy convergence criterion was set to \SI{e-4}{\electronvolt}, with a cutoff of \SI{550}{\electronvolt} for the kinetic energy of the plane waves. Gaussian smearing of the energy of valence electrons, with a width of \SI{0.2}{\electronvolt}, was applied. Brillouin zone integration was performed at the $\Gamma$-point for molecules in the gas phase, using a 4x4x4 Monkhorst-Pack k-point mesh\cite{monkhorstSpecialPointsBrillouinzone1976} for bulk calculations, and a 4x4x1 mesh for slab calculations. The \texttt{Ca\_sv} pseudopotential\cite{blochlProjectorAugmentedwaveMethod1994,kresseUltrasoftPseudopotentialsProjector1999} was employed to model calcium.
 
-All optimizations were carried out using the L-BFGS algorithm, driven by ASE \cite{larsenAtomicSimulationEnvironment2017} with VASP energies and forces, until the force on all atoms was below \SI{e-2}{\electronvolt\per\angstrom}.\footnote{For IR spectroscopy, a target of \SI{e-3}{\electronvolt\per\angstrom}  seems necessary to avoid large (> \SI{1000}{\per\centi\meter}) imaginary frequencies.}
+All optimizations were carried out using the Limited-memory Broyden-Fletcher-Goldfarb-Shanno  (L-BFGS) algorithm, driven by the Atomic Simulation Environment (ASE) package \cite{larsenAtomicSimulationEnvironment2017}, using VASP energies and forces as inputs, until the force on all atoms was below \SI{e-2}{\electronvolt\per\angstrom}.
 
-For the calculation of binding energies (BE), VASP allows targeting a specific orbital, $i$, from which a half-electron is removed. For SJ\textsuperscript{n}, it is also necessary to set the appropriate number of valence electrons using the \texttt{NELECT} keyword. After the calculation, the corresponding eigenvalue, $\varepsilon_i\left(\frac{1}{2}\right)$, is extracted. The binding energy is then computed as follows:
+For the calculation of binding energies (BE), VASP allows targeting a specific orbital, $i$, by removing half an electron from it. For SJ\textsuperscript{n} calculations, it is necessary to adjust the total number of valence electrons (by default, half an electron is added; see Fig.~\ref{fig:method}) using the \texttt{NELECT} keyword. After the calculation, the corresponding eigenvalue, $\varepsilon_i\left(\frac{1}{2}\right)$, is extracted. The binding energy is then calculated as:
 \begin{equation}
-	\text{BE}_i = 	\begin{cases}
-		-\varepsilon_i\left(\tfrac{1}{2}\right) & \text{if gas phase}, \\
-		E_F - \varepsilon_i\left(\tfrac{1}{2}\right) & \text{otherwise}, \label{eq:xpsbe}
-	\end{cases}
+	\text{BE}_i = 
+	E_{ref}- \varepsilon_i\left(\tfrac{1}{2}\right), \label{eq:xpsbe}
 \end{equation}
-where $E_F$ is the Fermi energy. To ensure consistency across different systems, results for slabs are shifted by the Fermi energy (computed by setting \texttt{EFERMI = MIDGAP} in the VASP input to account for Gaussian smearing). Applying this correction in the gas phase, however, leads to inconsistent results, as shown in Fig.~\ref{fig:xps_C185_fermi}. Additionally, this correction yields incoherent results for bulk systems, as the Fermi level is not well-defined by VASP in such cases.
+where $E_{ref}$ is a reference energy, chosen to ensure consistency across systems. This study considers several choices for $E_{ref}$:
+\begin{enumerate}
+	\item $E_{ref}=0$, thus using only the orbital energy,
+	\item $E_{ref}=E_F$, where the Fermi energy $E_F$ is used, computed with \texttt{EFERMI = MIDGAP} in the VASP input to account for Gaussian smearing,
+	\item $E_{ref}=E_\infty$, the vacuum energy, calculated by taking the electrostatic potential in the vacuum region of the cell,
+	\item $E_{ref}=\phi$, where the work function $\phi = E_\infty - E_F$ is considered\cite{kahnFermiLevelWork2015}, and
+	\item $E_{ref}= \varepsilon_{ref}$, where $\varepsilon_{ref}$ is the orbital energy of another atom in the cell. Although it might seem reasonable to use calcium, which is present in all slabs, this approach would depend on the slab's nature and would be not possible for gas-phase molecules. To overcome this, an Argon atom (to mimic calcium) is placed in the vacuum region, and $\varepsilon_{ref}=\varepsilon_{Ar,2s}$.
+\end{enumerate}
+It should be noted, however, that extracting $E_\infty$ is not feasible for bulk systems, where no vacuum region exists, or for charged systems, where the electrostatic potential is not flat in the vacuum region. This latter condition occurs when employing the SJ\textsuperscript{n} method. It is however possible to correct the fermi level energy to remove the impact of the background of charge, as discussed in Ref.~\citenum{lozovoiInitioSimulationCharged2001}.
 
-To obtain a spectrum, a Gaussian function centered at each computed \dbe{} is used. Unless otherwise specified, the parameter $\sigma = \SI{0.2}{\electronvolt}$ is employed.
+
+To obtain a spectrum, a Gaussian function centered at each computed \dbe{} is used. Unless otherwise specified, a root mean square width, $\sigma = \SI{0.2}{\electronvolt}$ is employed.
 
 \paragraph{Binding energies of molecules in the gas phase.}
-To evaluate the accuracy of the SJ and SJ\textsuperscript{n} methods, the results from Belafont \textit{et al.} \cite{pueyobellafontPredictingCoreLevel2017}, which compare experimental and theoretical calculations of gas-phase \dbe, are replicated. Their dataset comprises 184 experimental absolute binding energies (BEs) (Fig.~\ref{fig:core185}) from 68 molecules, including carbon (N=107), nitrogen (N=20), oxygen (N=22), boron (N=20), and fluorine (N=15) atoms. Following molecular optimization, each molecule is placed in a cubic box with a side length of \SI{20}{\angstrom}, and the BEs are computed for each atom of interest.
+To assess the accuracy of the SJ and SJ\textsuperscript{n} methods and the choice of $E_{ref}$, the results from Belafont \textit{et al.} \cite{pueyobellafontPredictingCoreLevel2017}, which compare experimental and theoretical calculations (computed at the same level of approximation as ours) of gas-phase \dbe, are replicated. Their dataset comprises 184 experimental absolute binding energies (BEs) from 68 molecules, including carbon (N=107), nitrogen (N=20), oxygen (N=22), boron (N=20), and fluorine (N=15) atoms (Fig.~\ref{fig:core185}). Following a geometry optimization, each molecule is placed in a cubic box with a side length of \SI{20}{\angstrom}, and the \dbe{} are computed for each atom of interest.
 
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{Figure3}
-	\caption{Molecules for the benchmark \cite{pueyobellafontPredictingCoreLevel2017}. The atoms for which experimental BE are provided are highlighted in blue.  The reference compound used for each atom are highlighted in red.}
+	\caption{Molecules for the benchmark \cite{pueyobellafontPredictingCoreLevel2017}. The atoms for which experimental BE are provided are highlighted in blue.  The reference compounds used for each atom are highlighted in red.}
 	\label{fig:core185}
 \end{figure}
 
-\paragraph{Binding energies of molecules grafted on surfaces.} Following the protocol established by Ebadi and co-workers \cite{ebadiInsightsLiMetalOrganic2019}, the binding energies (\dbe{}) of molecules adsorbed on surfaces were investigated. Initially, bulk Ca (from the Material Project, \texttt{MP-45}), CaO (\texttt{MP-2605}), and \ce{CaH2} (\texttt{MP-23713}) were selected, and their atomic positions and cell parameters were optimized.
+\paragraph{Binding energies of molecules grafted on surfaces.} The binding energies (\dbe{}) of molecules adsorbed on surfaces are investigated following the protocol established by Ebadi and co-workers \cite{ebadiInsightsLiMetalOrganic2019}. Initially, bulk Ca (from the Material Project, \texttt{MP-45}), CaO (\texttt{MP-2605}), and \ce{CaH2} (\texttt{MP-23713}) were selected, and their atomic positions and cell parameters were optimized.
 
 Subsequently, to determine the optimal surface orientation, 1x1 slabs with increasing thickness along different low-index orientations [(100), (110), and (111)] were constructed using ASE \cite{larsenAtomicSimulationEnvironment2017}. The slabs were relaxed with the central two layers frozen to mimic bulk conditions, with the distance between slab repetitions set to 10 times the $c$ cell parameter of the bulk. For each orientation, the surface energy $\gamma^{hkl}$ was calculated by least-squares fitting of the following expression \cite{sunEfficientCreationConvergence2013,tranSurfaceEnergiesElemental2016}:
 \begin{equation}
 	E^{hkl}(N) = E_0\,N + 2A\,\gamma^{hkl} \label{eq:surf}
 \end{equation}
-where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^{hkl}(N)$ is the energy of the relaxed slab cut along $(hkl)$, and $E_0$ approximates the bulk energy. The results (Table \ref{tab:surf}, Fig.~\ref{fig:surf}) indicate that (100) surfaces are the most energetically favorable, consistent with findings in the literature \cite{deleeuwDensityFunctionalTheory2000,ebadiInsightsLiMetalOrganic2019}.
+where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^{hkl}(N)$ is the energy of the relaxed slab cut along $(hkl)$, and $E_0$ approximates the energy of one layer. The results (Table \ref{tab:surf}, Fig.~\ref{fig:surf}) indicate that (100) surfaces are the most energetically favorable, consistent with the literature \cite{deleeuwDensityFunctionalTheory2000,ebadiInsightsLiMetalOrganic2019}.
 
 \begin{table}[!h]
 	\centering
@@ -182,7 +192,9 @@ where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^
 	\label{tab:surf}
 \end{table}
 
-Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, given that it is documented favorability \cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated: an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was optimized. Compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were subsequently introduced on both sides of the slab (initially approximately \SI{6}{\angstrom} away from the surface), followed by a final optimization (with frozen cell parameters, and the two central layers kept frozen). Finally, binding energies were computed for each relevant atom.
+Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, given that it reported to be favorable\cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated: an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was built and its geometry was optimized. 
+
+Finally, compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were introduced on both sides of the slab (initially approximately \SI{6}{\angstrom} away from the surface), followed by a final optimization (with frozen cell parameters, and the two central layers kept frozen). Subsequently, binding energies were computed for each relevant atom.
 
 \section{Results}
 
@@ -212,7 +224,7 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 		F 1s & \ce{HF} & 694.23 & 704.78 &10.55\\
 		\bottomrule
 	\end{tabular}
-	\caption{Comparison between experimental (from Ref.~\cite{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the SJ\textsuperscript{n} protocol) absolute BE.}
+	\caption{Comparison between experimental (from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the SJ\textsuperscript{n} protocol) absolute BE.}
 	\label{tab:xpssjn}
 \end{table}
 
@@ -373,7 +385,6 @@ Furthermore, another objective is to investigate the behavior of \ce{BH4} and \c
 
 
 \clearpage
-\bibliographystyle{unsrt}
 \bibliography{biblio}
 
 % ----------------------------------------------------
