@@ -25,3 +25,5 @@ all:
 	python ./plot_XPS_slabs_adsorbate.py -a CH4O -n 'i (CH$$_4$$O)' -o ../FigureS8a.pdf
 	python ./plot_XPS_slabs_adsorbate.py -a THFn -n 'j (THF$$_n$$)' -o ../FigureS8b.pdf
 	python ./plot_XPS_slabs_adsorbate_any.py -i ../data/Data_XPS_slab_adsorbate_SJn.csv -t SJn  -o ../FigureS9.pdf
+clean:
+	rm ../FigureS* ../Figure{4,5,6}.pdf
