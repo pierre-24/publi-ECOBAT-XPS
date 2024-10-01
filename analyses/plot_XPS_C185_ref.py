@@ -46,7 +46,7 @@ def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple
     
     error = subdata['Delta_exp'] - subdata['Delta_computed']
     
-    ax.text(*position, '{}: {:.2f} $\\pm$ {:.2f}'.format(label, numpy.mean(error), numpy.std(error)), color=color)
+    ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({}) '.format(numpy.mean(error), numpy.std(error), label), color=color)
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
@@ -76,18 +76,6 @@ for inp_, name in zip(args.inputs, args.names):
 figure = plt.figure(figsize=(len(graphs) * 5, 5))
 axes = figure.subplots(1, len(graphs), sharey=True)
 
-"""
-figure.delaxes(ax6)
-
-ax1.set_ylim(-5, 10)
-
-plot_atom(ax1, subdata, 'C')
-plot_atom(ax2, subdata, 'N')
-plot_atom(ax3, subdata, 'O')
-plot_atom(ax4, subdata, 'B')
-plot_atom(ax5, subdata, 'F')
-"""
-
 lspace = numpy.linspace(-5, 10, 101)
 
 [ax.plot(lspace, lspace, 'k--') for ax in axes]
@@ -96,8 +84,8 @@ lspace = numpy.linspace(-5, 10, 101)
 
 indexes = dict((n, 0) for n in graphs)
 
-COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red']
-POSITIONS = [(-3, 8), (-3, 7.5), (-3, 7), (-3, 6.5)]
+COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
+POSITIONS = [(-3, 8), (-3, 7.5), (-3, 7), (-3, 6.5), (-3, 6)]
 
 for data_, name in zip(data, args.names):
     graph, ref = name.split('/')

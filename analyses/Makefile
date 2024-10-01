@@ -1,11 +1,11 @@
 all:
-	python plot_XPS_C185_2.py -i ../data/Data_XPS_C185_SJn_0.csv -o ../Figure4.pdf
+	python plot_XPS_C185_2.py ../data/Data_XPS_C185_SJn_0.csv ../data/Data_XPS_C185_SJn_Ar.csv -n '$$E_{ref}=0$$' '$$E_{ref}=\varepsilon_{Ar,2s}$$' -o ../Figure4.pdf
 	# [...
 	python plot_XPS_C185_ref.py -r ../data/Data_XPS_C185_exp.csv \
-	../data/Data_XPS_C185_SJ_0.csv ../data/Data_XPS_C185_SJ_Ef.csv ../data/Data_XPS_C185_SJ_Ar.csv ../data/Data_XPS_C185_SJ_WF.csv \
-	../data/Data_XPS_C185_SJn_0.csv ../data/Data_XPS_C185_SJn_Ef.csv ../data/Data_XPS_C185_SJn_Ar.csv \
-	-n "SJ/\$$E_{ref}=0\$$" "SJ/\$$E_{ref}=E_F\$$" "SJ/\$$E_{ref}=\\varepsilon_{Ar}\$$" "SJ/\$$E_{ref}=\$$WF" \
-	"SJn/\$$E_{ref}=0\$$" "SJn/\$$E_{ref}=E_F\$$" "SJn/\$$E_{ref}=\\varepsilon_{Ar}\$$" \
+	../data/Data_XPS_C185_SJ_0.csv ../data/Data_XPS_C185_SJ_Ef.csv ../data/Data_XPS_C185_SJ_Ar.csv ../data/Data_XPS_C185_SJ_Evac.csv ../data/Data_XPS_C185_SJ_WF.csv \
+	../data/Data_XPS_C185_SJn_0.csv ../data/Data_XPS_C185_SJn_Ef.csv ../data/Data_XPS_C185_SJn_Ar.csv ../data/Data_XPS_C185_SJn_Efp.csv \
+	-n "SJ/\$$E_{ref}=0\$$" "SJ/\$$E_{ref}=E_F\$$" "SJ/\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "SJ/\$$E_{ref}=E_\infty\$$" "SJ/\$$E_{ref}=\\phi\$$" \
+	"SJn/\$$E_{ref}=0\$$" "SJn/\$$E_{ref}=E_F\$$" "SJn/\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "SJn/\$$E_{ref}=E_F'\$$" \
 	-o ../Figure4A.pdf
 	# ...]
 	python plot_XPS_trends.py -o ../Figure5.pdf

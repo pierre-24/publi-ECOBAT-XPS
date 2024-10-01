@@ -37,46 +37,52 @@ def prepare_data(data: pandas.DataFrame, data_ref: pandas.DataFrame):
     return final_data
         
 
-def plot_atom(ax, data: pandas.DataFrame, atom: str):
+def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple, label: str):
     subdata = data[data['Atom'].str.contains(atom)]
     
-    lspace = numpy.linspace(-5, 10, 101)
-    ax.plot(lspace, lspace, 'k--')
-    ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', label='SJ')
-    
+    ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
     error = subdata['Delta_exp'] - subdata['Delta_computed']
-    
     ax.text(-4, 8, '{} 1s (N={})'.format(atom, len(error)), fontsize=12)
-    ax.text(-2, 6, '{:.2f} $\\pm$ {:.2f}'.format(numpy.mean(error), numpy.std(error)), color='tab:blue')
-    
-    ax.set_xlim(-5, 10)
+    ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({})'.format(numpy.mean(error), numpy.std(error), label), color=color)
         
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--input', default='../data/Data_XPS_C185_SJn_0.csv')
+parser.add_argument('inputs', nargs='*')
+parser.add_argument('-n', '--names', nargs='*', required=True)
 parser.add_argument('-r', '--ref', default='../data/Data_XPS_C185_exp.csv')
 parser.add_argument('-o', '--output', default='Data_XPS_C185.pdf')
 
 args = parser.parse_args()
 
-data = pandas.read_csv(args.input)
+if len(args.inputs) != len(args.names):
+    raise Exception('len({}) and len({}) do not match'.format(repr(args.inputs), repr(args.names)))
+
 data_ref = pandas.read_csv(args.ref)
 
-subdata = prepare_data(data, data_ref)
+data = []
+for inp in args.inputs:
+    data.append(prepare_data(pandas.read_csv(inp), data_ref))
 
 figure = plt.figure(figsize=(7, 10))
-(ax1, ax2), (ax3, ax4), (ax5, ax6) = figure.subplots(3, 2, sharey=True)
-figure.delaxes(ax6)
+axes = figure.subplots(3, 2, sharey=True)
+figure.delaxes(axes[2, 1])
 
-ax1.set_ylim(-5, 10)
+lspace = numpy.linspace(-5, 10, 101)
 
-plot_atom(ax1, subdata, 'C')
-plot_atom(ax2, subdata, 'N')
-plot_atom(ax3, subdata, 'O')
-plot_atom(ax4, subdata, 'B')
-plot_atom(ax5, subdata, 'F')
+[ax.plot(lspace, lspace, 'k--') for ax in axes.flatten()]
+[ax.set_xlim(-5, 10) for ax in axes.flatten()]
+[ax.set_ylim(-5, 10) for ax in axes.flatten()]
+[ax.set_ylabel('Computed $\\Delta$BE (eV)') for ax in [axes[0, 0], axes[1, 0], axes[2, 0]]]
+[ax.set_xlabel('Experimental $\\Delta$BE (eV)') for ax in [axes[1, 1], axes[2, 0]]]
 
-[ax.set_ylabel('Computed $\\Delta$BE (eV)') for ax in [ax1, ax3, ax5]]
-[ax.set_xlabel('Experimental $\\Delta$BE (eV)') for ax in [ax4, ax5]]
+COLORS = ['tab:blue', 'tab:green']
+POSITIONS = [(-4, 6), (0, -4), (-3, 7), (-3, 6.5), (-3, 6)]
+
+for i, subdata in enumerate(data):
+    plot_atom(axes[0, 0], subdata, 'C', COLORS[i], POSITIONS[i], args.names[i])
+    plot_atom(axes[0, 1], subdata, 'N', COLORS[i], POSITIONS[i], args.names[i])
+    plot_atom(axes[1, 0], subdata, 'O', COLORS[i], POSITIONS[i], args.names[i])
+    plot_atom(axes[1, 1], subdata, 'B', COLORS[i], POSITIONS[i], args.names[i])
+    plot_atom(axes[2, 0], subdata, 'F', COLORS[i], POSITIONS[i], args.names[i])
 
 plt.tight_layout()
 figure.savefig(args.output)
