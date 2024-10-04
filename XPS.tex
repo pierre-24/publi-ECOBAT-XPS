@@ -140,7 +140,7 @@ Unless otherwise stated, all calculations were performed using the PBE-D3 level 
 
 All optimizations were carried out using the Limited-memory Broyden-Fletcher-Goldfarb-Shanno  (L-BFGS) algorithm, driven by the Atomic Simulation Environment (ASE) package \cite{larsenAtomicSimulationEnvironment2017}, using VASP energies and forces as inputs, until the force on all atoms was below \SI{e-2}{\electronvolt\per\angstrom}.
 
-For the calculation of binding energies (BE), VASP allows targeting a specific orbital, $i$, by removing half an electron from it. For SJ\textsuperscript{n} calculations, it is necessary to adjust the total number of valence electrons (by default, half an electron is added; see Fig.~\ref{fig:method}) using the \texttt{NELECT} keyword. After the calculation, the corresponding eigenvalue, $\varepsilon_i\left(\frac{1}{2}\right)$, is extracted. The binding energy is then calculated as:
+For the calculation of binding energies (BE), VASP allows targeting a specific orbital, $i$, by removing half an electron from it. For SJ calculation, dipole corrections (using the \texttt{IDIPOL} keyword) are included. For SJ\textsuperscript{n} calculations, it is necessary to adjust the total number of valence electrons (by default, half an electron is added; see Fig.~\ref{fig:method}) using the \texttt{NELECT} keyword. After the calculation, the corresponding eigenvalue, $\varepsilon_i\left(\frac{1}{2}\right)$, is extracted. The binding energy is then calculated as:
 \begin{equation}
 	\text{BE}_i = 
 	E_{ref}- \varepsilon_i\left(\tfrac{1}{2}\right), \label{eq:xpsbe}
@@ -149,11 +149,11 @@ where $E_{ref}$ is a reference energy, chosen to ensure consistency across syste
 \begin{enumerate}
 	\item $E_{ref}=0$, thus using only the orbital energy,
 	\item $E_{ref}=E_F$, where the Fermi energy $E_F$ is used, computed with \texttt{EFERMI = MIDGAP} in the VASP input to account for Gaussian smearing,
-	\item $E_{ref}=E_\infty$, the vacuum energy, calculated by taking the electrostatic potential in the vacuum region of the cell,
+	\item $E_{ref}=E_\infty$, the vacuum energy, calculated by taking the electrostatic potential in the vacuum region of the cell (when dipole correction are included, the vacuum potential is not equal in both side of the slab, the average value is considered),
 	\item $E_{ref}=\phi$, where the work function $\phi = E_\infty - E_F$ is considered\cite{kahnFermiLevelWork2015}, and
 	\item $E_{ref}= \varepsilon_{ref}$, where $\varepsilon_{ref}$ is the orbital energy of another atom in the cell. Although it might seem reasonable to use calcium, which is present in all slabs, this approach would depend on the slab's nature and would be not possible for gas-phase molecules. To overcome this, an Argon atom (to mimic calcium) is placed in the vacuum region, and $\varepsilon_{ref}=\varepsilon_{Ar,2s}$.
 \end{enumerate}
-It should be noted, however, that extracting $E_\infty$ is not feasible for bulk systems, where no vacuum region exists, or for charged systems, where the electrostatic potential is not flat in the vacuum region. This latter condition occurs when employing the SJ\textsuperscript{n} method. It is however possible to correct the fermi level energy to remove the impact of the background of charge, as discussed in Ref.~\citenum{lozovoiInitioSimulationCharged2001}.
+It should be noted, however, that extracting $E_\infty$ is not feasible for bulk systems, where no vacuum region exists, or for charged systems, where the electrostatic potential is not constant in the vacuum region. This latter condition occurs when employing the SJ\textsuperscript{n} method. It is however possible to correct the Fermi level energy to remove the impact of the background of charge, as discussed in Ref.~\citenum{lozovoiInitioSimulationCharged2001}. This possibility is referred to as $E_{ref}=E_F'$, where $E_F' = E_F - \max\{E_{elst}(z)\}$, with $E_{elst}(z)$ being the planar average of the electrostatic potential along the $z$ axis.
 
 
 To obtain a spectrum, a Gaussian function centered at each computed \dbe{} is used. Unless otherwise specified, a root mean square width, $\sigma = \SI{0.2}{\electronvolt}$ is employed.
