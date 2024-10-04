@@ -73,7 +73,7 @@ for inp_, name in zip(args.inputs, args.names):
         graphs.append(g)
 
 
-figure = plt.figure(figsize=(len(graphs) * 5, 5))
+figure = plt.figure(figsize=(len(graphs) * 4, 4))
 axes = figure.subplots(1, len(graphs), sharey=True)
 
 lspace = numpy.linspace(-5, 10, 101)
@@ -85,7 +85,7 @@ lspace = numpy.linspace(-5, 10, 101)
 indexes = dict((n, 0) for n in graphs)
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
-POSITIONS = [(-3, 8), (-3, 7.5), (-3, 7), (-3, 6.5), (-3, 6)]
+POSITIONS = [(-3, x) for x in numpy.linspace(9, 5, 6)]
 
 for data_, name in zip(data, args.names):
     graph, ref = name.split('/')

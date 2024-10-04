@@ -159,15 +159,7 @@ It should be noted, however, that extracting $E_\infty$ is not feasible for bulk
 To obtain a spectrum, a Gaussian function centered at each computed \dbe{} is used. Unless otherwise specified, a root mean square width, $\sigma = \SI{0.2}{\electronvolt}$ is employed.
 
 \paragraph{Binding energies of molecules in the gas phase.}
-To assess the accuracy of the SJ and SJ\textsuperscript{n} methods and the choice of $E_{ref}$, the results from Belafont \textit{et al.} \cite{pueyobellafontPredictingCoreLevel2017}, which compare experimental and theoretical calculations (computed at the same level of approximation as ours) of gas-phase \dbe, are replicated. Their dataset comprises 184 experimental absolute binding energies (BEs) from 68 molecules, including carbon (N=107), nitrogen (N=20), oxygen (N=22), boron (N=20), and fluorine (N=15) atoms (Fig.~\ref{fig:core185}). Following a geometry optimization, each molecule is placed in a cubic box with a side length of \SI{20}{\angstrom}, and the \dbe{} are computed for each atom of interest.
-
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=\linewidth]{Figure3}
-	\caption{Molecules for the benchmark \cite{pueyobellafontPredictingCoreLevel2017}. The atoms for which experimental BE are provided are highlighted in blue.  The reference compounds used for each atom are highlighted in red.}
-	\label{fig:core185}
-\end{figure}
+To assess the accuracy of the SJ and SJ\textsuperscript{n} methods and the choice of $E_{ref}$, the results from Belafont \textit{et al.} \cite{pueyobellafontPredictingCoreLevel2017}, which compare experimental and theoretical calculations (computed at the same level of approximation as ours) of gas-phase \dbe, are replicated. Their dataset comprises 184 experimental absolute binding energies (BEs) from 68 molecules, including carbon (N=107), nitrogen (N=20), oxygen (N=22), boron (N=20), and fluorine (N=15) atoms (Fig.~S1). Following a geometry optimization, each molecule is placed in a cubic box with a side length of \SI{20}{\angstrom} (with the molecule center of mass placed at the origin), and the \dbe{} are computed for each atom of interest. For calculations with an extra Argon atom, it is placed at the center of the box.
 
 \paragraph{Binding energies of molecules grafted on surfaces.} The binding energies (\dbe{}) of molecules adsorbed on surfaces are investigated following the protocol established by Ebadi and co-workers \cite{ebadiInsightsLiMetalOrganic2019}. Initially, bulk Ca (from the Material Project, \texttt{MP-45}), CaO (\texttt{MP-2605}), and \ce{CaH2} (\texttt{MP-23713}) were selected, and their atomic positions and cell parameters were optimized.
 
@@ -175,7 +167,7 @@ Subsequently, to determine the optimal surface orientation, 1x1 slabs with incre
 \begin{equation}
 	E^{hkl}(N) = E_0\,N + 2A\,\gamma^{hkl} \label{eq:surf}
 \end{equation}
-where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^{hkl}(N)$ is the energy of the relaxed slab cut along $(hkl)$, and $E_0$ approximates the energy of one layer. The results (Table \ref{tab:surf}, Fig.~\ref{fig:surf}) indicate that (100) surfaces are the most energetically favorable, consistent with the literature \cite{deleeuwDensityFunctionalTheory2000,ebadiInsightsLiMetalOrganic2019}.
+where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^{hkl}(N)$ is the energy of the relaxed slab cut along $(hkl)$, and $E_0$ approximates the energy of one layer. The results (Table \ref{tab:surf}, Fig.~S2) indicate that (100) surfaces are the most energetically favorable, consistent with the literature \cite{deleeuwDensityFunctionalTheory2000,ebadiInsightsLiMetalOrganic2019}.
 
 \begin{table}[!h]
 	\centering
@@ -192,9 +184,10 @@ where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^
 	\label{tab:surf}
 \end{table}
 
-Using the (100) orientation, 3x3 slabs (consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions) were created and relaxed (with frozen cell parameters). Additionally, given that it reported to be favorable\cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated: an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was built and its geometry was optimized. 
+Furthermore, using the (100) orientation, 3x3 (Ca and CaO) and 2x2 (\ce{CaH2}) slabs consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions were created and relaxed (with frozen cell parameters). Additionally, given that it reported to be favorable\cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated: an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was built and its geometry was optimized. Compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were introduced on both sides of the slab (initially approximately \SI{6}{\angstrom} away from the surface), followed by a final optimization (with frozen cell parameters, and the two central layers kept frozen). 
 
-Finally, compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were introduced on both sides of the slab (initially approximately \SI{6}{\angstrom} away from the surface), followed by a final optimization (with frozen cell parameters, and the two central layers kept frozen). Subsequently, binding energies were computed for each relevant atom.
+Finally, binding energies were computed for each relevant atom on slabs with and without  adsorbate. To assess the impact of slab thickness, binding energies were computed on 
+2x2 slabs with the (100) orientation, a vacuum of \SI{20}{\angstrom},  and the same thickness  as in the surface energy study (6 to 16 layers for Ca, CaO, and \ce{CaO.H2O} and 12 to 32 layers for \ce{CaH2}).
 
 \section{Results}
 
@@ -203,12 +196,19 @@ Finally, compounds \textbf{a}-\textbf{j} (Fig.~\ref{fig:THFdegradation}) were in
 A comparison between experimental and computed \dbe\ is presented in Fig.~\ref{fig:xps_C185}. The agreement with previous investigations \cite{pueyobellafontPredictingCoreLevel2017,golzeAccurateAbsoluteRelative2020} shows that the SJ\textsuperscript{n} protocol provides reliable results for all atoms, with very small mean errors (<\SI{0.1}{\electronvolt}) and acceptable standard deviations (0.1 to \SI{0.4}{\electronvolt}). However, it should be noted that a reference per atom is necessary (Table \ref{tab:xpssjn}), as the difference between experimental and computed absolute BE increases with the atomic number. 
 In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the large standard deviations (>\SI{0.7}{\electronvolt}).
 
+\begin{figure}[!h]
+	\centering
+	 \includegraphics[width=\linewidth]{Figure3}
+	 \caption{Comparison between experimental and calculated gas phase \dbe{}, as computed with the SJ (left) and SJ\textsuperscript{n} (right) protocols, using different references, on the carbon atom (N=107). For each reference, the error (as mean $\pm$ standard deviation) is given.}
+	 \label{fig:xps_C185_C}
+\end{figure}
+
 
 \begin{figure}[!h]
 	\centering
-	 \includegraphics[width=.8\linewidth]{Figure4}
-	 \caption{Comparision between experimental and calculated gas phase \dbe{}, as computed with the SJ (blue) and SJ\textsuperscript{n} (orange) protocols on the different atoms. For each of them, the error (as mean $\pm$ standard deviation) for both protocols is given.}
-	 \label{fig:xps_C185}
+	\includegraphics[width=.9\linewidth]{Figure4}
+	\caption{Comparison between experimental and calculated gas phase \dbe{}, as computed with the SJ\textsuperscript{n} protocol and the two best-performing references, on the different atoms. For each of them, the error (as mean $\pm$ standard deviation) is given.}
+	\label{fig:xps_C185}
 \end{figure}
 
 \begin{table}[!h]
@@ -229,23 +229,6 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 \end{table}
 
 \clearpage
-These results also indicate that the \dbe{} can serve as a measure of the local chemical environment. As shown in Fig.~\ref{fig:trends}, three key factors can impact \dbe{}: \begin{inparaenum}[i)]
-	\item the hybridization of the atom, which plays a moderate role in this set of compounds,
-	\item the electronegativity of neighboring atoms, which generally increases the binding energy or carbon (as observed with carbon), and
-	\item the number of electronegative neighbors, as demonstrated, for example, in the \ce{CF_xH_{4-x}} series (\textbf{11}, \textbf{57}-\textbf{60}), where \dbe{} increases by \SI{10}{\electronvolt} from $x=0$ (\ce{CH4}) to $x=4$ (\ce{CF4}).
-\end{inparaenum}
-The second and third effects combine to produce large binding energies (in comparison to the reference) in compounds containing oxygen and fluorine. On the other hand, the binding energies for boron are systematically smaller than the reference, \textbf{1} (\ce{B2H4}), thought carbon has a larger electronegativity than boron.
-
-
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=\linewidth]{Figure5}
-	\caption{ Trends among \dbe{} for of \textbf{1}-\textbf{67} (as computed with the SJ\textsuperscript{n} protocol). Each bar represent the minimum and maximum \dbe{} computed for each atom, with a given hybdrization (C, N, O) and neighbors (C).}
-	\label{fig:trends}
-\end{figure}
-
-\clearpage
 \subsection{Binding energies of bare slabs}
 
 Although the SJ\textsuperscript{n} protocol performs better in the gas phase, literature recommends using the SJ protocol for solids, as it correctly reproduces experimental trends \cite{olovssonCorelevelShiftsComplex2006}. An alternative approach, the final state (FS) scheme, can also be used, where one electron is added to the valence band instead of $\frac{1}{2}$ as in the SJ protocol \cite{trinhEvaluatingStructureCatalysts2013a,vandenbosscheEffectsNonlocalExchange2014}.
@@ -255,7 +238,6 @@ The impact of slab thickness on the resulting spectra is therefore assessed usin
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=\linewidth]{Figure6}
 	\caption{Impact of the slab thickness (indicated as the number of layers) on the resulting XPS spectra (as computed with the SJ protocol).}
 	\label{fig:slabsthickness}
 \end{figure}
