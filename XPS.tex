@@ -193,7 +193,7 @@ Finally, binding energies were computed for each relevant atom on slabs with and
 
 \subsection{Biding energies in gas phase}
 
-A comparison between experimental and computed \dbe\ is presented in Fig.~\ref{fig:xps_C185}. The agreement with previous investigations \cite{pueyobellafontPredictingCoreLevel2017,golzeAccurateAbsoluteRelative2020} shows that the SJ\textsuperscript{n} protocol provides reliable results for all atoms, with very small mean errors (<\SI{0.1}{\electronvolt}) and acceptable standard deviations (0.1 to \SI{0.4}{\electronvolt}). However, it should be noted that a reference per atom is necessary (Table \ref{tab:xpssjn}), as the difference between experimental and computed absolute BE increases with the atomic number. 
+A comparison between experimental and computed \dbe\ is presented in Fig.~\ref{fig:xps_C185}. The agreement with previous investigations \cite{pueyobellafontPredictingCoreLevel2017,golzeAccurateAbsoluteRelative2020} shows that the SJ\textsuperscript{n} protocol provides reliable results for all atoms, with very small mean errors ($\leq$\SI{0.1}{\electronvolt}) and acceptable standard deviations (0.1 to \SI{0.4}{\electronvolt}). However, it should be noted that a reference per atom is necessary (Table \ref{tab:xpssjn}), as the difference between experimental and computed absolute BE increases with the atomic number. 
 In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the large standard deviations (>\SI{0.7}{\electronvolt}).
 
 \begin{figure}[!h]
@@ -234,16 +234,26 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 
 Although the SJ\textsuperscript{n} protocol performs better in the gas phase, literature recommends using the SJ protocol for solids, as it correctly reproduces experimental trends \cite{olovssonCorelevelShiftsComplex2006}. An alternative approach, the final state (FS) scheme, can also be used, where one electron is added to the valence band instead of $\frac{1}{2}$ as in the SJ protocol \cite{trinhEvaluatingStructureCatalysts2013a,vandenbosscheEffectsNonlocalExchange2014}.
 
-The impact of slab thickness on the resulting spectra is therefore assessed using the SJ protocol, as shown in Fig.~\ref{fig:slabsthickness}. Increasing slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use slabs with the fewest number of layers to save computation time.
+The impact of slab thickness on the resulting spectra is therefore assessed using the SJ protocol, as shown in Fig.~\ref{fig:slabsthicknessSJ}. Increasing slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use slabs with the fewest number of layers to save computation time.
 
 
 \begin{figure}[!h]
 	\centering
-	\caption{Impact of the slab thickness (indicated as the number of layers) on the resulting XPS spectra (as computed with the SJ protocol).}
-	\label{fig:slabsthickness}
+	 \includegraphics[width=.9\linewidth]{Figure5}
+	\caption{Impact of the slab thickness (indicated as the number of layers, $N$) on the bulk (round markers)  and surface (square markers) \dbe{}, as computed with the SJ protocol and different references.}
+	\label{fig:slabsthicknessSJ}
 \end{figure}
 
 A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca 2s binding energies are similar with both protocols, differences in the shape of the spectra appear for Ca 2s in \ce{CaH2} (where bulk and surface features are more pronounced) and for O 1s in CaO (where the difference between bulk and surface is less significant). Notably, the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O 1s) and the value of O 1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.\footnote{Cette comparaison est dangereuse, voire casse-gueule. En effet, le résultat en phase gas n'as pas été \textit{shifté} par $E_F$, le résultat pour le slab, oui. Donc....?}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=.9\linewidth]{Figure6}
+	\caption{Impact of the slab thickness (indicated as the number of layers) on the bulk (round markers)  and surface (square markers) \dbe{}, as computed with the SJ\textsuperscript{n} protocol and different references.}
+	\label{fig:slabsthicknessSJn}
+\end{figure}
+
+\clearpage
 
 \subsection{Adsorption on slab: geometrical and energetic aspects}
 
