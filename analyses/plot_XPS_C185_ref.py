@@ -37,16 +37,23 @@ def prepare_data(data: pandas.DataFrame, data_ref: pandas.DataFrame):
     return final_data
         
 
-def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple, label: str):
+def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: int, label: str):
     subdata = data[data['Atom'].str.contains(atom)]
     
-    lspace = numpy.linspace(-5, 10, 101)
-    ax.plot(lspace, lspace, 'k--')
-    ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
-    
+    #ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
     error = subdata['Delta_exp'] - subdata['Delta_computed']
+    vp = ax.violinplot(error, [position, ], showmeans=True, quantiles=[.25,.75])
+    vp['bodies'][0].set_facecolor(color)
+    for p in ['cbars', 'cmins', 'cmaxes', 'cmeans', 'cquantiles']:
+        vp[p].set_edgecolors(color)
     
-    ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({}) '.format(numpy.mean(error), numpy.std(error), label), color=color)
+    ax.text(
+        position, 
+        error.min() - .5 if position % 2 == 0 else error.max() + .5, 
+        '{}\n{:.2f} $\\pm$ {:.2f}'.format(label, numpy.mean(error), numpy.std(error)), 
+        color=color, 
+        ha='center', va='top' if position % 2 == 0 else 'bottom'
+    )
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
@@ -76,24 +83,19 @@ for inp_, name in zip(args.inputs, args.names):
 figure = plt.figure(figsize=(len(graphs) * 4, 4))
 axes = figure.subplots(1, len(graphs), sharey=True)
 
-lspace = numpy.linspace(-5, 10, 101)
-
-[ax.plot(lspace, lspace, 'k--') for ax in axes]
-[ax.set_xlim(-5, 10) for ax in axes]
-[ax.set_ylim(-5, 10) for ax in axes]
-
 indexes = dict((n, 0) for n in graphs)
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
-POSITIONS = [(-3, x) for x in numpy.linspace(9, 5, 6)]
 
 for data_, name in zip(data, args.names):
     graph, ref = name.split('/')
-    plot_atom(axes[graphs.index(graph)], data_, 'C', COLORS[indexes[graph]], POSITIONS[indexes[graph]], ref)
+    plot_atom(axes[graphs.index(graph)], data_, 'C', COLORS[indexes[graph]], indexes[graph], ref)
     indexes[graph] += 1
 
-[ax.set_xlabel('Experimental $\\Delta$BE (eV)') for ax in axes]
-axes[0].set_ylabel('Computed $\\Delta$BE (eV)')
+[ax.set_xlim(-1, 5) for ax in axes]
+[ax.tick_params('x', bottom=False, labelbottom=False) for ax in axes]
+axes[0].set_ylabel('Error on $\\Delta$BE (eV)')
+axes[0].set_ylim(-7, 8)
 
 plt.tight_layout()
 figure.savefig(args.output)
