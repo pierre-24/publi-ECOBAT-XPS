@@ -91,8 +91,8 @@ for i, subdata in enumerate(data):
 
 [ax.text(.05, .95, '{} / {}'.format(slab, atom), transform=ax.transAxes, fontsize=14) for ax, slab, atom in [
     (axes[0, 0], 'Ca', 'Ca 2s'),
-    (axes[1, 0], 'CaH$_2$', 'Ca 2s'),
-    (axes[0, 1], 'CaO', 'Ca 2s'),
+    (axes[0, 1], 'CaH$_2$', 'Ca 2s'),
+    (axes[1, 0], 'CaO', 'Ca 2s'),
     (axes[1, 1], 'CaO', 'O 1s'),
 ]]
 
