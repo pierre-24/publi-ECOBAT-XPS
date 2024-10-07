@@ -20,8 +20,9 @@ def create_spectrum(data: pandas.DataFrame, x: list, ref: float, sigma: float = 
         return yspace / N
 
 
-def create_spectrum_BE(data: pandas.DataFrame, x: list, sigma: float = 0.2, label_be: str = 'Delta_computed', label_n : str = 'N_Atoms'):
+def create_spectrum_BE(data: pandas.DataFrame, x: list, FWHM: float = 0.5, label_be: str = 'Delta_computed', label_n : str = 'N_Atoms'):
     yspace = numpy.zeros(x.shape)
+    sigma = FWHM / (2*numpy.sqrt(2*numpy.log(2)))
     
     N = 0
     for BE, n in zip(data[label_be], data[label_n]):
