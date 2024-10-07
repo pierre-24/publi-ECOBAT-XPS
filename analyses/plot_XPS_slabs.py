@@ -16,16 +16,24 @@ def prepare_data(data: pandas.DataFrame, data_height: pandas.DataFrame):
     
     data_out = data[data['System'] != 'ref_O']
     
+    h_maxes = {}
+    
     for line in data_out.itertuples():
         atom = line.Atom
         delta_computed.append(line.Value - REFS[atom]['Value'])
         
+        if line.System not in h_maxes:
+            h_maxes[line.System] = {}
+        
+        if line.Atom not in h_maxes[line.System]:
+            h_maxes[line.System][line.Atom] = data_height[(data_height['System'] == line.System) & (data_height['Atom' ].str.contains(line.Atom))].max()['z_depth']
+        
         isb, iss = False, False
         for a in line.Atom_indices.split(';'):
             h = data_height[(data_height['System'] == line.System) & (data_height['Atom' ] == a)].iloc[0]
-            if h['z_depth'] <= 0.4:
+            if h['z_depth'] <= h_maxes[line.System][line.Atom]:
                 isb = True
-            if h['z_depth'] >= 0.4:
+            if h['z_depth'] >= h_maxes[line.System][line.Atom]:
                 iss = True
                 
             if iss and isb:

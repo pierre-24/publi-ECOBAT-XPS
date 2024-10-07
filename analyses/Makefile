@@ -17,6 +17,12 @@ all:
 	python ./plot_XPS_slabs.py ../data/results_slabs/Data_XPS_slabs_SJn_0.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJn_Efp.csv \
 	-n "\$$E_{ref}=0\$$" "\$$E_{ref}=E_F\$$" "\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "\$$E_{ref}=E_F'\$$" \
 	-o ../Figure6.pdf
+	python ./plot_XPS_slabs_2.py ../data/results_slabs/Data_XPS_slabs_SJ_0.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJ_Evac.csv ../data/results_slabs/Data_XPS_slabs_SJ_WF.csv \
+	-n "\$$E_{ref}=0\$$" "\$$E_{ref}=E_F\$$" "\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "\$$E_{ref}=E_\infty\$$" "\$$E_{ref}=\\phi\$$" \
+	 -a Ca:-4:2 O:-10:2 -o ../Figure7a.pdf
+	python ./plot_XPS_slabs_2.py ../data/results_slabs/Data_XPS_slabs_SJn_0.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJn_Efp.csv \
+	-n "\$$E_{ref}=0\$$" "\$$E_{ref}=E_F\$$" "\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "\$$E_{ref}=E_F'\$$" \
+	 -a Ca:-3:5 O:-10:4 -o ../Figure7b.pdf
 	# SI
 	python plot_surface_energy.py -o ../FigureS2.pdf
 	python ./plot_XPS_slabs_adsorbate.py -a C2H6 -n 'a (C$$_2$$H$$_6$$)' -o ../FigureS4a.pdf
