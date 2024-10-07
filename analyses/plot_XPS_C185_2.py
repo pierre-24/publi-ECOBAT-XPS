@@ -42,8 +42,10 @@ def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple
     
     ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
     error = subdata['Delta_exp'] - subdata['Delta_computed']
-    ax.text(-4, 8, '{} 1s (N={})'.format(atom, len(error)), fontsize=12)
     ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({})'.format(numpy.mean(error), numpy.std(error), label), color=color)
+    
+    if color == 'tab:blue':
+        ax.text(-4, 8, '{} 1s (N={})'.format(atom, len(error)), fontsize=12)
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
