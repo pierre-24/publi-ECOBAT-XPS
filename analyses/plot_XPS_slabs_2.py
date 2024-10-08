@@ -105,7 +105,7 @@ for i, subdata in enumerate(data):
     for j, atom in enumerate(args.atoms):
         a, ami, amax = atom.split(':')
         for k, system in enumerate(args.systems):
-            plot_atom(axes[j], subdata, system, a, COLORS[i], LINESTYLES[k], args.names[i], shift_y = i * YS, space = (float(ami), float(amax)))
+            plot_atom(axes[j], subdata, system, a, COLORS[i], LINESTYLES[k], args.names[i], shift_y = -i * YS, space = (float(ami), float(amax)))
         
         if i == 0:
             axes[j].text(.95, .95, '{} {}'.format(a, '2s' if a == 'Ca' else '1s'), transform=axes[j].transAxes, fontsize=14, ha='right')

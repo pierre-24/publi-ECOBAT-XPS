@@ -31,10 +31,10 @@ def prepare_data(data: pandas.DataFrame, data_height: pandas.DataFrame):
         isb, iss = False, False
         for a in line.Atom_indices.split(';'):
             h = data_height[(data_height['System'] == line.System) & (data_height['Atom' ] == a)].iloc[0]
-            if h['z_depth'] <= h_maxes[line.System][line.Atom]:
-                isb = True
-            if h['z_depth'] >= h_maxes[line.System][line.Atom]:
+            if abs(h['z_depth'] - h_maxes[line.System][line.Atom]) < .05:
                 iss = True
+            else:
+                isb = True
                 
             if iss and isb:
                 break
