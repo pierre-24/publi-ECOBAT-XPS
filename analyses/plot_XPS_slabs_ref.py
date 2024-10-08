@@ -60,6 +60,9 @@ def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, labe
         surf_vals.append((numpy.mean(surf_data['Delta_computed']), numpy.std(surf_data['Delta_computed'])))
         bulk_data = subdata[subdata['Is_bulk'] == True]
         bulk_vals.append((numpy.mean(bulk_data['Delta_computed']), numpy.std(bulk_data['Delta_computed'])))
+        
+        if i == 3:
+            print('{},{},{:.2f} $\\pm$ {:.2f},{:.2f} $\\pm$ {:.2f}'.format(slab, atom, *bulk_vals[-1], *surf_vals[-1]))
     
     ax.errorbar(numpy.arange(3, 9) * (4 if slab == 'CaH2' else 2) - .1, [x[0] for x in bulk_vals], fmt='o-', color=color, yerr=[x[1] for x in bulk_vals], label=label)
     ax.errorbar(numpy.arange(3, 9) * (4 if slab == 'CaH2' else 2) + .1, [x[0] for x in surf_vals], fmt='o--', fillstyle='none', color=color, yerr=[x[1] for x in surf_vals])
@@ -88,6 +91,7 @@ axes = figure.subplots(2, 2, sharey=True)
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
 
 for i, subdata in enumerate(data):
+    print(args.names[i])
     plot_atom(axes[0, 0], subdata, 'Ca', 'Ca', COLORS[i], args.names[i])
     plot_atom(axes[0, 1], subdata, 'CaH2', 'Ca', COLORS[i], args.names[i])
     plot_atom(axes[1, 0], subdata, 'CaO', 'Ca', COLORS[i], args.names[i])

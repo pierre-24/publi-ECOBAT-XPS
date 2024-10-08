@@ -55,16 +55,19 @@ def plot_atom(ax, data: pandas.DataFrame, system: str, atom: str, color: str, la
     y = create_spectrum_BE(subdata, lspace)
     ax.plot(lspace, y + shift_y, label=label, color=color)
     
-    m_bulk = subdata[subdata['Is_bulk'] == True]['Delta_computed'].mean()
-    ax.plot([m_bulk, m_bulk], [shift_y, shift_y + 0.3], '-', color=color)
-    ax.text(m_bulk, shift_y + .3, 'b', va='bottom', ha='center', color=color)
-    m_surf = subdata[subdata['Is_surf'] == True]['Delta_computed'].mean()
-    ax.plot([m_surf, m_surf], [shift_y, shift_y + 0.3], '-', color=color)
-    ax.text(m_surf, shift_y + .3, 's', va='bottom', ha='center', color=color)
+    m_bulk = subdata[subdata['Is_bulk'] == True]['Delta_computed']
+    ax.plot([m_bulk.mean(), m_bulk.mean()], [shift_y, shift_y + 0.3], '-', color=color)
+    ax.text(m_bulk.mean(), shift_y + .3, 'b', va='bottom', ha='center', color=color)
+    m_surf = subdata[subdata['Is_surf'] == True]['Delta_computed']
+    ax.plot([m_surf.mean(), m_surf.mean()], [shift_y, shift_y + 0.3], '-', color=color)
+    ax.text(m_surf.mean(), shift_y + .3, 's', va='bottom', ha='center', color=color)
+    
+    print(label)
+    print('CaO_OH2,{},{:.2f} $\\pm$ {:.2f},{:.2f} $\\pm$ {:.2f}'.format(atom, m_bulk.mean(), m_bulk.std(), m_surf.mean(), m_surf.std()))
     
     if atom == 'O':
-        m_OH = subdata[subdata['Is_OH'] == True]['Delta_computed'].mean()
-        ax.plot([m_OH, m_OH], [shift_y, shift_y + 0.3], '-', color=color)
+        m_OH = subdata[subdata['Is_OH'] == True]['Delta_computed']
+        ax.plot([m_OH.mean(), m_OH.mean()], [shift_y, shift_y + 0.3], '-', color=color)
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
