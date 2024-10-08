@@ -99,9 +99,10 @@ for i, subdata in enumerate(data):
         plot_atom(axes[j], subdata, args.system, a, COLORS[i], args.names[i], shift_y = i * YS, space = (float(ami), float(amax)))
         
         if i == 0:
-            axes[j].text(.05, .95, '{} {}'.format(a, '2s' if a == 'Ca' else '1s'), transform=axes[j].transAxes, fontsize=14)
+            axes[j].text(.95, .95, 'CaO$\\cdot$H$_2$O / {} {}'.format(a, '2s' if a == 'Ca' else '1s'), transform=axes[j].transAxes, fontsize=14, ha='right')
 
-[ax.legend(loc='upper right') for ax in axes]
+[ax.legend(loc='upper left') for ax in axes]
+[ax.invert_xaxis() for ax in axes]
 [ax.tick_params('y', left=False, labelleft=False) for ax in axes]
 [ax.set_xlabel('Computed $\\Delta$BE (eV)') for ax in axes]
 

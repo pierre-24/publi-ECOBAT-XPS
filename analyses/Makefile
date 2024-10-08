@@ -11,10 +11,10 @@ all:
 	python plot_XPS_C185_2.py  -r ../data/Data_XPS_C185_exp.csv \
 	../data/results_C185/Data_XPS_C185_SJn_0.csv ../data/results_C185/Data_XPS_C185_SJn_Ar.csv -n '$$E_{ref}=0$$' '$$E_{ref}=\varepsilon_{Ar,2s}$$' -o ../Figure4.pdf
 	# ...]
-	python ./plot_XPS_slabs.py ../data/results_slabs/Data_XPS_slabs_SJ_0.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJ_Evac.csv ../data/results_slabs/Data_XPS_slabs_SJ_WF.csv \
+	python ./plot_XPS_slabs_ref_2.py ../data/results_slabs/Data_XPS_slabs_SJ_0.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJ_Evac.csv ../data/results_slabs/Data_XPS_slabs_SJ_WF.csv \
 	-n "\$$E_{ref}=0\$$" "\$$E_{ref}=E_F\$$" "\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "\$$E_{ref}=E_\infty\$$" "\$$E_{ref}=\\phi\$$" \
 	-o ../Figure5.pdf
-	python ./plot_XPS_slabs.py ../data/results_slabs/Data_XPS_slabs_SJn_0.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJn_Efp.csv \
+	python ./plot_XPS_slabs_ref_2.py ../data/results_slabs/Data_XPS_slabs_SJn_0.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJn_Efp.csv \
 	-n "\$$E_{ref}=0\$$" "\$$E_{ref}=E_F\$$" "\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "\$$E_{ref}=E_F'\$$" \
 	-o ../Figure6.pdf
 	python ./plot_XPS_slabs_2.py ../data/results_slabs/Data_XPS_slabs_SJ_0.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJ_Evac.csv ../data/results_slabs/Data_XPS_slabs_SJ_WF.csv \
@@ -25,16 +25,22 @@ all:
 	 -a Ca:-3:5 O:-10:4 -o ../Figure7b.pdf
 	# SI
 	python plot_surface_energy.py -o ../FigureS2.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a C2H6 -n 'a (C$$_2$$H$$_6$$)' -o ../FigureS4a.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a C3H8 -n 'b (C$$_3$$H$$_8$$)' -o ../FigureS4b.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a C2H4 -n 'c (C$$_2$$H$$_4$$)' -o ../FigureS5a.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a C3H6 -n 'd (C$$_3$$H$$_6$$)' -o ../FigureS5b.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a CO2 -n 'e (CO$$_2$$)' -o ../FigureS6a.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a CH2O -n 'f (CH$$_2$$O)' -o ../FigureS6b.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a C2H4O -n 'g (C$$_2$$H$$_4$$O)' -o ../FigureS7a.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a THF -n 'h (THF)' -o ../FigureS7b.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a CH4O -n 'i (CH$$_4$$O)' -o ../FigureS8a.pdf
-	python ./plot_XPS_slabs_adsorbate.py -a THFn -n 'j (THF$$_n$$)' -o ../FigureS8b.pdf
-	python ./plot_XPS_slabs_adsorbate_any.py -i ../data/Data_XPS_slab_adsorbate_SJn.csv -t SJn  -o ../FigureS9.pdf
+	python ./plot_XPS_slabs_ref.py ../data/results_slabs/Data_XPS_slabs_SJ_0.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJ_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJ_Evac.csv ../data/results_slabs/Data_XPS_slabs_SJ_WF.csv \
+	-n "\$$E_{ref}=0\$$" "\$$E_{ref}=E_F\$$" "\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "\$$E_{ref}=E_\infty\$$" "\$$E_{ref}=\\phi\$$" \
+	-o ../FigureS3.pdf
+	python ./plot_XPS_slabs_ref.py ../data/results_slabs/Data_XPS_slabs_SJn_0.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ef.csv ../data/results_slabs/Data_XPS_slabs_SJn_Ar.csv ../data/results_slabs/Data_XPS_slabs_SJn_Efp.csv \
+	-n "\$$E_{ref}=0\$$" "\$$E_{ref}=E_F\$$" "\$$E_{ref}=\\varepsilon_{Ar,2s}\$$" "\$$E_{ref}=E_F'\$$" \
+	-o ../FigureS4.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a C2H6 -n 'a (C$$_2$$H$$_6$$)' -o ../FigureS5a.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a C3H8 -n 'b (C$$_3$$H$$_8$$)' -o ../FigureS5b.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a C2H4 -n 'c (C$$_2$$H$$_4$$)' -o ../FigureS6a.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a C3H6 -n 'd (C$$_3$$H$$_6$$)' -o ../FigureS6b.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a CO2 -n 'e (CO$$_2$$)' -o ../FigureS7a.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a CH2O -n 'f (CH$$_2$$O)' -o ../FigureS7b.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a C2H4O -n 'g (C$$_2$$H$$_4$$O)' -o ../FigureS8a.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a THF -n 'h (THF)' -o ../FigureS8b.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a CH4O -n 'i (CH$$_4$$O)' -o ../FigureS9a.pdf
+	python ./plot_XPS_slabs_adsorbate.py -a THFn -n 'j (THF$$_n$$)' -o ../FigureS9b.pdf
+	python ./plot_XPS_slabs_adsorbate_any.py -i ../data/Data_XPS_slab_adsorbate_SJn.csv -t SJn  -o ../FigureS10.pdf
 clean:
 	rm ../FigureS*.pdf ../Figure{3,4,5,6}.pdf

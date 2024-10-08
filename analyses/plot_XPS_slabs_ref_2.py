@@ -49,7 +49,7 @@ def prepare_data(data: pandas.DataFrame, data_height: pandas.DataFrame):
     return data_out
         
 
-def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, label: str):
+def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, marker: str, label: str):
     
     bulk_vals = []
     surf_vals = []
@@ -61,8 +61,8 @@ def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, labe
         bulk_data = subdata[subdata['Is_bulk'] == True]
         bulk_vals.append((numpy.mean(bulk_data['Delta_computed']), numpy.std(bulk_data['Delta_computed'])))
     
-    ax.errorbar(numpy.arange(3, 9) * (4 if slab == 'CaH2' else 2) - .1, [x[0] for x in bulk_vals], fmt='o-', color=color, yerr=[x[1] for x in bulk_vals], label=label)
-    ax.errorbar(numpy.arange(3, 9) * (4 if slab == 'CaH2' else 2) + .1, [x[0] for x in surf_vals], fmt='s--', color=color, yerr=[x[1] for x in surf_vals])
+    ax.errorbar(numpy.arange(3, 9) - .1, [x[0] for x in bulk_vals], fmt=marker + '-', color=color, yerr=[x[1] for x in bulk_vals], label=label)
+    ax.errorbar(numpy.arange(3, 9) + .1, [x[0] for x in surf_vals], fmt=marker + '--', fillstyle='none', color=color, yerr=[x[1] for x in surf_vals])
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
@@ -82,27 +82,25 @@ data = []
 for inp in args.inputs:
     data.append(prepare_data(pandas.read_csv(inp), data_height))
 
-figure = plt.figure(figsize=(10, 10))
-axes = figure.subplots(2, 2)
+NY = int(numpy.ceil(len(args.inputs) / 2))
+figure = plt.figure(figsize=(7, NY * 3.5))
+axes = figure.subplots(NY, 2, sharey=True)
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
 
-for i, subdata in enumerate(data):
-    plot_atom(axes[0, 0], subdata, 'Ca', 'Ca', COLORS[i], args.names[i])
-    plot_atom(axes[0, 1], subdata, 'CaH2', 'Ca', COLORS[i], args.names[i])
-    plot_atom(axes[1, 0], subdata, 'CaO', 'Ca', COLORS[i], args.names[i])
-    plot_atom(axes[1, 1], subdata, 'CaO', 'O', COLORS[i], args.names[i])
+for i, (ax, subdata) in enumerate(zip(axes.flatten(), data)):
+    plot_atom(ax, subdata, 'Ca', 'Ca', COLORS[i], 'o', 'Ca')
+    plot_atom(ax, subdata, 'CaH2', 'Ca', COLORS[i], 's', 'CaH$_2$')
+    plot_atom(ax, subdata, 'CaO', 'Ca', COLORS[i], '^', 'CaO')
+    
+    ax.text(.05, .95, args.names[i], transform=ax.transAxes, fontsize=12, color=COLORS[i])
 
 [ax.legend() for ax in axes.flatten()]
 [ax.set_ylabel('Computed $\\Delta$BE (eV)') for ax in [axes[0, 0], axes[1, 0]]]
-[ax.set_xlabel('$N$') for ax in [axes[0, 1], axes[1, 1]]]
+[ax.set_xlabel('$N / N_0$') for ax in axes.flatten()]
 
-[ax.text(.05, .95, '{} / {}'.format(slab, atom), transform=ax.transAxes, fontsize=14) for ax, slab, atom in [
-    (axes[0, 0], 'Ca', 'Ca 2s'),
-    (axes[0, 1], 'CaH$_2$', 'Ca 2s'),
-    (axes[1, 0], 'CaO', 'Ca 2s'),
-    (axes[1, 1], 'CaO', 'O 1s'),
-]]
+if len(args.inputs) % 2 != 0:
+    figure.delaxes(axes.flatten()[-1])
 
 plt.tight_layout()
 figure.savefig(args.output)
