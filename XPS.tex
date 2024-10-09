@@ -155,18 +155,20 @@ All calculations (optimization and binding energies) were performed using the PB
 
 In gas phase, each molecule was placed in a cubic box with a side length of \SI{20}{\angstrom} (with the molecule center of mass placed at the origin) and optumized (with frozen cell parameters).
 
-In order to build slabs, bulk Ca (from the Material Project, \texttt{MP-45}), CaO (\texttt{MP-2605}), and \ce{CaH2} (\texttt{MP-23713}) were selected, and their atomic positions and cell parameters were optimized. Subsequently, to determine the optimal surface orientation, 1x1 slabs with increasing thickness along different low-index orientations [(100), (110), and (111)] were constructed using ASE \cite{larsenAtomicSimulationEnvironment2017}. The slabs were relaxed with the central two layers frozen to mimic bulk conditions, with the distance between slab repetitions set to 10 times the $c$ cell parameter of the bulk. For each orientation, the surface energy $\gamma^{hkl}$ was calculated by least-squares fitting of the following expression \cite{sunEfficientCreationConvergence2013,tranSurfaceEnergiesElemental2016}:
+In order to build slabs, bulk \ce{Ca^0} (from the Material Project, \texttt{MP-45}), CaO (\texttt{MP-2605}), and \ce{CaH2} (\texttt{MP-23713}) were selected, and their atomic positions and cell parameters were optimized. Subsequently, to determine the optimal surface orientation, 1x1 slabs with increasing thickness along different low-index orientations [(100), (110), and (111)] were constructed using ASE \cite{larsenAtomicSimulationEnvironment2017}. The slabs were relaxed with the central two layers frozen to mimic bulk conditions, with the distance between slab repetitions set to 10 times the $c$ cell parameter of the bulk. For each orientation, the surface energy $\gamma^{hkl}$ was calculated by least-squares fitting of the following expression \cite{sunEfficientCreationConvergence2013,tranSurfaceEnergiesElemental2016}:
 \begin{equation}
 	E^{hkl}(N) = E_0\,N + 2A\,\gamma^{hkl} \label{eq:surf}
 \end{equation}
 where $N$ is the number of layers in the slab, $A$ is the slab surface area, $E^{hkl}(N)$ is the energy of the relaxed slab cut along $(hkl)$, and $E_0$ approximates the energy of one layer. The results (Table \ref{tab:surf}, Fig.~S2) indicate that (100) surfaces are the most energetically favorable, consistent with the literature \cite{deleeuwDensityFunctionalTheory2000,ebadiInsightsLiMetalOrganic2019}. 
-Thus, using these (100) orientation, 3x3 (Ca and CaO) and 2x2 (\ce{CaH2}) slabs (ensuring a slab surface of $\sim 10\times \SI{10}{\angstrom}$) consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions were created and relaxed (with frozen cell parameters). Additionally, given that it reported to be favorable\cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated. In fact, the contamination of CaO by surface hydroxyls was reported in many experiments\cite{dupinSystematicXPSStudies2000,bebenseeAdsorptionOxygenWater2008,fujimoriInteractionWaterCaO2016a,cristXPSLibraryWebsite2021a}. Thus, an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was built and its geometry was also optimized. 
+Thus, using these (100) orientation, 3x3 (\ce{Ca^0} and CaO) and 2x2 (\ce{CaH2}) slabs (ensuring a slab surface of $\sim 10\times \SI{10}{\angstrom}$) consisting of 6 layers, with a vacuum of \SI{20}{\angstrom} between two slab repetitions were created and relaxed (with frozen cell parameters). 
+
+Additionally, given that it reported to be favorable\cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated. In fact, the contamination of CaO by surface hydroxyls was reported in many experiments\cite{dupinSystematicXPSStudies2000,bebenseeAdsorptionOxygenWater2008,fujimoriInteractionWaterCaO2016a,cristXPSLibraryWebsite2021a}. Thus, an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was built and its geometry was also optimized. 
 
 \begin{table}[!h]
 	\centering
 	\begin{tabular}{lccc}
 		\toprule
-		&	\ce{Ca} & \ce{CaO} &	\ce{CaH2} \\
+		&	\ce{Ca^0} & \ce{CaO} &	\ce{CaH2} \\
 		\midrule
 		(100) & 0.555 ($N\in[6,16]$) & 0.470 ($N\in[6,16]$) & 0.871  ($N\in[12,32]$)\\
 		(110) & 0.630  ($N\in[6,16]$)& 1.777  ($N\in[6,16]$)& 1.109 ($N\in[12,32]$)\\
@@ -219,20 +221,20 @@ In contrast, other reference energies significantly degrade the accuracy of the 
 \clearpage
 
 The situation differs for slabs. The impact of slab thickness ($N$) on the Ca 2s binding energy, evaluated using both protocols, is shown in Figs.~\ref{fig:slabsthicknessSJ}--\ref{fig:slabsthicknessSJn}. The results reveal a substantial difference (exceeding \SI{0.5}{\electronvolt} for certain reference energies) between the surface layers (defined as the first and last layers of the slab) and the bulk \dbe{}, with relatively small standard deviation (values are provided in Tables S3-S4). Due to the different environments, this was expected \textbf{Y'a probablement des papiers discutant du lien entre morphologie de la surface et XPS}. 
-Another key observation is that slab thickness influences some results more than others. For calculations using the SJ protocol with $E_{ref}=E_F$, $\varepsilon_{Ar,2s}$, and $E_\infty$, the predicted values remain nearly constant as $N$ increases. It should however be noted that with $E_{ref}=\varepsilon_{Ar,2s}$, calculation fails to converge or provide slightly different values, resulting in large standard deviations, notably for CaO with $N=16$ layers. Similar trends are observed for O 1s, as shown in Fig.~\ref{fig:slabOH2}, where the simulated XPS spectra for CaO and \ce{CaO.H2O} (both with 6 layers) further emphasize the distinction between bulk and surface contributions. Furthermore, there is almost no difference in bulk values between the two slab types when using, again, the SJ protocol with $E_{ref}=E_F$, $\varepsilon_{Ar,2s}$, or $E_\infty$. Once again, using $\varepsilon_{Ar,2s}$ leads to unreliable results, as evidenced by the spurious peak at \dbe{} = \SI{0}{\electronvolt} in the O 1s spectra which would indicates a difference between the chemical environment between hydoxyls that is not found with using other reference energies.
+Another key observation is that slab thickness influences some results more than others. For calculations using the SJ protocol with $E_{ref}=E_F$, $\varepsilon_{Ar,2s}$, and $E_\infty$, the predicted values remain nearly constant as $N$ increases. It should however be noted that with $E_{ref}=\varepsilon_{Ar,2s}$, calculation fails to converge or provide slightly different values, resulting in large standard deviations, notably for CaO with $N=16$ layers. Similar trends are observed for O 1s, as shown in Fig.~\ref{fig:slabOH2}, where the simulated XPS spectra for CaO and \ce{CaO.H2O} (both with 6 layers) further emphasize the distinction between bulk and surface contributions. Furthermore, there is almost no difference in bulk values between the two slab types when using, again, the SJ protocol with $E_{ref}=E_F$, $\varepsilon_{Ar,2s}$, or $E_\infty$. Once again, using $\varepsilon_{Ar,2s}$ leads to unreliable results, as evidenced by the spurious peak at \dbe{} = \SI{0}{\electronvolt} in the O 1s spectra which would indicates a difference between the chemical environment between hydoxyls that is not found using other reference energies.
 
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=.85\linewidth]{Figure5}
-	\caption{Effect of slab thickness (expressed as the number of layers, $N/N_0$, where $N_0 = 2$ for Ca and CaO and 4 for \ce{CaH2} represents the number of layers in the unit cell) on the mean bulk (filled markers) and surface (empty markers) \dbe{} for Ca 2s, calculated using the SJ protocol with various reference energies. The vertical lines indicate standard deviation.}
+	\caption{Effect of slab thickness (expressed as the number of layers, $N/N_0$, where $N_0 = 2$ for \ce{Ca^0} and CaO and 4 for \ce{CaH2} represents the number of layers in the unit cell) on the mean bulk (filled markers) and surface (empty markers) \dbe{} for Ca 2s, calculated using the SJ protocol with various reference energies. The vertical lines indicate standard deviation.}
 	\label{fig:slabsthicknessSJ}
 \end{figure}
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=.85\linewidth]{Figure6}
-	\caption{Effect of slab thickness (expressed as the number of layers, $N/N_0$, where $N_0 = 2$ for Ca and CaO and 4 for \ce{CaH2} represents the number of layers in the unit cell)  on the mean bulk (filled markers) and surface (empty markers) \dbe{} for Ca 2s, calculated using the SJ\textsuperscript{n} protocol with various reference energies. The vertical lines indicate standard deviation.}
+	\caption{Effect of slab thickness (expressed as the number of layers, $N/N_0$, where $N_0 = 2$ for \ce{Ca^0} and CaO and 4 for \ce{CaH2} represents the number of layers in the unit cell)  on the mean bulk (filled markers) and surface (empty markers) \dbe{} for Ca 2s, calculated using the SJ\textsuperscript{n} protocol with various reference energies. The vertical lines indicate standard deviation.}
 	\label{fig:slabsthicknessSJn}
 \end{figure}
 
@@ -244,6 +246,12 @@ Another key observation is that slab thickness influences some results more than
 	\caption{Effect of the reference energy on the simulated XPS spectra of CaO (dashed line)  and \ce{CaO.H2O} (plain line), calculated using the SJ (top) and SJ\textsuperscript{n} (bottom) protocols and different reference energies. The horizontal lines indicate the mean values for bulk (``b"), surface (``s"), and surface hydroxides (only for \ce{CaO.H2O}  O 1s) contributions.}
 	\label{fig:slabOH2}
 \end{figure}
+
+Experimentally, XPS spectra for calcium metal slabs and their oxides, including Ca 2s binding energies, are scarce. Some values from various sources are summarized in Table S2. To the best of our knowledge, no reported measurements exist for \ce{CaH2}, and data for other peaks are limited \cite{franzenXPSSpectraCrystalline1977,sveinbjornssonIonicConductivityFormation2014}. Moreover, due to calcium's high reactivity, contamination by oxides, hydroxyls, and hydrocarbons complicates the analysis \cite{dupinSystematicXPSStudies2000,bebenseeAdsorptionOxygenWater2008,fujimoriInteractionWaterCaO2016a,cristXPSLibraryWebsite2021a}. Nonetheless, certain trends can be discerned: \begin{inparaenum}[i)]
+	\item unlike the preceding alkaline earth metal, magnesium \cite{dobrovolskyXPSStudyInfluence2017}, recent data suggest that BE(Ca 2s in \ce{Ca^0}) $>$ BE(Ca 2s in CaO) $\approx$ BE(Ca 2s in \ce{CaO.H2O}) \cite{ochsCO2ChemisorptionCa1998,cristHandbookMonochromaticXPS2000a,cristXPSLibraryWebsite2021a}, and 
+	\item BE(Bulk O 1s in CaO) $\approx$ BE(Bulk O 1s in \ce{CaO.H2O}) $<$ BE(hydroxyl O 1s in \ce{CaO.H2O}) \cite{dupinSystematicXPSStudies2000,bebenseeAdsorptionOxygenWater2008,fujimoriInteractionWaterCaO2016a,cristXPSLibraryWebsite2021a}.
+\end{inparaenum}
+Only the combination of the SJ protocol with $E_{ref} = E_\infty$ satisfies these criteria. Consequently, a consistent treatment of both gas-phase systems and slabs using the same method is not feasible.
 
 
 \clearpage

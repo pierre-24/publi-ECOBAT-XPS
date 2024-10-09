@@ -89,11 +89,11 @@ axes = figure.subplots(NY, 2, sharey=True)
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
 
 for i, (ax, subdata) in enumerate(zip(axes.flatten(), data)):
-    plot_atom(ax, subdata, 'Ca', 'Ca', COLORS[i], 'o', 'Ca')
+    plot_atom(ax, subdata, 'Ca', 'Ca', COLORS[i], 'o', 'Ca$^0$')
     plot_atom(ax, subdata, 'CaH2', 'Ca', COLORS[i], 's', 'CaH$_2$')
     plot_atom(ax, subdata, 'CaO', 'Ca', COLORS[i], '^', 'CaO')
     
-    ax.text(.05, .95, args.names[i], transform=ax.transAxes, fontsize=12, color=COLORS[i])
+    ax.text(.05, .9, args.names[i], transform=ax.transAxes, fontsize=12, color=COLORS[i])
 
 [ax.legend() for ax in axes.flatten()]
 [ax.set_ylabel('Computed $\\Delta$BE (eV)') for ax in [axes[0, 0], axes[1, 0]]]
