@@ -193,8 +193,12 @@ Finally, the \dbe{} values were calculated for each atom of interest in the mole
 
 \subsection{Selection of a reference for binding energies}
 
-A comparison between experimental and computed \dbe\ is presented in Fig.~\ref{fig:xps_C185}. The agreement with previous investigations \cite{pueyobellafontPredictingCoreLevel2017,golzeAccurateAbsoluteRelative2020} shows that the SJ\textsuperscript{n} protocol provides reliable results for all atoms, with very small mean errors ($\leq$\SI{0.1}{\electronvolt}) and acceptable standard deviations (0.1 to \SI{0.4}{\electronvolt}). However, it should be noted that a reference per atom is necessary (Table \ref{tab:xpssjn}), as the difference between experimental and computed absolute BE increases with the atomic number. 
-In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the large standard deviations (>\SI{0.7}{\electronvolt}).
+A comparison between experimental and computed \dbe{} values for carbon is shown in Fig.~\ref{fig:xps_C185_C}. Consistent with previous studies \cite{pueyobellafontPredictingCoreLevel2017,golzeAccurateAbsoluteRelative2020}, the SJ\textsuperscript{n} protocol with $E_{ref} = 0$ provides reliable results for all atoms, exhibiting a very small mean error and an acceptable standard deviation. However, achieving this level of agreement requires using a reference per atom (Table S1), as the discrepancy between experimental and computed absolute BEs tends to increase with the atomic number. Similarly, using $E_{ref}=\varepsilon_{Ar,2s}$ results in small errors. Across the entire set of 184 \dbe{} values, the combination of each reference energy with the SJ\textsuperscript{n} approach yields comparable results (Fig.~\ref{fig:xps_C185}). 
+
+In contrast, other reference energies significantly degrade the accuracy of the predicted gas-phase \dbe{}. The largest errors are observed when using the Fermi energy, $E_{ref} = E_F$ or $E_F'$, particularly in combination with the SJ\textsuperscript{n} protocol, which leads to underestimated \dbe{} values. For the SJ protocol, the references $E_{ref} = 0$, $\varepsilon_{Ar,2s}$, and $E_\infty$ perform similarly, with the lowest error found when using $E_{ref}=\phi$, although it remains substantial. Moreover, all reference energies combined with the SJ protocol tend to overestimate the \dbe{} values.
+
+\textbf{but why?}
+
 
 \begin{figure}[!h]
 	\centering
@@ -204,7 +208,6 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 \end{figure}
 
 
-
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=.85\linewidth]{Figure4}
@@ -212,28 +215,11 @@ In contrast, the SJ protocol exhibits non-systematic errors, as indicated by the
 	\label{fig:xps_C185}
 \end{figure}
 
-\begin{table}[!h]
-	\centering
-	\begin{tabular}{lcccc}
-		\toprule
-		& Reference & BE (exp.)  & BE (SJ\textsuperscript{n})  & $\Delta$(SJ\textsuperscript{n}- exp.)\\
-		\midrule
-		B 1s & \ce{(BH2)2} & 196.50 & 201.47 & 4.97\\
-		C 1s & \ce{CH4} & 290.90 & 297.04 & 6.14\\
-		N 1s & \ce{NH3} & 405.60 & 413.58 & 7.98\\
-		O 1s & \ce{H2O} & 539.70 & 548.79 & 9.09\\
-		F 1s & \ce{HF} & 694.23 & 704.78 &10.55\\
-		\bottomrule
-	\end{tabular}
-	\caption{Comparison between experimental (from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the SJ\textsuperscript{n} protocol) absolute BE.}
-	\label{tab:xpssjn}
-\end{table}
 
-Although the SJ\textsuperscript{n} protocol performs better in the gas phase, literature recommends using the SJ protocol for solids, as it correctly reproduces experimental trends \cite{olovssonCorelevelShiftsComplex2006}. An alternative approach, the final state (FS) scheme, can also be used, where one electron is added to the valence band instead of $\frac{1}{2}$ as in the SJ protocol \cite{trinhEvaluatingStructureCatalysts2013a,vandenbosscheEffectsNonlocalExchange2014}.
+\clearpage
 
-The impact of slab thickness on the resulting spectra is therefore assessed using the SJ protocol, as shown in Fig.~\ref{fig:slabsthicknessSJ}. Increasing slab thickness shifts the balance between surface and bulk features towards the latter, but it does not significantly change the peak positions. Therefore, further calculations can safely use slabs with the fewest number of layers to save computation time.
-
-A comparison with the SJ\textsuperscript{n} protocol (Fig.~\ref{fig:slabsthicknessSJn}) shows that while the Ca 2s binding energies are similar with both protocols, differences in the shape of the spectra appear for Ca 2s in \ce{CaH2} (where bulk and surface features are more pronounced) and for O 1s in CaO (where the difference between bulk and surface is less significant). Notably, the SJ\textsuperscript{n} protocol predicts a difference of \SI{7.6}{\electronvolt} between the reference (water, for O 1s) and the value of O 1s in \ce{CaO}, which is close to the experimental value of \SI{7.8}{\electronvolt} \cite{cristHandbookMonochromaticXPS1999}. In contrast, the SJ protocol predicts a difference of only \SI{5}{\electronvolt}.\footnote{Cette comparaison est dangereuse, voire casse-gueule. En effet, le résultat en phase gas n'as pas été \textit{shifté} par $E_F$, le résultat pour le slab, oui. Donc....?}
+The situation differs for slabs. The impact of slab thickness ($N$) on the Ca 2s binding energy, evaluated using both protocols, is shown in Figs.~\ref{fig:slabsthicknessSJ}--\ref{fig:slabsthicknessSJn}. The results reveal a substantial difference (exceeding \SI{0.5}{\electronvolt} for certain reference energies) between the surface layers (defined as the first and last layers of the slab) and the bulk \dbe{}, with relatively small standard deviation (values are provided in Tables S3-S4). Due to the different environments, this was expected \textbf{Y'a probablement des papiers discutant du lien entre morphologie de la surface et XPS}. 
+Another key observation is that slab thickness influences some results more than others. For calculations using the SJ protocol with $E_{ref}=E_F$, $\varepsilon_{Ar,2s}$, and $E_\infty$, the predicted values remain nearly constant as $N$ increases. It should however be noted that with $E_{ref}=\varepsilon_{Ar,2s}$, calculation fails to converge or provide slightly different values, resulting in large standard deviations, notably for CaO with $N=16$ layers. Similar trends are observed for O 1s, as shown in Fig.~\ref{fig:slabOH2}, where the simulated XPS spectra for CaO and \ce{CaO.H2O} (both with 6 layers) further emphasize the distinction between bulk and surface contributions. Furthermore, there is almost no difference in bulk values between the two slab types when using, again, the SJ protocol with $E_{ref}=E_F$, $\varepsilon_{Ar,2s}$, or $E_\infty$. Once again, using $\varepsilon_{Ar,2s}$ leads to unreliable results, as evidenced by the spurious peak at \dbe{} = \SI{0}{\electronvolt} in the O 1s spectra which would indicates a difference between the chemical environment between hydoxyls that is not found with using other reference energies.
 
 
 \begin{figure}[!h]
