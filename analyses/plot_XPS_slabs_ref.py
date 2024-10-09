@@ -55,7 +55,7 @@ def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, labe
     surf_vals = []
 
     for i in range(3, 9):
-        subdata = data[(data['System'] == '{}_slab/{}'.format(slab, i)) & (data['Atom'] == atom) & (data['Delta_computed'] < 10) & (data['Delta_computed'] > -10)]
+        subdata = data[(data['System'] == '{}_slab/{}'.format(slab, i)) & (data['Atom'] == atom)]
         surf_data = subdata[subdata['Is_surf'] == True]
         surf_vals.append((numpy.mean(surf_data['Delta_computed']), numpy.std(surf_data['Delta_computed'])))
         bulk_data = subdata[subdata['Is_bulk'] == True]

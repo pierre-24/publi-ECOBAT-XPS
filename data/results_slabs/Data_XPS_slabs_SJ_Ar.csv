@@ -138,8 +138,6 @@ CaO_slab/6,O,245.40,1,O_080
 CaO_slab/6,O,245.44,2,O_076;O_077
 CaO_slab/6,O,245.48,7,O_049;O_050;O_051;O_052;O_094;O_095;O_096
 CaO_slab/6,O,245.55,1,O_093
-CaO_slab/7,Ca,0.00,1,Ca_007
-CaO_slab/7,Ca,126.88,1,Ca_051
 CaO_slab/7,Ca,130.85,1,Ca_021
 CaO_slab/7,Ca,130.89,1,Ca_055
 CaO_slab/7,Ca,131.14,1,Ca_023
@@ -163,11 +161,6 @@ CaO_slab/7,Ca,131.74,1,Ca_048
 CaO_slab/7,Ca,131.75,1,Ca_047
 CaO_slab/7,Ca,132.17,1,Ca_049
 CaO_slab/7,Ca,132.19,1,Ca_005
-CaO_slab/7,Ca,325.53,1,Ca_052
-CaO_slab/7,Ca,455.10,1,Ca_008
-CaO_slab/7,Ca,505.49,1,Ca_006
-CaO_slab/7,Ca,572.33,1,Ca_050
-CaO_slab/7,O,0.00,8,O_059;O_061;O_062;O_067;O_091;O_100;O_105;O_108
 CaO_slab/7,O,245.03,1,O_107
 CaO_slab/7,O,245.19,1,O_082
 CaO_slab/7,O,245.22,1,O_087
@@ -184,14 +177,6 @@ CaO_slab/7,O,246.02,1,O_088
 CaO_slab/7,O,246.17,1,O_084
 CaO_slab/7,O,246.34,1,O_102
 CaO_slab/7,O,246.39,1,O_083
-CaO_slab/7,O,350.82,1,O_111
-CaO_slab/7,O,454.39,1,O_110
-CaO_slab/7,O,523.64,1,O_064
-CaO_slab/7,O,594.24,1,O_106
-CaO_slab/7,O,665.78,1,O_109
-CaO_slab/7,O,763.60,1,O_097
-CaO_slab/7,O,791.22,1,O_063
-CaO_slab/7,O,820.63,1,O_058
 CaO_slab/8,Ca,131.14,1,Ca_034
 CaO_slab/8,Ca,131.16,4,Ca_030;Ca_033;Ca_035;Ca_048
 CaO_slab/8,Ca,131.17,2,Ca_023;Ca_047
@@ -223,9 +208,6 @@ CaO_slab/8,Ca,132.08,2,Ca_053;Ca_058
 CaO_slab/8,Ca,132.11,1,Ca_057
 CaO_slab/8,Ca,132.12,1,Ca_060
 CaO_slab/8,Ca,132.13,5,Ca_005;Ca_006;Ca_007;Ca_008;Ca_059
-CaO_slab/8,Ca,242.52,1,Ca_002
-CaO_slab/8,Ca,610.13,1,Ca_003
-CaO_slab/8,O,0.00,18,O_072;O_073;O_074;O_075;O_076;O_077;O_081;O_082;O_088;O_106;O_107;O_108;O_113;O_114;O_115;O_116;O_119;O_122
 CaO_slab/8,O,245.02,1,O_071
 CaO_slab/8,O,245.04,1,O_121
 CaO_slab/8,O,245.05,4,O_069;O_070;O_123;O_124
@@ -249,13 +231,6 @@ CaO_slab/8,O,245.51,1,O_066
 CaO_slab/8,O,245.52,1,O_128
 CaO_slab/8,O,245.54,1,O_125
 CaO_slab/8,O,245.61,1,O_110
-CaO_slab/8,O,506.18,1,O_085
-CaO_slab/8,O,628.42,1,O_078
-CaO_slab/8,O,635.13,1,O_118
-CaO_slab/8,O,658.25,1,O_087
-CaO_slab/8,O,850.42,1,O_080
-CaO_slab/8,O,968.24,1,O_117
-CaO_slab/8,O,1007.64,1,O_079
 Ca_slab/3,Ca,132.18,8,Ca_001;Ca_002;Ca_003;Ca_004;Ca_021;Ca_022;Ca_023;Ca_024
 Ca_slab/3,Ca,132.25,7,Ca_009;Ca_010;Ca_012;Ca_013;Ca_014;Ca_015;Ca_016
 Ca_slab/3,Ca,132.26,1,Ca_011
@@ -269,7 +244,6 @@ Ca_slab/4,Ca,132.27,8,Ca_009;Ca_010;Ca_011;Ca_012;Ca_021;Ca_022;Ca_023;Ca_024
 Ca_slab/4,Ca,132.66,1,Ca_006
 Ca_slab/4,Ca,132.69,6,Ca_005;Ca_007;Ca_008;Ca_025;Ca_026;Ca_027
 Ca_slab/4,Ca,132.70,1,Ca_028
-Ca_slab/5,Ca,129.34,1,Ca_013
 Ca_slab/5,Ca,132.15,1,Ca_002
 Ca_slab/5,Ca,132.16,7,Ca_001;Ca_003;Ca_004;Ca_037;Ca_038;Ca_039;Ca_040
 Ca_slab/5,Ca,132.20,1,Ca_026
@@ -304,7 +278,6 @@ Ca_slab/7,Ca,132.36,1,Ca_029
 Ca_slab/7,Ca,132.68,5,Ca_005;Ca_007;Ca_049;Ca_051;Ca_052
 Ca_slab/7,Ca,132.69,2,Ca_006;Ca_050
 Ca_slab/7,Ca,132.70,1,Ca_008
-Ca_slab/8,Ca,0.00,1,Ca_005
 Ca_slab/8,Ca,132.17,7,Ca_001;Ca_002;Ca_004;Ca_061;Ca_062;Ca_063;Ca_064
 Ca_slab/8,Ca,132.18,1,Ca_003
 Ca_slab/8,Ca,132.24,8,Ca_009;Ca_013;Ca_014;Ca_015;Ca_049;Ca_050;Ca_051;Ca_052

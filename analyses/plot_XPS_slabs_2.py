@@ -63,11 +63,11 @@ def plot_atom(ax, data: pandas.DataFrame, system: str, atom: str, color: str, li
     ax.plot(lspace, y + shift_y, label=label if linestyle == '-' else None, color=color, linestyle=linestyle)
     
     m_bulk = subdata[subdata['Is_bulk'] == True]['Delta_computed']
-    ax.plot([m_bulk.mean(), m_bulk.mean()], [shift_y, shift_y + 0.3], color=color, linestyle=linestyle)
-    ax.text(m_bulk.mean(), shift_y + (.3 if linestyle == '-' else 0), 'b', va='bottom' if linestyle == '-' else 'top', ha='center', color=color)
+    ax.plot([m_bulk.mean(), m_bulk.mean()], [shift_y, shift_y + 0.25], color=color, linestyle=linestyle)
+    ax.text(m_bulk.mean(), shift_y + (.25 if linestyle == '-' else 0), 'b', va='bottom' if linestyle == '-' else 'top', ha='center', color=color)
     m_surf = subdata[subdata['Is_surf'] == True]['Delta_computed']
-    ax.plot([m_surf.mean(), m_surf.mean()], [shift_y, shift_y + 0.3], color=color, linestyle=linestyle)
-    ax.text(m_surf.mean(), shift_y + (.3 if linestyle == '-' else 0), 's', va='bottom' if linestyle == '-' else 'top', ha='center', color=color)
+    ax.plot([m_surf.mean(), m_surf.mean()], [shift_y, shift_y + 0.25], color=color, linestyle=linestyle)
+    ax.text(m_surf.mean(), shift_y + (.25 if linestyle == '-' else 0), 's', va='bottom' if linestyle == '-' else 'top', ha='center', color=color)
     
     if atom == 'O' and system == 'CaO_OH2_slab/3':
         m_OH = subdata[subdata['Is_OH'] == True]['Delta_computed']
