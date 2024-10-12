@@ -6,7 +6,7 @@ import argparse
 
 def prepare_data(data: pandas.DataFrame, data_height: pandas.DataFrame):
     REFS = {  # references
-        'Ca': data[(data['System'] == 'Ca_slab/8') & (data['Atom_indices' ].str.contains('Ca_037'))].iloc[0],
+        'Ca': data[(data['System'] == 'CaO_slab/8') & (data['Atom_indices' ].str.contains('Ca_025'))].iloc[0],
         'O':  data[(data['System'] == 'ref_O')].iloc[0]
     }
     
