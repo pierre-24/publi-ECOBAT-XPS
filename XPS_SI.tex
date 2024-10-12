@@ -31,6 +31,8 @@
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
+\NewDocumentCommand{\cp}{O{}m}{SJ\IfNoValueTF{#1}{}{\textsuperscript{#1}}+$E_{ref} = #2$}
+
 \begin{document}
 	\maketitle
 
@@ -44,7 +46,7 @@
 
 \begin{figure}[!h]
 	\includegraphics[width=\linewidth]{FigureS2}
-	\caption{Evolution of the surface energy for slabs of Ca, CaO, and \ce{CaH2} with increasing thickness ($N$) , as estimated by least-square fit of Eq.~(5). For CaO, the surface energies of (110) and (111) are larger than \SI{1.25}{\joule\per\meter\squared}.}
+	\caption{Evolution of the surface energy for slabs of Ca, CaO, and \ce{CaH2} with increasing thickness ($N$) , as estimated by least-square fit of Eq.~(5) of the main text. For CaO, the surface energies of (110) and (111) are larger than \SI{1.25}{\joule\per\meter\squared}.}
 	\label{fig:surf}
 \end{figure}
 
@@ -52,16 +54,16 @@
 	\centering
 	\begin{tabular}{lcccc}
 		\toprule
-		& Reference & BE (exp.)  & BE (SJ\textsuperscript{n})  & $\Delta$(SJ\textsuperscript{n}- exp.)\\
+		& Reference & BE (exp.)  & BE(calc.)  & $\Delta$(calc. - exp.)\\
 		\midrule
-		B 1s & \ce{(BH2)2} & 196.50 & 201.47 & 4.97\\
+		B 1s & \ce{H2B-BH2} & 196.50 & 201.47 & 4.97\\
 		C 1s & \ce{CH4} & 290.90 & 297.04 & 6.14\\
 		N 1s & \ce{NH3} & 405.60 & 413.58 & 7.98\\
 		O 1s & \ce{H2O} & 539.70 & 548.79 & 9.09\\
 		F 1s & \ce{HF} & 694.23 & 704.78 &10.55\\
 		\bottomrule
 	\end{tabular}
-	\caption{Comparison between experimental (from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the SJ\textsuperscript{n} protocol) absolute BE.}
+	\caption{Comparison between experimental (from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the \cp[n]{0} protocol) absolute BE.}
 	\label{tab:xpssjn}
 \end{table}
 
@@ -86,7 +88,7 @@
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\linewidth]{FigureS3}
-\caption{Impact of the slab thickness (indicated as the number of layers, $N$) on the mean bulk (filled markers)  and surface (empty markers) \dbe{}, as computed with the SJ protocol and different references. The vertical lines indicates standard deviation.}
+\caption{Impact of the slab thickness (indicated as the number of layers, $N$) on the mean bulk (filled markers)  and surface (empty markers) \dbe{}, as computed with the SJ method and different reference energies. The vertical lines indicates standard deviation.}
 \label{fig:slabsthicknessSJ}
 \end{figure}
 
@@ -104,35 +106,35 @@
 		\cline{2-3} \cline{5-6}
 		& Bulk & Surface & & Bulk & Surface \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=0$}  \\
+		\multicolumn{6}{c}{\cp{0}}  \\
 		\midrule
 		\ce{Ca^0} & 0.97 $\pm$ 0.04 & 1.44 $\pm$ 0.01 &  & --- & --- \\
 		\ce{CaH2} & 1.00 $\pm$ 0.02 & 0.99 $\pm$ 0.00 &  & --- & --- \\
 		CaO & -0.75 $\pm$ 0.02 & -0.13 $\pm$ 0.00 &  & -7.02 $\pm$ 0.02 & -7.54 $\pm$ 0.00 \\
 		\ce{CaO.H2O} & -1.21 $\pm$ 0.06 & -0.68 $\pm$ 0.01 &  & -7.50 $\pm$ 0.06 & -5.83 $\pm$ 0.01 \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=E_F$} \\
+		\multicolumn{6}{c}{\cp{E_F}} \\
 		\midrule
 	\ce{Ca^0} & -0.09 $\pm$ 0.04 & 0.37 $\pm$ 0.01 &  & --- & --- \\
 	\ce{CaH2} & 0.66 $\pm$ 0.02 & 0.50 $\pm$ 0.00 &  & --- & --- \\
 	CaO & 0.31 $\pm$ 0.04 & 0.82 $\pm$ 0.00 &  & -2.99 $\pm$ 0.01 & -3.63 $\pm$ 0.00 \\
 		\ce{CaO.H2O} & 0.30 $\pm$ 0.07 & 0.86 $\pm$ 0.01 &  & -2.97 $\pm$ 0.07 & -1.33 $\pm$ 0.01 \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=\varepsilon_{Ar,2s}$}  \\
+		\multicolumn{6}{c}{\cp{\varepsilon_{Ar,2s}}}  \\
 		\midrule
 		\ce{Ca^0} & -0.07 $\pm$ 0.04 & 0.38 $\pm$ 0.00 &  & --- & --- \\
 		\ce{CaH2} & -0.61 $\pm$ 0.02 & -0.62 $\pm$ 0.00 &  & --- & --- \\
 		CaO & -0.88 $\pm$ 0.01 & -0.16 $\pm$ 0.00 &  & -3.55 $\pm$ 0.03 & -4.04 $\pm$ 0.00 \\
 		\ce{CaO.H2O} & -0.97 $\pm$ 0.07 & -0.49 $\pm$ 0.07 &  & -3.83 $\pm$ 0.08 & -1.63 $\pm$ 0.72 \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=E_\infty$} \\
+		\multicolumn{6}{c}{\cp{E_\infty}} \\
 		\midrule
 		\ce{Ca^0} & -0.12 $\pm$ 0.04 & 0.37 $\pm$ 0.01 &  & --- & --- \\
 		\ce{CaH2} & -0.63 $\pm$ 0.02 & -0.65 $\pm$ 0.00 &  & --- & --- \\
 		CaO & -0.92 $\pm$ 0.00 & -0.20 $\pm$ 0.00 &  & -3.58 $\pm$ 0.03 & -4.05 $\pm$ 0.00 \\
 		\ce{CaO.H2O} & -1.00 $\pm$ 0.06 & -0.47 $\pm$ 0.01 &  & -3.74 $\pm$ 0.06 & -2.04 $\pm$ 0.01 \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=\phi$}  \\
+		\multicolumn{6}{c}{\cp{\phi}}  \\
 		\midrule
 		\ce{Ca^0} & 0.93 $\pm$ 0.04 & 1.44 $\pm$ 0.01 &  & --- & --- \\
 		\ce{CaH2} & -0.28 $\pm$ 0.02 & -0.15 $\pm$ 0.00 &  & --- & --- \\
@@ -140,7 +142,7 @@
 		\ce{CaO.H2O} & -2.51 $\pm$ 0.05 & -2.01 $\pm$ 0.01 &  & -8.27 $\pm$ 0.06 & -6.54 $\pm$ 0.01 \\
 		\bottomrule
 		\end{tabular}
-		    \caption{Mean (and standard deviation) bulk and surface \dbe{} values for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ protocol with various reference energies.}
+		    \caption{Mean (and standard deviation) bulk and surface \dbe{} values for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ method with various reference energies.}
 \end{table}
 
 \begin{table}
@@ -150,28 +152,28 @@
 		\cline{2-3} \cline{5-6}
 		& Bulk & Surface & & Bulk & Surface \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=0$}  \\
+		\multicolumn{6}{c}{\cp[n]{0}}  \\
 		\midrule
 		\ce{Ca^0} & 1.26 $\pm$ 0.04 & 1.73 $\pm$ 0.01 &  & --- & --- \\
 		\ce{CaH2} & 1.75 $\pm$ 0.05 & 2.51 $\pm$ 0.00 &  & --- & --- \\
 		CaO & 0.50 $\pm$ 0.05 & 1.22 $\pm$ 0.00 &  & -8.90 $\pm$ 0.06 & -9.03 $\pm$ 0.00 \\
 		\ce{CaO.H2O} & 1.11 $\pm$ 0.07 & 2.32 $\pm$ 0.01 &  & -8.40 $\pm$ 0.05 & -6.38 $\pm$ 0.01 \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=E_F$}  \\
+		\multicolumn{6}{c}{\cp[n]{E_F}}  \\
 		\midrule
 		\ce{Ca^0} & -0.08 $\pm$ 0.03 & 0.38 $\pm$ 0.01 &  & --- & --- \\
 		CaH2 & -0.33 $\pm$ 0.03 & 0.11 $\pm$ 0.00 &  & --- & --- \\
 		CaO & -0.46 $\pm$ 0.05 & 0.39 $\pm$ 0.00 &  & -0.63 $\pm$ 0.14 & -0.79 $\pm$ 0.00 \\
 		\ce{CaO.H2O} & -0.16 $\pm$ 0.18 & 1.02 $\pm$ 0.01 &  & -0.43 $\pm$ 0.15 & 1.67 $\pm$ 0.01 \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=\varepsilon_{Ar,2s}$}  \\
+		\multicolumn{6}{c}{\cp[n]{\varepsilon_{Ar,2s}}}  \\
 		\midrule
 		\ce{Ca^0} & 0.51 $\pm$ 0.04 & 0.99 $\pm$ 0.00 &  & --- & --- \\
 		\ce{CaH2} & 0.01 $\pm$ 0.04 & 0.76 $\pm$ 0.01 &  & --- & --- \\
 		CaO & 0.96 $\pm$ 0.09 & 1.51 $\pm$ 0.00 &  & -4.66 $\pm$ 0.01 & -5.00 $\pm$ 0.00 \\
 		\ce{CaO.H2O} & 2.65 $\pm$ 0.05 & 3.50 $\pm$ 0.01 &  & -3.06 $\pm$ 0.11 & -1.42 $\pm$ 0.01 \\
 		\midrule
-		\multicolumn{6}{c}{$E_{ref}=E_F'$ }  \\
+		\multicolumn{6}{c}{\cp[n]{E_F'}}  \\
 		\midrule
 		\ce{Ca^0} & 0.69 $\pm$ 0.04 & 1.15 $\pm$ 0.03 &  & --- & --- \\
 		\ce{CaH2} & 1.41 $\pm$ 0.04 & 1.88 $\pm$ 0.00 &  & --- & --- \\
@@ -179,7 +181,7 @@
 		\ce{CaO.H2O} & -1.68 $\pm$ 0.28 & -0.16 $\pm$ 0.01 &  & -5.84 $\pm$ 0.23 & -3.40 $\pm$ 0.01 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Mean (and standard deviation) bulk and surface \dbe{} values for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ\textsuperscript{n} protocol with various reference energies.}
+	\caption{Mean (and standard deviation) bulk and surface \dbe{} values for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ\textsuperscript{n}  method with various reference energies.}
 \end{table}
 
 \newcommand{\XPSsa}[3]{

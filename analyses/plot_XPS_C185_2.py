@@ -77,7 +77,7 @@ lspace = numpy.linspace(-5, 10, 101)
 [ax.set_xlabel('Experimental $\\Delta$BE (eV)') for ax in [axes[1, 1], axes[2, 0]]]
 
 COLORS = ['tab:blue', 'tab:green']
-POSITIONS = [(-4, 6), (0, -4), (-3, 7), (-3, 6.5), (-3, 6)]
+POSITIONS = [(-4, 6), (-2, -4)]
 
 for i, subdata in enumerate(data):
     plot_atom(axes[0, 0], subdata, 'C', COLORS[i], POSITIONS[i], args.names[i])

@@ -40,7 +40,6 @@ def prepare_data(data: pandas.DataFrame, data_ref: pandas.DataFrame):
 def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: int, label: str):
     subdata = data[data['Atom'].str.contains(atom)]
     
-    #ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
     error = subdata['Delta_exp'] - subdata['Delta_computed']
     vp = ax.violinplot(error, [position, ], showmeans=True, quantiles=[.25,.75])
     vp['bodies'][0].set_facecolor(color)
@@ -80,7 +79,7 @@ for inp_, name in zip(args.inputs, args.names):
         graphs.append(g)
 
 
-figure = plt.figure(figsize=(len(graphs) * 4, 4))
+figure = plt.figure(figsize=(len(graphs) * 5, 4))
 axes = figure.subplots(1, len(graphs), sharey=True)
 
 indexes = dict((n, 0) for n in graphs)
@@ -89,7 +88,7 @@ COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
 
 for data_, name in zip(data, args.names):
     graph, ref = name.split('/')
-    plot_atom(axes[graphs.index(graph)], data_, 'C', COLORS[indexes[graph]], indexes[graph], ref)
+    plot_atom(axes[graphs.index(graph)], data_, 'C', COLORS[indexes[graph]], indexes[graph], '{}+{}'.format(graph,ref))
     indexes[graph] += 1
 
 [ax.set_xlim(-1, 5) for ax in axes]
