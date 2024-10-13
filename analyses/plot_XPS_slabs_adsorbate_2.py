@@ -36,6 +36,9 @@ def annotate(ax, data: pandas.DataFrame, annotations: list):
 def get_annotations(inp: str):
     annotations = {}
     for annotation in inp.split(','):
+        if annotation == '':
+            continue
+        
         df,label = annotation.split('=')
         atom, system = df.split('@')
         symbol, _ = atom.split('_')
