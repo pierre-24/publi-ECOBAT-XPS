@@ -486,3 +486,5 @@ pyrightconfig.json
 
 # avoid any PDFs (they are generated)
 *.pdf
+
+*.tab
