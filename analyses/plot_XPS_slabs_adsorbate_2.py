@@ -6,7 +6,7 @@ import argparse
 import math
 from scipy.signal import argrelextrema
 
-from XPS.commons import create_spectrum_BE
+from XPS.commons import create_spectrum_BE, get_annotations, annotate_graph
 
 FAC = 3.75
 SLBS = [('Ca', 'tab:blue'), ('CaO', 'tab:red'), ('CaO_OH2', 'tab:green'), ('CaH2', 'tab:pink')]
@@ -29,29 +29,6 @@ def prepare_data(data: pandas.DataFrame, no_C: bool = True):
     data_out.insert(5, 'Delta_computed', delta_computed)
     
     return data_out
-
-def annotate(ax, data: pandas.DataFrame, annotations: list):
-    pass
-    
-def get_annotations(inp: str):
-    annotations = {}
-    for annotation in inp.split(','):
-        if annotation == '':
-            continue
-        
-        df,label = annotation.split('=')
-        atom, system = df.split('@')
-        symbol, _ = atom.split('_')
-        
-        if symbol not in annotations:
-            annotations[symbol] = {}
-        
-        if system not in annotations[symbol]:
-            annotations[symbol][system] = []
-            
-        annotations[symbol][system].append((atom, label))
-    
-    return annotations
         
 
 def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbate: str, atom: str, xrange: tuple, annotations: dict):
@@ -80,20 +57,10 @@ def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbat
         maxes.extend([subdata['Delta_computed'].max(), subdata_slabs['Delta_computed'].max()])
         
         if slab_ads_system in annotations:
-            for a_atom, a_label in annotations[slab_ads_system]:
-                d = subdata[subdata['Atom_indices'].str.contains(a_atom)]
-                if len(d) > 0:
-                    v = d.iloc[0]['Delta_computed']
-                    iloc = int((v - xrange[0]) / (xrange[1] - xrange[0]) * 501)
-                    ax.text(v, i * FAC + y[iloc] + .1, a_label, va='bottom', ha='center', color=color)
+            annotate_graph(ax, subdata, annotations[slab_ads_system], x, i * FAC + y, color=color)
                 
         if slab_system in annotations:
-            for a_atom, a_label in annotations[slab_system]:
-                d = subdata_slabs[subdata_slabs['Atom_indices'].str.contains(a_atom)]
-                if len(d) > 0:
-                    v = d.iloc[0]['Delta_computed']
-                    iloc = int((v - xrange[0]) / (xrange[1] - xrange[0]) * 501)
-                    ax.text(v, i * FAC - y_slab[iloc] - .1, a_label, va='top', ha='center', color=color)
+            annotate_graph(ax, subdata_slabs, annotations[slab_system], x, i * FAC - y_slab, color=color, position='bottom')
                 
     
     mi, ma = min(filter(lambda x: not numpy.isnan(x), mins)) - 1, max(filter(lambda x: not numpy.isnan(x), maxes)) + 1

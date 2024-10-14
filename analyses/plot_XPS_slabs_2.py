@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy
 import argparse
 
-from XPS.commons import create_spectrum_BE
+from XPS.commons import create_spectrum_BE, get_annotations, annotate_graph
 
 
 def prepare_data(data: pandas.DataFrame, data_height: pandas.DataFrame, systems: list):
@@ -13,65 +13,37 @@ def prepare_data(data: pandas.DataFrame, data_height: pandas.DataFrame, systems:
     }
     
     delta_computed = []
-    is_bulk = []
-    is_surf = []
-    is_OH = []
     
     data_out = data[data['System'].isin(systems)]
     
     for line in data_out.itertuples():
         atom = line.Atom
         delta_computed.append(line.Value - REFS[atom]['Value'])
-        has_OH2 = 'OH2' in line.System
-        
-        isb, iss, iso = False, False, False
-        for a in line.Atom_indices.split(';'):
-            h = data_height[(data_height['System'] == line.System) & (data_height['Atom' ] == a)].iloc[0]
-            if has_OH2:
-                if h['z_depth'] <= 0.35:
-                    isb = True
-                if 0.35 < h['z_depth'] <= 0.4:
-                    iss = True
-                if h['z_depth'] > 0.4:
-                    iso = True
-            else:
-                if h['z_depth'] <= 0.4:
-                    isb = True
-                if h['z_depth'] > 0.4:
-                    iss = True 
-                
-            if iss and isb and iso:
-                break
-        
-        is_bulk.append(isb)
-        is_surf.append(iss)
-        is_OH.append(iso)
     
     data_out.insert(5, 'Delta_computed', delta_computed)
-    data_out.insert(6, 'Is_bulk', is_bulk)
-    data_out.insert(7, 'Is_surf', is_surf)
-    data_out.insert(7, 'Is_OH', is_OH)
     
     return data_out
-        
+    
 
-def plot_atom(ax, data: pandas.DataFrame, system: str, atom: str, color: str, linestyle: str, label: str, shift_y: float = .0, space: tuple = (-10, 10)):
-    subdata = data[(data['System'] == system) & (data['Atom'] == atom)]
+def plot_atom(ax, data: pandas.DataFrame, systems: list, atom: str, color: str, label: str, shift_y: float, xrange: tuple, annotations: dict):
     
-    lspace = numpy.linspace(*space, 200)
-    y = create_spectrum_BE(subdata, lspace)
-    ax.plot(lspace, y + shift_y, label=label if linestyle == '-' else None, color=color, linestyle=linestyle)
+    subdata_sys1 = data[(data['System'] == systems[0]) & (data['Atom'] == atom)]
+    subdata_sys2 = data[(data['System'] == systems[1]) & (data['Atom'] == atom)]
+        
+    lspace = numpy.linspace(*xrange, 200)
+    ax.plot(xrange, [shift_y, shift_y], '-', color='grey')
+
+    y_sys1 = create_spectrum_BE(subdata_sys1, lspace)
+    ax.plot(lspace, y_sys1 + shift_y, color=color, label=label)
+    y_sys2 = create_spectrum_BE(subdata_sys2, lspace)
+    ax.plot(lspace, shift_y - y_sys2, '--', color=color)
     
-    m_bulk = subdata[subdata['Is_bulk'] == True]['Delta_computed']
-    ax.plot([m_bulk.mean(), m_bulk.mean()], [shift_y, shift_y + 0.25], color=color, linestyle=linestyle)
-    ax.text(m_bulk.mean(), shift_y + (.25 if linestyle == '-' else 0), 'b', va='bottom' if linestyle == '-' else 'top', ha='center', color=color)
-    m_surf = subdata[subdata['Is_surf'] == True]['Delta_computed']
-    ax.plot([m_surf.mean(), m_surf.mean()], [shift_y, shift_y + 0.25], color=color, linestyle=linestyle)
-    ax.text(m_surf.mean(), shift_y + (.25 if linestyle == '-' else 0), 's', va='bottom' if linestyle == '-' else 'top', ha='center', color=color)
+    ax.set_xlim(*xrange)
     
-    if atom == 'O' and system == 'CaO_OH2_slab/3':
-        m_OH = subdata[subdata['Is_OH'] == True]['Delta_computed']
-        ax.plot([m_OH.mean(), m_OH.mean()], [shift_y, shift_y + 0.3], color=color, linestyle=linestyle)
+    if systems[0] in annotations:
+        annotate_graph(ax, subdata_sys1, annotations[systems[0]], lspace, shift_y + y_sys1, color=color)
+    if systems[1] in annotations:
+        annotate_graph(ax, subdata_sys2, annotations[systems[1]], lspace, shift_y - y_sys2, color=color, position='bottom')
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
@@ -80,12 +52,12 @@ parser.add_argument('-s', '--systems', nargs='*', default=['CaO_OH2_slab/3', 'Ca
 parser.add_argument('-a', '--atoms', nargs='*')
 parser.add_argument('-n', '--names', nargs='*', required=True)
 parser.add_argument('-o', '--output', default='Data_XPS_slabs.pdf')
+parser.add_argument('-x', '--annotate', type=get_annotations)
 
 args = parser.parse_args()
 
 if len(args.inputs) != len(args.names):
     raise Exception('len({}) and len({}) do not match'.format(repr(args.inputs), repr(args.names)))
-
 
 data_height = pandas.read_csv(args.height)
 
@@ -93,24 +65,22 @@ data = []
 for inp in args.inputs:
     data.append(prepare_data(pandas.read_csv(inp), data_height, args.systems))
 
-figure = plt.figure(figsize=(len(args.atoms) * 5, 6))
+figure = plt.figure(figsize=(len(args.atoms) * 5, len(args.names) * 1.25))
 axes = figure.subplots(1, len(args.atoms))
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
-LINESTYLES = ['-', '--']
 
-YS = 1.5
+YS = 4
 
 for i, subdata in enumerate(data):
-    for j, atom in enumerate(args.atoms):
-        a, ami, amax = atom.split(':')
-        for k, system in enumerate(args.systems):
-            plot_atom(axes[j], subdata, system, a, COLORS[i], LINESTYLES[k], args.names[i], shift_y = -i * YS, space = (float(ami), float(amax)))
+    for j, atom_d in enumerate(args.atoms):
+        a, ami, amax = atom_d.split(':')
+        plot_atom(axes[j], subdata, args.systems, a, COLORS[i], args.names[i], -i * YS, (float(ami), float(amax)), annotations = args.annotate[a])
         
         if i == 0:
-            axes[j].text(.95, .95, '{} {}'.format(a, '2s' if a == 'Ca' else '1s'), transform=axes[j].transAxes, fontsize=14, ha='right')
+            axes[j].text(.05, .95, '{} {}'.format(a, '2s' if a == 'Ca' else '1s'), transform=axes[j].transAxes, fontsize=14, ha='left')
 
-[ax.legend(loc='upper left') for ax in axes]
+axes[0].legend()
 [ax.invert_xaxis() for ax in axes]
 [ax.tick_params('y', left=False, labelleft=False) for ax in axes]
 [ax.set_xlabel('Computed $\\Delta$BE (eV)') for ax in axes]
