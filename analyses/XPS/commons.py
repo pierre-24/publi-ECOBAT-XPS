@@ -18,7 +18,7 @@ def create_spectrum_BE(data: pandas.DataFrame, x: list, FWHM: float = 0.5, label
     if N == 0:
         return yspace
     else:
-        return yspace / N
+        return yspace / yspace.max()
     
 def get_annotations(inp: str):
     annotations = {}

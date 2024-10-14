@@ -8,7 +8,7 @@ from scipy.signal import argrelextrema
 
 from XPS.commons import create_spectrum_BE, get_annotations, annotate_graph
 
-FAC = 3.75
+FAC = 3
 SLBS = [('Ca', 'tab:blue'), ('CaO', 'tab:red'), ('CaO_OH2', 'tab:green'), ('CaH2', 'tab:pink')]
 
 
@@ -34,8 +34,6 @@ def prepare_data(data: pandas.DataFrame, no_C: bool = True):
 def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbate: str, atom: str, xrange: tuple, annotations: dict):
     x = numpy.linspace(*xrange, 501)
     
-    mins, maxes = [], []
-    
     for i, (slab, color) in enumerate(SLBS):
         slab_system = '{}_slab/3'.format(slab)
         slab_ads_system = '{}_{}'.format(slab, adsorbate)
@@ -53,18 +51,13 @@ def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbat
             ax.plot(x, i * FAC - y_slab, '--', color=color)
             ax.plot(x, i * FAC - y_slab + y, ':', color=color)
         
-        mins.extend([subdata['Delta_computed'].min(), subdata_slabs['Delta_computed'].min()])
-        maxes.extend([subdata['Delta_computed'].max(), subdata_slabs['Delta_computed'].max()])
-        
         if slab_ads_system in annotations:
             annotate_graph(ax, subdata, annotations[slab_ads_system], x, i * FAC + y, color=color)
                 
         if slab_system in annotations:
             annotate_graph(ax, subdata_slabs, annotations[slab_system], x, i * FAC - y_slab, color=color, position='bottom')
                 
-    
-    mi, ma = min(filter(lambda x: not numpy.isnan(x), mins)) - 1, max(filter(lambda x: not numpy.isnan(x), maxes)) + 1
-    ax.set_xlim(mi, ma)
+    ax.set_xlim(*xrange)
     
     ax.text(.05, .95, '{} {}s'.format(atom, 2 if atom == 'Ca' else 1), fontsize=18, transform=ax.transAxes)
     
@@ -81,15 +74,15 @@ args = parser.parse_args()
 data = prepare_data(pandas.read_csv(args.input), no_C=False)
 data_slabs = prepare_data(pandas.read_csv(args.input_slabs))
 
-figure = plt.figure(figsize=(12, 10))
+figure = plt.figure(figsize=(14, 9))
 axes = figure.subplots(1, 3, sharey=True)
 axes[0].set_ylim(-3, FAC * 4 + .5)
 
 annotations = args.annotate if args.annotate is not None else {}
 
-plot_atom(axes[0], data, data_slabs, args.adsorbate, 'Ca', (-5, 5), args.annotate['Ca'] if 'Ca' in annotations else {})
-plot_atom(axes[1], data, data_slabs, args.adsorbate, 'O', (-10, 10), args.annotate['O'] if 'O' in annotations else {})
-plot_atom(axes[2], data, data_slabs, args.adsorbate, 'C', (-5, 5), args.annotate['C'] if 'C' in annotations else {})
+plot_atom(axes[0], data, data_slabs, args.adsorbate, 'Ca', (-1, 2.5), args.annotate['Ca'] if 'Ca' in annotations else {})
+plot_atom(axes[1], data, data_slabs, args.adsorbate, 'O', (-6, 2), args.annotate['O'] if 'O' in annotations else {})
+plot_atom(axes[2], data, data_slabs, args.adsorbate, 'C', (-2.5, 5), args.annotate['C'] if 'C' in annotations else {})
 
 [ax.invert_xaxis() for ax in axes]
 [ax.set_xlabel('$\\Delta$BE (eV)') for ax in axes]

@@ -70,7 +70,7 @@ axes = figure.subplots(1, len(args.atoms))
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
 
-YS = 4
+YS = 3
 
 for i, subdata in enumerate(data):
     for j, atom_d in enumerate(args.atoms):
