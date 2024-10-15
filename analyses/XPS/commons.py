@@ -26,7 +26,9 @@ def get_annotations(inp: str):
         if annotation == '':
             continue
         
-        df,label = annotation.split('=')
+        ax = annotation.split('=')
+        df = ax[0]
+        label = '='.join(ax[1:])
         atom, system = df.split('@')
         symbol, _ = atom.split('_')
         
