@@ -227,7 +227,7 @@ The situation differs for slabs. The impact of slab thickness ($N$) on the Ca 2s
 
 Another key observation is that slab thickness influences some results more than others. For calculations with \cp{E_F}, \cp{\varepsilon_{Ar,2s}}, and \cp{E_\infty}, the predicted values remain nearly constant as $N$ increases. Conversely, the SJ\textsuperscript{n} method appears very sensitive to the system size. It should however be noted that with $E_{ref}=\varepsilon_{Ar,2s}$, calculation fails to converge or provide slightly different values, resulting in large standard deviations, notably for CaO with $N=16$ layers. 
 
-For O 1s, as illustrated in Fig.~\ref{fig:slabOH2}, where simulated XPS spectra for CaO and \ce{CaO.H2O} (both with 6 layers) are shown, the distinction between bulk and surface contributions is notable. In the case of CaO, BE(bulk O 1s in CaO) $>$ BE(surface O 1s in CaO), whereas in \ce{CaO.H2O}, the reverse trend is observed, consistent across all protocols. Furthermore, BE(bulk O 1s in CaO) $\approx$ BE(bulk O 1s in \ce{CaO.H2O}) when using \cp{E_F}, \cp{E_\infty}, or \cp{\varepsilon_{Ar,2s}}. However, the latter yields unreliable results, as evidenced by the spurious peak at \dbe{} = \SI{0}{\electronvolt} in the O 1s spectra, suggesting an artificial differentiation between hydroxyl environments that is not reflected when using other reference energies. Finally, for the hydroxylated slabs, BE(surface O 1s) $\approx$ BE(hydroxyl O 1s) with most protocols.
+For O 1s, as illustrated in Fig.~\ref{fig:slabOH2}, where simulated XPS spectra for CaO and \ce{CaO.H2O} (both with 6 layers) are shown, the distinction between bulk and surface contributions is notable. In the case of CaO, BE(bulk O 1s in CaO) $>$ BE(surface O 1s in CaO), whereas in \ce{CaO.H2O}, the reverse trend is observed, consistent across all protocols. Furthermore, BE(bulk O 1s in CaO) $\approx$ BE(bulk O 1s in \ce{CaO.H2O}) when using \cp{E_F}, \cp{E_\infty}, or \cp{\varepsilon_{Ar,2s}}. However, the latter yields unreliable results, as evidenced by the spurious peak at \dbe{} = \SI{0}{\electronvolt} in the O 1s spectra, suggesting an artificial differentiation between hydroxyl environments that is not reflected when using other reference energies. Finally, for the hydroxylated slabs, BE(surface O 1s) $\geq$ BE(hydroxyl O 1s). This latter results was also found by Fujimori \emph{et al.} \cite{fujimoriInteractionWaterCaO2016a} via calculations using a similar method to ours, which also showed than the separation between these two BEs depends on the hydroxyl coverage of the surface.
 
 
 
@@ -328,29 +328,43 @@ First, hydrocarbons (\textbf{a}–\textbf{d}) mainly interact through vdW forces
 
 Second, HB interactions are prevalent between \ce{CaO.H2O} and carbohydrates (\textbf{e}-\textbf{j}). From \textbf{e} to \textbf{j}, interaction energies increase, which correlates with a decrease in the oxygen(substrate)--hydrogen(slab) distance. In protic hydrocarbons (\textbf{i}-\textbf{j}), HB formation occurs between the hydrogen of the substrate and the oxygen of the slab.
 
-Lastly, carbohydrates can exhibit significant interaction energies ($> \SI{1}{\electronvolt}$) with the \ce{Ca^0} and \ce{CaH2} slabs, particularly due to oxygen--calcium interactions, accompanied by small interatomic distances, suggesting chemisorption. This is especially pronounced for \ce{CO2} (\textbf{e}) and \ce{CH2=O} (\textbf{f}) on the \ce{CaH2} slab, where both compounds undergo an increase in hybridization (\textit{e.g.}, from \ce{sp^2} to \ce{sp^3} for \textbf{f}), facilitated by interaction with a slab's hydrogen.
+Lastly, carbohydrates can exhibit significant interaction energies ($> \SI{1}{\electronvolt}$) with the \ce{Ca^0} and \ce{CaH2} slabs, particularly due to oxygen--calcium interactions, accompanied by small interatomic distances, suggesting chemisorption. This is especially pronounced for \ce{CO2} (\textbf{e}, for which two possibilities exist, see Fig.~\ref{fig:distsei}) and \ce{CH2=O} (\textbf{f}) on the \ce{CaH2} slab, where both compounds undergo an increase in hybridization (\textit{e.g.}, from \ce{sp^2} to \ce{sp^3} for \textbf{f}), facilitated by interaction with a slab's hydrogen.
 Interestingly, the CaO slab follows a different trend. While interactions with polar carbohydrates (\textbf{e}–\textbf{h}) result in low or even slightly positive (\textbf{h}) interaction energies (similar to vdW), protic carbohydrates (\textbf{i}-\textbf{j}) show small hydrogen(substrate)--oxygen(slab) distances, suggesting proton transfer between the substrate and slab.
 
-These observations provide insights into potential degradation mechanisms. The proton transfers on the CaO surface support the hypothesis of hydroxyl formation on the slab. Moreover, reactions involving hydrogen from the \ce{CaH2} slab indicate possible surface instability under certain conditions.
+These observations provide insights into potential degradation mechanisms. The proton transfers on the CaO surface support the hypothesis of hydroxyl formation on the slab. Moreover, reactions involving hydrogen from the \ce{CaH2} slab indicate possible surface reactivity under certain conditions.
 
 \clearpage
 \subsection{Binding energies of adsorbate on slabs}
 
-Since directly comparing molecules in the gas phase with those adsorbed on a slab is methodologically questionable (\textit{vide infra}), the binding energies before and after adsorption will be discussed. For the former, the geometries where the molecules are \SI{6}{\angstrom} from the slab surface are used. The XPS spectra of the adsorbates (computed using the results where these molecules are on top of bare Ca) are analyzed in Fig.~\ref{fig:adsorbare}. The C 1s spectra can be divided into three parts (in agreement with the trends reported in Fig.~\ref{fig:trends}): \begin{inparaenum}[i)]
-	\item unsaturated carbons, with the lowest binding energies (\textit{e.g.}, \textbf{c} and \textbf{d}),
-	\item aliphatic carbons (\textit{e.g.}, \textbf{a} and \textbf{b}), and
-	\item carbons with neighboring oxygen atoms, with the highest binding energies (\textit{e.g.}, \textbf{g}).
-\end{inparaenum}
-Similarly, the O 1s spectra can be divided into two categories, depending on the hybridization of the oxygen. The lowest binding energies are associated with \ce{C=O} (\textit{e.g.}, \textbf{f} and \textbf{g}).
+\newcommand{\XPSsa}[2]{
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\linewidth]{Figure#1}
+		\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cp{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
+		\label{fig:spectraXPSads#2}
+	\end{figure}
+}
 
-Two important observations should be noted: first, these binding energies are lower than those predicted in the gas phase.\footnote{Encore une fois, comparaison casse-gueule ;)} It is difficult at this time to determine whether this is due to the methodology (SJ vs. SJ\textsuperscript{n}, $E_F$ or not) or the presence of the Ca slab. One way to address this question would be to study the impact of the distance between the molecule and the slab. Second, the results for \textbf{e} (\ce{CO2}) do not follow the aforementioned trends (its O 1s binding energy is surprisingly large), indicating that further investigation definitely is required (could it be that since it is smaller, it feels less the slab?).
+Directly comparing binding energies (BEs) of molecules in the gas phase with those adsorbed on a slab is methodologically problematic (as discussed \textit{vide supra}). Therefore, the focus here will be on the binding energies before (slab) and after (slab + adsorbate) adsorption.
+
+The spectra corresponding to the adsorption of compound \textbf{a} (Fig.~\ref{fig:spectraXPSadsa}) is first analyzed. Adsorption induces a slight shift in the bulk BEs (labeled ``b"), which ideally should remain unaffected. While using thicker slabs could mitigate this issue, the discussion will center on the surface BEs (labeled ``s"), which exhibit the most significant changes post-adsorption. In this example, the surface calcium and oxygen atoms closest to \textbf{a} (labeled ``s$^\star$") show similar BE values, consistent with van der Waals (vdW) interactions at larger distances. Additionally, a peak corresponding to the carbon of \textbf{a} is observed around $\dbe = \SI{0}{\electronvolt}$, characteristic of a saturated carbon. The spectra for compound \textbf{b} (Fig.~S5) are quite similar, though the carbon peak is more pronounced due to the slightly different BEs of \ce{-CH3} and \ce{-CH_2-} groups, with the latter showing a higher BE.
+
+\XPSsa{11}{a}
 
 \clearpage
 
-The impact of adsorption on binding energies is detailed in Figs.~\ref{fig:spectraXPSadsab}-\ref{fig:spectraXPSadsij}. For Ca 2s, adsorption-induced changes are minimal, with slightly more noticeable effects on the CaO slab, though not significant enough to be detectable experimentally. However, more substantial changes are observed for the other atoms studied: 
-First, interaction with bare Ca results in a shift to lower binding energies in C 1s and a shift to higher binding energies in O 1s (when available), indicating electron transfer between the slab and the adsorbate. This suggests that interactions with hydrocarbons may involve more than just van der Waals forces. Then, hydrogen bond formation at the surface of \ce{CaO.H2O} causes a slight shift to higher O 1s \dbe{}, which increases with the strength of the bond (\textit{e.g.}, \textbf{f}-\textbf{h}).
-Furthermore, proton transfers, seen in the interactions between \textbf{e} and \textbf{f} with \ce{CaH2} and between \textbf{i} and \textbf{j} with CaO, lead to significant changes in C 1s and O 1s binding energies, consistent with changes in hybridization. Finally, C 1s binding energies also change when unsaturated hydrocarbons (\textbf{c} and \textbf{d}) interact with \ce{CaH2}, suggesting a modification of the carbon's chemical environment, which may not be immediately apparent when inspecting the geometries.
-These findings demonstrate that XPS binding energies are highly sensitive to changes in the chemical environment of the atoms.
+Next, the spectra of compound \textbf{c} (Fig.~\ref{fig:spectraXPSadsc}) is analyzed. In this case, the surface calcium atoms in close contact with the adsorbate (labeled ``s$^\star$") experience a shift towards lower BEs. No significant changes are observed in the oxygen atoms, whose BE values remain consistent with the previous spectra. A distinct peak corresponding to the unsaturated carbon atoms appears around $\dbe = \SI{-1}{\electronvolt}$. The spectra for compound \textbf{d} (Fig.~S8) show a similar trend, with a separate peak for each type of carbon.
+
+\XPSsa{12}{c}
+
+Turning to compound \textbf{e} (Fig.~\ref{fig:spectraXPSadse}), several notable features arise, as reaction occur between \ce{CO2} and the slab composed of \ce{Ca^0} and \ce{CaH2}. These interactions affect the oxygen spectra, resulting in two distinct peaks: one associated with oxygen bound to a less hybridized carbon (around $\dbe = \SI{1}{\electronvolt}$, labeled ``\ce{O=C}''), and another linked to a more hybridized carbon (around $\dbe = \SI{-2}{\electronvolt}$, labeled ``\ce{O-C}''), which arises from the reaction. The relative intensities of these peaks will depend on the composition and coverage of the slab, which were not investigated in this study. In the carbon spectra, the less hybridized carbon (labeled ``\ce{C=O}'') and the more hybridized carbon (labeled ``\ce{O-C}'') correspond to peaks located around $\dbe = \SI{3.5}{\electronvolt}$ and $\dbe = \SI{1}{\electronvolt}$, respectively. 
+
+
+\XPSsa{13}{e}
+
+These results are in line with previous studies by Maus-Friedrichs and colleagues\cite{ochsCO2ChemisorptionCa1998,voigtsAdsorptionCO2CO2009,dahleSituPreparationCalcium2012}, which investigated the adsorption of \ce{CO2} on \ce{Ca^0} and \ce{CaO}, showing the formation of a calcite layer. Recent XPS data\cite{dahleSituPreparationCalcium2012} indicate that BE(O 1s in \ce{CO3^-}) is higher than BE(bulk O 1s in CaO) by approximately \SI{3}{\electronvolt}, a trend similar to that observed in this study, although the case here is of adsorbed \ce{CO2}. Preliminary calculations on \ce{CaCO3} (not shown here) further support this trend. It would also be interesting to obtain a geometry where \ce{CO2} reacts with \ce{CaO}.
+
+The spectra for compounds \textbf{f} and \textbf{g} (Figs.~S7-S8)  show similar trends. However...
 
 \clearpage
 \section{Conclusions}

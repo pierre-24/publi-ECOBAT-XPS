@@ -175,21 +175,20 @@
 	\caption{Mean (and standard deviation) bulk and surface \dbe{} values (in \si{\electronvolt}) for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ\textsuperscript{n}  method with various reference energies.}
 \end{table}
 
-\newcommand{\XPSsa}[3]{
+\newcommand{\XPSsa}[2]{
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=\linewidth]{Figure#1a}
-	\includegraphics[width=\linewidth]{Figure#1b}
-	\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} (top) and \textbf{#3} (bottom) on various substrates, as computed using the \cp{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
-	\label{fig:spectraXPSads#2#3}
+	\includegraphics[width=\linewidth]{Figure#1}
+	\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cp{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
+	\label{fig:spectraXPSads#2}
 \end{figure}
 }
 
-\XPSsa{S5}{a}{b}
-\XPSsa{S6}{c}{d}
-\XPSsa{S7}{e}{f}
-\XPSsa{S8}{g}{h}
-\XPSsa{S9}{i}{j}
+\XPSsa{S5}{b}
+\XPSsa{S6}{d}
+\XPSsa{S7}{f}
+\XPSsa{S8}{g}
+\XPSsa{S9}{i}
 
 \clearpage
 \bibliography{biblio}
