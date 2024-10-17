@@ -8,8 +8,8 @@ from scipy.signal import argrelextrema
 
 from XPS.commons import create_spectrum_BE, get_annotations, annotate_graph
 
-FAC = 3
-SLBS = [('Ca', 'tab:blue'), ('CaO', 'tab:red'), ('CaO_OH2', 'tab:green'), ('CaH2', 'tab:pink')]
+FAC = 2.75
+SLBS = [('Ca', 'black'), ('CaO', 'black'), ('CaO_OH2', 'black'), ('CaH2', 'black')]
 
 
 def prepare_data(data: pandas.DataFrame, no_C: bool = True):
@@ -43,19 +43,20 @@ def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbat
         
         ax.plot(xrange, [i * FAC, i * FAC], '-', color='grey')
         
-        y = create_spectrum_BE(subdata, x)
-        ax.plot(x, i * FAC + y, color=color)
+        if atom in slab_ads_system or 'THF' in slab_ads_system:
+            y = create_spectrum_BE(subdata, x)
+            ax.plot(x, i * FAC + y, color=color)
         
-        if atom != 'C':
+            if slab_ads_system in annotations:
+                annotate_graph(ax, subdata, annotations[slab_ads_system], x, i * FAC + y, color=color)
+        
+        if atom in slab_system and atom != 'C':
             y_slab = create_spectrum_BE(subdata_slabs, x)
             ax.plot(x, i * FAC - y_slab, '--', color=color)
             ax.plot(x, i * FAC - y_slab + y, ':', color=color)
-        
-        if slab_ads_system in annotations:
-            annotate_graph(ax, subdata, annotations[slab_ads_system], x, i * FAC + y, color=color)
                 
-        if slab_system in annotations:
-            annotate_graph(ax, subdata_slabs, annotations[slab_system], x, i * FAC - y_slab, color=color, position='bottom')
+            if slab_system in annotations:
+                annotate_graph(ax, subdata_slabs, annotations[slab_system], x, i * FAC - y_slab, color=color, position='bottom')
                 
     ax.set_xlim(*xrange)
     
@@ -76,7 +77,7 @@ data_slabs = prepare_data(pandas.read_csv(args.input_slabs))
 
 figure = plt.figure(figsize=(14, 9))
 axes = figure.subplots(1, 3, sharey=True)
-axes[0].set_ylim(-3, FAC * 4 + .5)
+axes[0].set_ylim(-1.5, FAC * len(SLBS) - .8)
 
 annotations = args.annotate if args.annotate is not None else {}
 
@@ -89,6 +90,14 @@ plot_atom(axes[2], data, data_slabs, args.adsorbate, 'C', (-2.5, 5), args.annota
 [ax.yaxis.set_major_formatter('') for ax in axes]
 [ax.xaxis.set_major_formatter('{x:.1f}') for ax in axes]
 [ax.tick_params('y', left=False, labelleft=False) for ax in axes]
+
+for i, (label, color) in enumerate(SLBS):
+    txt = label
+    if txt == 'CaO_OH2':
+        txt = 'CaO$\\cdot$H$_2$O'
+    elif txt == 'CaH2':
+        txt = 'CaH$_2$'
+    axes[0].text(-.05, .12 + i * .25, txt, color=color, transform=axes[0].transAxes, rotation=90, va='center')
 
 axes[1].text(.5, 1.05, args.name, fontsize=18, horizontalalignment='center', transform=axes[1].transAxes)
 

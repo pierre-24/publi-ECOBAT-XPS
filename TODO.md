@@ -11,4 +11,5 @@
 - [ ] Conclude & abstract (& keywords?)
 - [ ] Aknowledgements
 - [ ] Clean up the bibliography, check for duplicates
-- [ ] Properly annotate S5-S9 + common scale among graphs?
+- [x] Properly annotate S5-S9 + common scale among graphs?
+- [ ] Legend Fig. 7a
