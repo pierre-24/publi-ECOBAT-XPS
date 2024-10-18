@@ -29,7 +29,7 @@ main:
 	python ./plot_XPS_slabs_adsorbate_2.py -a C2H4 -n 'c (H$$_2$$C=CH$$_2$$)' -o ../Figure12.pdf -x "$$(cat annotations/slabs_annotate.txt | tr '\n'  ','),$$(cat annotations/C2H4_ads.txt | tr '\n'  ',')"
 	python ./plot_XPS_slabs_adsorbate_2.py -a CO2 -n 'e (CO$$_2$$)' -o ../Figure13.pdf -x "$$(cat annotations/slabs_annotate.txt | tr '\n'  ','),$$(cat annotations/CO2_ads.txt | tr '\n'  ',')"
 	python ./plot_XPS_slabs_adsorbate_2.py -a THF -n 'h (THF)' -o ../Figure14.pdf -x "$$(cat annotations/slabs_annotate.txt | tr '\n'  ','),$$(cat annotations/THF_ads.txt | tr '\n'  ',')"
-	python ./plot_XPS_slabs_adsorbate_2.py -a THFn -n 'j (THF$$_n$$)' -o ../Figure15.pdf -x "$$(cat annotations/slabs_annotate.txt | tr '\n'  ','),$$(cat annotations/THFn_ads.txt | tr '\n'  ',')"
+	python ./plot_XPS_slabs_adsorbate_2.py -a THFn -n 'j (PTMEG model)' -o ../Figure15.pdf -x "$$(cat annotations/slabs_annotate.txt | tr '\n'  ','),$$(cat annotations/THFn_ads.txt | tr '\n'  ',')"
 
 SI:
 	python plot_surface_energy.py -o ../FigureS2.pdf

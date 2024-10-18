@@ -65,12 +65,12 @@ data = []
 for inp in args.inputs:
     data.append(prepare_data(pandas.read_csv(inp), data_height, args.systems))
 
-figure = plt.figure(figsize=(len(args.atoms) * 5, len(args.names) * 1.25))
-axes = figure.subplots(1, len(args.atoms))
+figure = plt.figure(figsize=(len(args.atoms) * 5, len(args.names) * 1.4))
+axes = figure.subplots(1, len(args.atoms), sharey=True)
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
 
-YS = 3
+YS = 4
 
 for i, subdata in enumerate(data):
     for j, atom_d in enumerate(args.atoms):
@@ -80,7 +80,8 @@ for i, subdata in enumerate(data):
         if i == 0:
             axes[j].text(.05, .95, '{} {}'.format(a, '2s' if a == 'Ca' else '1s'), transform=axes[j].transAxes, fontsize=14, ha='left')
 
-axes[0].legend()
+axes[1].legend()
+axes[0].set_ylim(- len(args.names) * YS + 1.5, 3)
 [ax.invert_xaxis() for ax in axes]
 [ax.tick_params('y', left=False, labelleft=False) for ax in axes]
 [ax.set_xlabel('Computed $\\Delta$BE (eV)') for ax in axes]

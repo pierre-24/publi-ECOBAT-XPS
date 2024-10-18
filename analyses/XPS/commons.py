@@ -48,6 +48,15 @@ def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: f
         if len(d) > 0:
             v = d.iloc[0]['Delta_computed']
             iloc = int((v - x[0]) / (x[-1] - x[0]) * len(x))
-            ax.text(v, y[iloc] + (shift if position == 'top' else -shift), a_label, va=('bottom' if position == 'top' else 'top'), ha='center', color=color)
+            ax.text(
+                v, 
+                y[iloc] + (shift if position == 'top' else -shift),
+                '{lab}\n{val:.1f}' .format(lab=a_label, val=v), 
+                va=('bottom' if position == 'top' else 'top'), 
+                ha='center', 
+                color=color,
+                rotation=90,
+                fontsize=8
+            )
 
 
