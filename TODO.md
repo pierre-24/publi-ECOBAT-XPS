@@ -9,8 +9,9 @@
 - [x] Create SI (appendix does not work with achemso).
 - [x] Move some stuffs in SI (but check for \ref!!)
 - [ ] Conclude & abstract (& keywords?)
-- [ ] Aknowledgements
+- [ ] Acknowledgments
 - [ ] Clean up the bibliography, check for duplicates
 - [x] Properly annotate S5-S9 + common scale among graphs?
-- [ ] Legend Fig. 7a
+- [x] Legend Fig. 7a
 - [ ] RMSD surface atoms
+- [ ] Ref. 2?

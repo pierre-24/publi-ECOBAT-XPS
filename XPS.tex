@@ -15,12 +15,12 @@
 \author{Pierre Beaujean}
 \affiliation[Unamur]
 {University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
+\email{pierre.beaujean@unamur.be}
 
 
 \author{Benoît Champagne}
 \affiliation[Unamur]
 {University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
-\email{benoit.champagne@unamur.be}
 
 \title{Prediction of XPS binding energies for molecules grafted on calcium surfaces}
 
@@ -142,7 +142,7 @@ where $E_{ref}$ is a reference energy, chosen to ensure consistency across syste
 Thus, computing a binding energy for a given atom requires to select a computational protocol, which includes the choice of a  way to deal with the electron reorganization  (in this work, SJ or SJ\textsuperscript{n}), and a $E_{ref}$.
 It should be noted, however, that extracting $E_\infty$ is not feasible for bulk systems, where no vacuum region exists, or for charged systems, where the electrostatic potential is not constant in the vacuum region. This latter condition occurs when employing the SJ\textsuperscript{n} method. It is however possible to correct the Fermi level energy to remove the impact of the background of charge, as discussed in Ref.~\citenum{lozovoiInitioSimulationCharged2001}. This possibility is referred to as $E_{ref}=E_F'$, where $E_F' = E_F - \max\{E_{elst}(z)\}$, with $E_{elst}(z)$ being the planar average of the electrostatic potential along the $z$ axis.
 
-Finally, while the determination of absolute binding energies (BE) is challenging from a theoretical perspective, the measurement or calculation of the work function, $\phi$ in Eq.~\eqref{eq:xps}, is also complex. As a result, both experimentalists and quantum chemists often focus on the relative binding energy, $\Delta\text{BE}$, which is the difference in binding energy for a given atom with respect to a reference compound \cite{vinesPredictionCoreLevel2018}. In this contribution, relative BE values are computed as:\begin{equation}
+Finally, while the determination of absolute binding energies (BE) is challenging from a theoretical perspective, the measurement or calculation of the work function, $\phi$ in Eq.~\eqref{eq:xps}, is also complex. As a result, both experimentalists and quantum chemists often focus on the relative binding energy, $\Delta\text{BE}$, which is the difference in binding energy for a given atom with respect to a reference compound \cite{vinesPredictionCoreLevel2018,stevieIntroductionXrayPhotoelectron2020,greczynskiXrayPhotoelectronSpectroscopy2020}. In this contribution, relative BE values are computed as:\begin{equation}
 	\Delta\text{BE}_i = \text{BE}_i - \text{BE}(\text{ref}), \label{eq:dbe}
 \end{equation} 
 using the calculated or experimental BE values for \ce{CH4}, \ce{NH3}, \ce{H2O}, \ce{B2H6}, and \ce{HF} as references for carbon, nitrogen, oxygen, boron, and fluorine, respectively. The experimental values are taken from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}. For calcium, the value for bulk Ca in CaO is used, taken from the XPS library \cite{cristXPSLibraryWebsite2021a} (computationally, a  2x2 slab containing 16 layers is used).
@@ -353,11 +353,11 @@ The spectra corresponding to the adsorption of compound \textbf{a} (Fig.~\ref{fi
 
 \clearpage
 
-Next, the spectra of compound \textbf{c} (Fig.~\ref{fig:spectraXPSadsc}) is analyzed. In this case, the surface calcium atoms in close contact with the adsorbate (labeled ``s$^\star$") experience a shift towards lower BEs. No significant changes are observed in the oxygen atoms, whose BE values remain consistent with the previous spectra. A distinct peak corresponding to the unsaturated carbon atoms appears around $\dbe = \SI{-1}{\electronvolt}$. The spectra for compound \textbf{d} (Fig.~S8) show a similar trend, with a separate peak for each type of carbon.
+Next, the spectra of compound \textbf{c} (Fig.~\ref{fig:spectraXPSadsc}) is analyzed. In this case, the surface calcium atoms in close contact with the adsorbate (labeled ``s$^\star$") experience a shift towards lower BEs. No significant changes are observed in the oxygen atoms, whose BE values remain consistent with the previous spectra. A distinct peak corresponding to the unsaturated carbon atoms appears around $\dbe = \SI{-1}{\electronvolt}$. This peak also show that the distance between the adsorbate and the surface can have an impact (here, the large the distance, the smaller \dbe{}), as reported by Taucher \emph{et al.}\cite{taucherFinalStateSimulationsCoreLevel2020}. The spectra for compound \textbf{d} (Fig.~S8) show a similar trend, with a separate peak for each type of carbon.
 
 \XPSsa{12}{c}
 
-Turning to compound \textbf{e} (Fig.~\ref{fig:spectraXPSadse}), several notable features arise, as reaction occur between \ce{CO2} and the slab composed of \ce{Ca^0} and \ce{CaH2}. These interactions affect the oxygen spectra, resulting in two distinct peaks: one associated with oxygen bound to a linear carbon (around $\dbe = \SI{1}{\electronvolt}$, labeled ``\ce{O=C}''), and another linked to a trigonal planar carbon (around $\dbe = \SI{-2}{\electronvolt}$, labeled ``\ce{O-C}$<$''), which arises from the reaction. The relative intensities of these peaks will depend on the composition and coverage of the slab, which were not investigated in this study. In the carbon spectra, the linear carbon (labeled ``\ce{C=O}'') and the trigonal planar carbon (labeled ``$>$\ce{C-O}'') correspond to peaks located around $\dbe = \SI{3.5}{\electronvolt}$ and $\dbe = \SI{1.5}{\electronvolt}$, respectively, but with some variability: interaction between \ce{CO2} and hydrogen leads to a lager BEs for the carbon than interaction with Ca. 
+Turning to compound \textbf{e} (Fig.~\ref{fig:spectraXPSadse}), several notable features arise, as reaction occur between \ce{CO2} and the slab composed of \ce{Ca^0} and \ce{CaH2}. These interactions affect the oxygen spectra, resulting in two distinct peaks: one associated with oxygen bound to a linear carbon (around $\dbe = \SI{1}{\electronvolt}$, labeled ``\ce{O=C}''), and another linked to a trigonal planar carbon (around $\dbe = \SI{-2}{\electronvolt}$, labeled ``\ce{O=C}$<$''), which arises from the reaction. The relative intensities of these peaks will depend on the composition and coverage of the slab, which were not investigated in this study. In the carbon spectra, the linear carbon (labeled ``\ce{C=O}'') and the trigonal planar carbon (labeled ``$>$\ce{C=O}'') correspond to peaks located around $\dbe = \SI{3.5}{\electronvolt}$ and $\dbe = \SI{1.5}{\electronvolt}$, respectively, but with some variability: interaction between \ce{CO2} and hydrogen leads to a lager BEs for the carbon than interaction with Ca. 
 
 \XPSsa{13}{e}
 
@@ -369,22 +369,48 @@ Finally, the spectra of THF (Fig.~\ref{fig:spectraXPSadsh}) and its polymer (Fig
 	\item the peak with associated to the ether moiety in both molecules is associated to large BEs (around \SI{0}{\electronvolt} in O 1s, where it is labeled ``\ce{O-C}", and around \SI{1.5}{\electronvolt} for C 1s, labeled ``\ce{C-O}"), 
 	\item for compound \textbf{j}, a second peak with lower BEs is associated to the presence of alcohol moieties (around \SI{-1}{\electronvolt} in O 1s, where it is labeled ``\ce{OH-C}", and around \SI{1.5}{\electronvolt} for C 1s, labeled ``\ce{C-OH}"), 
 	\item cyclisation seems to slightly affect the peak associated with saturated carbons (labeled ``\ce{C-C}") towards larger values, and
-	\item when graphted on CaO, proton transfer between PTMEG (\textbf{j}) and surface leads to a shift of about \SI{-2}{\electronvolt} in the O 1s spectrum and of about \SI{0.7}{\electronvolt} in C 1s. This is also the case for compound \textbf{i} (Fig.~S9).
+	\item when graphted on CaO, proton transfer between PTMEG (\textbf{j}) and surface leads to a shift of about \SI{-2}{\electronvolt}  (thus similar to the value for compounds \textbf{f}) in the O 1s spectrum and of about \SI{0.7}{\electronvolt} in C 1s (again, becoming similar to compound \textbf{f}). This is also the case for compound \textbf{i} (Fig.~S9).
 \end{inparaenum}
 
 \XPSsa{14}{h}
 \XPSsa{15}{j}
 
+The trends among all the spectra are reported in Fig.~\ref{fig:trends}. Since Ca 2s is not very sensitive to the environment, it was not reported. The BE value for C 1s and O 1s are proportional to the electronegativity of their neighbours, as expected.\cite{stevieIntroductionXrayPhotoelectron2020} An important results of this paper is the large impact of the interaction between oxygen and \ce{Ca^0} on the BE.
+
+
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}[xscale=-1.5]
+		\foreach \i in {-4,-3,...,4}{
+			\draw[gray!50] (\i,1.5) node[above]{\i} -- +(0, -3.5);
+		}
+		%---
+		\draw[-latex] (-2,0)  --  (5,0) node[left]{C 1s} ;
+		\draw[-latex] (-5,-.5)  --  (2,-.5) node[left]{O 1s} ;
+		\draw[very thick] (-.2,.5) -- +(.4,0) node[midway,below]{\tiny\ce{C-C}};
+		\draw[very thick] (-1.6,.5) -- +(.6,0) node[midway,below]{\tiny\ce{C=C}};
+		\draw[very thick] (3.3,.5) -- +(.7,0) node[midway,below]{\tiny\ce{O=C=O}};
+		\draw[very thick] (1.3,.5) -- +(.4,0) node[midway,below]{\tiny\ce{C-O}};
+		\draw[very thick] (1.1,1) -- +(.4,0) node[midway,below]{\tiny$>$\ce{C=O}};
+		\draw[very thick,blue] (-1.1,1) -- +(.4,0) node[midway,above]{\tiny$>$\ce{C=O\cdots{}Ca}};
+		\draw[very thick,blue] (1.8,1) -- +(.4,0) node[midway,above]{\tiny\ce{C=O\cdots{}Ca}};
+		%---
+		\draw[very thick] (-4.5,-1.) -- +(1.2,0) node[midway,above]{\tiny O-Ca};
+		\draw[very thick] (-2.6,-1.) -- +(.5,0) node[midway,above]{\tiny\ce{OH-Ca}};
+		\draw[very thick] (.8,-1.) -- +(.4,0) node[midway,above]{\tiny\ce{O=C=O}};
+		\draw[very thick] (-2.1,-1.5) -- +(.6,0) node[midway,above]{\tiny\ce{O=C}$<$};
+		\draw[very thick] (-.7,-1.) -- +(.6,0) node[midway,above]{\tiny\ce{OH-C}};
+		\draw[very thick] (-.1,-1.5) -- +(.5,0) node[midway,above]{\tiny\ce{C-O-C}};
+	\end{tikzpicture}
+	\caption{Trends among \dbe{} (in \si{\electronvolt}) of C 1s (top) and O 1s (bottom) for compound \textbf{a}-\textbf{j} when grafted on different surfaces. Blue bars indicates change due to interaction with \ce{Ca^0}.}
+	\label{fig:trends}
+\end{figure}
+
 \clearpage
 \section{Conclusions}
-XPS offers valuable insights into the chemical environment of atoms and the changes they undergo during adsorption. However, careful consideration must be given to the methodologies employed, as direct comparisons between results can be challenging due to potential inconsistencies across different systems.
+XPS offers valuable insights into the chemical environment of atoms and the changes they undergo during adsorption. However, careful consideration must be given to the methodologies employed, as direct comparisons between results can be challenging due to potential inconsistencies across different systems. To address these concerns, a thorough assessment of the methodology was performed (...).
 
-To address these concerns, a thorough assessment of the methodology is necessary. Key considerations include, first, the impact of distance beetween slab and adsorbate The effect of the separation between the slab and the adsorbate on the \dbe{} should be thoroughly investigated. This examination is crucial to establish a clear connection to gas phase results and ensure accurate interpretations.
-Then, the application of the SJ\textsuperscript{n} methodology. The SJ\textsuperscript{n} approach should be explored for adsorbates as well. The discussion around Fig.~\ref{fig:slabsthicknessSJn} suggests that SJ\textsuperscript{n} provides a better estimate of \dbe{} for CaO slabs. Confirmation of this finding could improve the reliability of \dbe{} predictions for various systems.
-
-Once the methodology is validated, a deeper analysis of the experimental data provided by Prof. A. Vlad can be undertaken (thought we already have some insights). These data includes spectra for aging over different periods of time, which could provide insights into the kinetics of the degradation process. IR spectroscopy will enhance this analysis, when possible.
-
-Furthermore, another objective is to investigate the behavior of \ce{BH4} and \ce{BF4} ions, aligning with the goals of the ECOBAT project. By integrating these investigations, a comprehensive understanding of the adsorption processes and chemical transformations in these systems can be achieved.
+Once the methodology was validated, (...)
 
 
 \clearpage
