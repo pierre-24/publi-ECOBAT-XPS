@@ -3,15 +3,21 @@
 ## for v2
 
 - [x] Properly discuss $E_{ref}$
-- [ ] Why is $E_{ref} = 0$ working so well for gas phase, and not for solid (and why is $E_\infty$ the good choice here?)
-- [ ] Fig. or Figure?
-- [ ] Improve introduction. In particular, tell a bit more about SEI of CIBs and previous attempts (insist on possible degradation pathways). Also, introduce a bit better the goals of the paper.
+- [x] Why is $E_{ref} = 0$ working so well for gas phase, and not for solid (and why is $E_\infty$ the good choice here?) → Taucher2020 quicky discuss this :/
+- [x] Improve introduction. In particular, tell a bit more about SEI of CIBs and previous attempts (insist on possible degradation pathways). Also, introduce a bit better the goals of the paper.
 - [x] Create SI (appendix does not work with achemso).
 - [x] Move some stuffs in SI (but check for \ref!!)
-- [ ] Conclude & abstract (& keywords?)
-- [ ] Acknowledgments
-- [ ] Clean up the bibliography, check for duplicates
+- [x] Acknowledgments
 - [x] Properly annotate S5-S9 + common scale among graphs?
 - [x] Legend Fig. 7a
+- [x] Ref. 2?
+- [ ] Finish outlooks (is anything else worth mentioning?)
+- [ ] Clean up the bibliography (abbreviation), check for duplicates
+- [ ] Difference in density between SJ and SJn?
 - [ ] RMSD surface atoms
-- [ ] Ref. 2?
+
+## for v3
+
+- [ ] Fig. or Figure?
+- [ ] abstract (& keywords?)
+- [ ] avoid label on top of each other (Fig. 7 and others)
