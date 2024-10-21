@@ -12,7 +12,7 @@
 - [x] Legend Fig. 7a
 - [x] Ref. 2?
 - [x] Finish outlooks (is anything else worth mentioning?)
-- [ ] Clean up the bibliography (abbreviation?), check for duplicates
+- [x] Clean up the bibliography (abbreviation?), check for duplicates
 - [x] Difference in density between SJ and SJn?
 - [x] RMSD surface atoms
 
