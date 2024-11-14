@@ -8,7 +8,7 @@ from scipy.signal import argrelextrema
 
 from XPS.commons import create_spectrum_BE, get_annotations, annotate_graph
 
-FAC = 3.25
+FAC = 3.35
 SLBS = [('Ca', 'black'), ('CaO', 'black'), ('CaO_OH2', 'black'), ('CaH2', 'black')]
 
 
@@ -60,7 +60,7 @@ def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbat
                 
     ax.set_xlim(*xrange)
     
-    ax.text(.05, .95, '{} {}s'.format(atom, 2 if atom == 'Ca' else 1), fontsize=18, transform=ax.transAxes)
+    ax.text(.05, .95, '{} {}s'.format(atom, 2 if atom == 'Ca' else 1), fontsize=16, transform=ax.transAxes)
     
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', default='../data/results_slab_adsorbate/Data_XPS_slabs_adsorbate_SJ_Evac.csv')
@@ -75,7 +75,7 @@ args = parser.parse_args()
 data = prepare_data(pandas.read_csv(args.input), no_C=False)
 data_slabs = prepare_data(pandas.read_csv(args.input_slabs))
 
-figure = plt.figure(figsize=(14, 9))
+figure = plt.figure(figsize=(11, 7))
 axes = figure.subplots(1, 3, sharey=True)
 axes[0].set_ylim(-1.8, FAC * len(SLBS) - .5)
 
@@ -99,7 +99,7 @@ for i, (label, color) in enumerate(SLBS):
         txt = 'CaH$_2$'
     axes[0].text(-.05, .12 + i * .23, txt, color=color, transform=axes[0].transAxes, rotation=90, va='center')
 
-axes[1].text(.5, 1.05, args.name, fontsize=18, horizontalalignment='center', transform=axes[1].transAxes)
+axes[1].text(.5, 1.05, args.name, fontsize=16, horizontalalignment='center', transform=axes[1].transAxes)
 
 plt.tight_layout()
 figure.savefig(args.output)

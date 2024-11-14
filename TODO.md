@@ -20,8 +20,10 @@
 
 - [ ] Fig. or Figure?
 - [ ] avoid label on top of each other (Fig. 7 and others)
-- [ ] Description of supplementary materials?
+- [x] Description of supplementary materials?
 - [ ] PACS?
 - [ ] Keywords?
 - [ ] prb vs prl style?
 - [ ] citation style?
+- [ ] "carbohydrate"
+- [x] Data Availability Statement? (https://publishing.aip.org/resources/researchers/author-instructions/#data)

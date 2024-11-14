@@ -42,7 +42,7 @@ def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple
     
     ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
     error = subdata['Delta_exp'] - subdata['Delta_computed']
-    ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({})'.format(numpy.mean(error), numpy.std(error), label), color=color)
+    ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({})'.format(numpy.mean(error), numpy.std(error), label), color=color, rotation=45)
     
     if color == 'tab:blue':
         ax.text(-4, 8, '{} 1s (N={})'.format(atom, len(error)), fontsize=12)
@@ -64,7 +64,7 @@ data = []
 for inp in args.inputs:
     data.append(prepare_data(pandas.read_csv(inp), data_ref))
 
-figure = plt.figure(figsize=(7, 10))
+figure = plt.figure(figsize=(6, 9))
 axes = figure.subplots(3, 2, sharey=True)
 figure.delaxes(axes[2, 1])
 
@@ -77,7 +77,7 @@ lspace = numpy.linspace(-5, 10, 101)
 [ax.set_xlabel('Experimental $\\Delta$BE (eV)') for ax in [axes[1, 1], axes[2, 0]]]
 
 COLORS = ['tab:blue', 'tab:green']
-POSITIONS = [(-4, 6), (-2, -4)]
+POSITIONS = [(-4.5, -1), (-1, -4.5)]
 
 for i, subdata in enumerate(data):
     plot_atom(axes[0, 0], subdata, 'C', COLORS[i], POSITIONS[i], args.names[i])

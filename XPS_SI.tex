@@ -214,12 +214,14 @@ preprint,%
 \end{table}
 
 \newcommand{\XPSsa}[2]{
+	\begin{turnpage}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=\linewidth]{Figure#1}
+	\includegraphics[width=.9\linewidth]{Figure#1}
 	\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cpx{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
 	\label{fig:spectraXPSads#2}
 \end{figure}
+\end{turnpage}
 }
 
 \XPSsa{S5}{b}

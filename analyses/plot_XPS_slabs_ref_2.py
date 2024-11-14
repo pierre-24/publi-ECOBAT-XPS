@@ -83,7 +83,7 @@ for inp in args.inputs:
     data.append(prepare_data(pandas.read_csv(inp), data_height))
 
 NY = int(numpy.ceil(len(args.inputs) / 2))
-figure = plt.figure(figsize=(7, NY * 3.5))
+figure = plt.figure(figsize=(6, NY * 3))
 axes = figure.subplots(NY, 2, sharey=True)
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
@@ -101,6 +101,9 @@ for i, (ax, subdata) in enumerate(zip(axes.flatten(), data)):
 
 if len(args.inputs) % 2 != 0:
     figure.delaxes(axes.flatten()[-1])
+
+ymi, yma = axes[0,0].get_ylim()    
+axes[0,0].set_ylim(ymi, yma + .75)
 
 plt.tight_layout()
 figure.savefig(args.output)

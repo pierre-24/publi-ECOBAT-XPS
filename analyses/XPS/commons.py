@@ -42,7 +42,7 @@ def get_annotations(inp: str):
     
     return annotations
 
-def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: float, color='black', position: str = 'top', shift=.1):
+def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: float, color='black', position: str = 'top', shift=.1, fontsize=8):
     for a_atom, a_label in annotations:
         d = data[data['Atom_indices'].str.contains(a_atom)]
         if len(d) > 0:
@@ -55,8 +55,8 @@ def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: f
                 va=('bottom' if position == 'top' else 'top'), 
                 ha='center', 
                 color=color,
-                rotation=90,
-                fontsize=8
+                # rotation=90,
+                fontsize=fontsize
             )
 
 
