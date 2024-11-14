@@ -1,4 +1,11 @@
-\documentclass[journal=jpccck,manuscript=article]{achemso}
+\documentclass[%
+aip,
+amsmath,amssymb,
+preprint,%
+%reprint,%
+%author-year,%
+%author-numerical,%
+]{revtex4-2}
 
 \usepackage{hyperref}
 
@@ -7,39 +14,38 @@
 \usepackage{tikz}
 \usepackage{paralist}
 \usepackage[version=4]{mhchem}
-\usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{chngcntr}
 
 
-\author{Pierre Beaujean}
-\affiliation[Unamur]
-{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
-
-
-\author{Benoît Champagne}
-\affiliation[Unamur]
-{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
-\email{benoit.champagne@unamur.be}
-
-\title{Prediction of XPS binding energies for molecules grafted on calcium surfaces\\Supporting information}
-
 \def\dbe{\ensuremath{\Delta\text{BE}}}
-
-
 
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
-\NewDocumentCommand{\cp}{O{}m}{SJ\IfNoValueTF{#1}{}{\textsuperscript{#1}}+$E_{ref} = #2$}
+\NewDocumentCommand{\cpx}{O{}m}{SJ\IfNoValueTF{#1}{}{\textsuperscript{#1}}+$E_{ref} = #2$}
 
 \begin{document}
+	\title{Prediction of XPS binding energies for molecules grafted on calcium surfaces\\ Supplementary materials}
+	
+	\author{Pierre Beaujean}
+	\email{pierre.beaujean@unamur.be}
+	\affiliation
+	{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
+	
+	
+	\author{Benoît Champagne}
+	\affiliation
+	{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
+	
+	\date{\today}
+	
 	\maketitle
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{FigureS1}
-	\caption{Molecules for the benchmark , from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}. The atoms for which experimental BE are provided are highlighted in blue.  The reference compounds used for each atom are highlighted in red.}
+	\caption{Molecules for the benchmark, from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}. The atoms for which experimental BE are provided are highlighted in blue.  The reference compounds used for each atom are highlighted in red.}
 	\label{fig:core185}
 \end{figure}
 
@@ -52,64 +58,67 @@
 
 \begin{table}[!h]
 	\centering
+	\caption{Comparison between experimental (from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the \cpx[n]{0} protocol) absolute BE (in \si{\electronvolt}).}
+	\label{tab:xpssjn}
+	\begin{ruledtabular}
 	\begin{tabular}{lcccc}
-		\toprule
+		
 		& Reference & BE (exp.)  & BE(calc.)  & $\Delta$(calc. - exp.)\\
-		\midrule
+		\hline
 		B 1s & \ce{H2B-BH2} & 196.50 & 201.47 & 4.97\\
 		C 1s & \ce{CH4} & 290.90 & 297.04 & 6.14\\
 		N 1s & \ce{NH3} & 405.60 & 413.58 & 7.98\\
 		O 1s & \ce{H2O} & 539.70 & 548.79 & 9.09\\
 		F 1s & \ce{HF} & 694.23 & 704.78 &10.55\\
-		\bottomrule
+		
 	\end{tabular}
-	\caption{Comparison between experimental (from Ref.~\citenum{pueyobellafontPredictingCoreLevel2017}) and calculated (as computed with the \cp[n]{0} protocol) absolute BE (in \si{\electronvolt}).}
-	\label{tab:xpssjn}
+\end{ruledtabular}
 \end{table}
 
 \begin{table}[!h]
 	\centering
+	\caption{Mean displacement (in \si{\angstrom}) of the calcium atoms of the slab due to the adsorption of a substrate.}
+	\label{tab:disp}
+	\begin{ruledtabular}
 	\begin{tabular}{>{\bfseries}lcccc}
-		\toprule
 		& Ca & \ce{CaO} & \ce{CaO.H2O} & \ce{CaH2} \\
-		\midrule
+		\hline
 		& \multicolumn{4}{c}{Hydrocarbons} \\
 		a & 0.011 & 0.008 & --- & 0.045 \\
 		b & 0.014 & 0.007 & 0.013 & 0.047 \\
 		c & 0.011 & 0.007 & 0.014 & 0.052 \\
 		d & 0.020 & 0.007 & 0.035 & 0.051 \\
-		\midrule
+		\hline
 		& \multicolumn{4}{c}{Polar carbohydrates} \\
 		e & 0.037 & 0.009 & 0.009 & 0.086 \\
 		f & 0.067 & 0.010 & 0.010 & 0.055 \\
 		g & 0.015 & 0.012 & 0.013 & 0.065 \\
 		h & 0.013 & 0.008 & 0.027 & 0.051 \\
-		\midrule
+		\hline
 		& \multicolumn{4}{c}{Protic carbohydrates} \\
 	i & 0.019 & 0.029 & 0.077 & 0.054 \\
 	j & 0.057 & 0.044 & 0.091 & 0.067 \\
-		\bottomrule
 	\end{tabular}
-	\caption{Mean displacement (in \si{\angstrom}) of the calcium atoms of the slab due to the adsorption of a substrate.}
-	\label{tab:disp}
+\end{ruledtabular}
 \end{table}
 
 \begin{table}[!h]
+	\caption{Value of peak maximum energies  (in \si{\electronvolt}) for Ca, CaO, and  \ce{CaCO3}, from different sources. It is now recognized than for surfaces, a peak is not necessarily equivalent to a single binding energies (peak fitting is required), and that the spectra for pure CaO are difficult to obtain without contamination.\cite{dupinSystematicXPSStudies2000}}
+	\begin{ruledtabular}
 	\begin{tabular}{c ccc c ccc cl}
-		\toprule
 		\ce{Ca^0} & & \multicolumn{2}{c}{CaO} & & \multicolumn{3}{c}{\ce{CaCO3}} & Ref. & Note\\
 		\cline{1-1} \cline{3-4} \cline{6-8}
 		Ca 2s & & Ca 2s & O 1s  & & Ca 2s & O 1s & C 1s\\
-		\midrule
+		\hline
 		438.8 & &---&---&& --- & --- &--- & \citenum{fuggleCorelevelBindingEnergies1980} & Relative to VBM\\
 		436.6 & & 437.9 & 528.9& & 439.1 &531.6 & 289.7& \citenum{sosulnikovXrayPhotoelectronStudies1992}& Relative to C 1s = \SI{285.0}{\electronvolt}\\
 		 --- && 437.4 & 531.2&& 437.8 & 531.0 & 289.0 & \citenum{demriXPSStudyCalcium1995} & Relative to C 1s = \SI{284.6}{\electronvolt}\\
 		 $\sim$450 & & 441.0 & 532.2 & & --- & --- & --- & \citenum{ochsCO2ChemisorptionCa1998} & Relative to $E_F$ \\
 		 --- & & 439.0 & 531.9 & & 438.4 & 531.4 & 285.4 & \citenum{cristHandbookMonochromaticXPS2000a} & Relative to C 1s = \SI{285.0}{\electronvolt}\\
 		 442.5 & & 438.15 & 531.15 & & 439.08 & 531.58 & 290.08 & \citenum{cristXPSLibraryWebsite2021a} & Relative to C 1s = \SI{285.0}{\electronvolt}\\
-		\bottomrule
+		
 	\end{tabular}
-	\caption{Value of peak maximum energies  (in \si{\electronvolt}) for Ca, CaO, and  \ce{CaCO3}, from different sources. It is now recognized than for surfaces, a peak is not necessarily equivalent to a single binding energies (peak fitting is required), and that the spectra for pure CaO are difficult to obtain without contamination.\cite{dupinSystematicXPSStudies2000}}
+\end{ruledtabular}
 \end{table}
 
 \begin{figure}[!h]
@@ -127,86 +136,88 @@
 \end{figure}
 
 \begin{table}
+	\caption{Mean (and standard deviation) bulk and surface \dbe{} values  (in \si{\electronvolt}) for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ method with various reference energies.}
+	\begin{ruledtabular}
 	\begin{tabular}{l cc c ccc}
-		\toprule
+		
 		& \multicolumn{2}{c}{Ca 2s} &&  \multicolumn{3}{c}{O 1s}\\
 		\cline{2-3} \cline{5-7}
 		& Bulk & Surface & & Bulk & Surface & Hydroxyls\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ+$E_{ref}=0$}  \\
 		\ce{Ca^0} &3.43 $\pm$ 0.04 & 3.90 $\pm$ 0.01 && --- & --- & ---\\
 		\ce{CaH2} & 3.46 $\pm$ 0.02 & 3.45 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & 1.70 $\pm$ 0.02 & 2.33 $\pm$ 0.00 && -7.02 $\pm$ 0.02 & -7.54 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 1.25 $\pm$ 0.04 & 1.78 $\pm$ 0.00 && -7.50 $\pm$ 0.05 & -5.83 $\pm$ 0.00 & -5.90 $\pm$ 0.01\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ+$E_{ref}=E_F$}  \\
 		\ce{Ca^0} &-0.36 $\pm$ 0.04 & 0.10 $\pm$ 0.01 && --- & --- & ---\\
 		\ce{CaH2} & 0.39 $\pm$ 0.02 & 0.23 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & 0.04 $\pm$ 0.04 & 0.56 $\pm$ 0.00 && -2.99 $\pm$ 0.01 & -3.63 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 0.03 $\pm$ 0.06 & 0.59 $\pm$ 0.00 && -2.97 $\pm$ 0.05 & -1.33 $\pm$ 0.00 & -1.49 $\pm$ 0.00\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ+$E_{ref}=\varepsilon_{Ar,2s}$}  \\
 		\ce{Ca^0} &1.05 $\pm$ 0.04 & 1.50 $\pm$ 0.00 && --- & --- & ---\\
 		\ce{CaH2} & 0.51 $\pm$ 0.02 & 0.50 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & 0.24 $\pm$ 0.01 & 0.96 $\pm$ 0.00 && -3.55 $\pm$ 0.03 & -4.04 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 0.15 $\pm$ 0.05 & 0.63 $\pm$ 0.06 && -3.83 $\pm$ 0.08 & -1.63 $\pm$ 0.64 & -1.57 $\pm$ 0.70\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ+$E_{ref}=E_\infty$}  \\
 		\ce{Ca^0} &1.05 $\pm$ 0.04 & 1.54 $\pm$ 0.01 && --- & --- & ---\\
 		\ce{CaH2} & 0.54 $\pm$ 0.02 & 0.52 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & 0.25 $\pm$ 0.00 & 0.97 $\pm$ 0.00 && -3.58 $\pm$ 0.03 & -4.05 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 0.17 $\pm$ 0.05 & 0.70 $\pm$ 0.00 && -3.74 $\pm$ 0.04 & -2.04 $\pm$ 0.00 & -2.01 $\pm$ 0.00\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ+$E_{ref}=\phi$}  \\
 		\ce{Ca^0} &4.83 $\pm$ 0.04 & 5.34 $\pm$ 0.01 && --- & --- & ---\\
 		\ce{CaH2} & 3.62 $\pm$ 0.02 & 3.75 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & 1.91 $\pm$ 0.03 & 2.74 $\pm$ 0.00 && -7.63 $\pm$ 0.05 & -7.95 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 1.39 $\pm$ 0.03 & 1.89 $\pm$ 0.00 && -8.27 $\pm$ 0.04 & -6.54 $\pm$ 0.00 & -6.42 $\pm$ 0.00\\
-		\bottomrule
+		
 		\end{tabular}
-		    \caption{Mean (and standard deviation) bulk and surface \dbe{} values  (in \si{\electronvolt}) for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ method with various reference energies.}
+	\end{ruledtabular}
 \end{table}
 
 \begin{table}
+	\caption{Mean (and standard deviation) bulk and surface \dbe{} values (in \si{\electronvolt}) for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ\textsuperscript{n}  method with various reference energies.}
+	\begin{ruledtabular}
 	\begin{tabular}{l cc c ccc}
-		\toprule
 		& \multicolumn{2}{c}{Ca 2s} &&  \multicolumn{3}{c}{O 1s}\\
 		\cline{2-3} \cline{5-7}
 		& Bulk & Surface & & Bulk & Surface & Hydroxyls\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ$^n$+$E_{ref}=0$}  \\
 		\ce{Ca^0} &1.58 $\pm$ 0.04 & 2.05 $\pm$ 0.01 && --- & --- & ---\\
 		\ce{CaH2} & 2.06 $\pm$ 0.05 & 2.83 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & 0.82 $\pm$ 0.05 & 1.54 $\pm$ 0.00 && -8.90 $\pm$ 0.06 & -9.03 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 1.43 $\pm$ 0.05 & 2.64 $\pm$ 0.00 && -8.40 $\pm$ 0.04 & -6.38 $\pm$ 0.00 & -6.19 $\pm$ 0.00\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ$^n$+$E_{ref}=E_F$}  \\
 		\ce{Ca^0} &-0.48 $\pm$ 0.03 & -0.02 $\pm$ 0.01 && --- & --- & ---\\
 		\ce{CaH2} & -0.73 $\pm$ 0.03 & -0.29 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & -0.86 $\pm$ 0.05 & -0.01 $\pm$ 0.00 && -0.63 $\pm$ 0.14 & -0.79 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & -0.56 $\pm$ 0.16 & 0.62 $\pm$ 0.00 && -0.43 $\pm$ 0.13 & 1.67 $\pm$ 0.00 & 1.96 $\pm$ 0.00\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ$^n$+$E_{ref}=\varepsilon_{Ar,2s}$}  \\
 		\ce{Ca^0} &-1.57 $\pm$ 0.04 & -1.09 $\pm$ 0.00 && --- & --- & ---\\
 		\ce{CaH2} & -2.07 $\pm$ 0.04 & -1.32 $\pm$ 0.01 && --- & --- & ---\\
 		CaO & -1.12 $\pm$ 0.09 & -0.56 $\pm$ 0.00 && -4.66 $\pm$ 0.01 & -5.00 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 0.58 $\pm$ 0.04 & 1.43 $\pm$ 0.00 && -3.06 $\pm$ 0.09 & -1.42 $\pm$ 0.00 & -1.48 $\pm$ 0.01\\
-		\midrule
+		\hline
 		\multicolumn{7}{c}{SJ$^n$+$E_{ref}=E_F'$}  \\
 		\ce{Ca^0} &2.68 $\pm$ 0.04 & 3.14 $\pm$ 0.03 && --- & --- & ---\\
 		\ce{CaH2} & 3.40 $\pm$ 0.04 & 3.87 $\pm$ 0.00 && --- & --- & ---\\
 		CaO & 1.06 $\pm$ 0.10 & 2.08 $\pm$ 0.00 && -4.99 $\pm$ 0.19 & -4.93 $\pm$ 0.00 & ---\\
 		\ce{CaO.H2O} & 0.31 $\pm$ 0.25 & 1.83 $\pm$ 0.00 && -5.84 $\pm$ 0.21 & -3.40 $\pm$ 0.00 & -2.88 $\pm$ 0.00\\
-		\bottomrule
 	\end{tabular}
-	\caption{Mean (and standard deviation) bulk and surface \dbe{} values (in \si{\electronvolt}) for 6-layer (\ce{Ca^0}, CaO, and \ce{CaO.H2O}) and 12-layer (\ce{CaH2}) slabs, computed using the SJ\textsuperscript{n}  method with various reference energies.}
+\end{ruledtabular}
 \end{table}
 
 \newcommand{\XPSsa}[2]{
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{Figure#1}
-	\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cp{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
+	\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cpx{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
 	\label{fig:spectraXPSads#2}
 \end{figure}
 }

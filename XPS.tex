@@ -1,4 +1,11 @@
-\documentclass[journal=jpccck,manuscript=article]{achemso}
+\documentclass[%
+aip,
+amsmath,amssymb,
+preprint,%
+%reprint,%
+%author-year,%
+%author-numerical,%
+]{revtex4-2}
 
 \usepackage{hyperref}
 
@@ -7,33 +14,44 @@
 \usepackage{tikz}
 \usepackage{paralist}
 \usepackage[version=4]{mhchem}
-\usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{chngcntr}
 
+\def\dbe{\ensuremath{\Delta\text{BE}}}
+
+%% Apr 2021: AIP requests that the corresponding 
+%% email to be moved after the affiliations
+\makeatletter
+\def\@email#1#2{%
+	\endgroup
+	\patchcmd{\titleblock@produce}
+	{\frontmatter@RRAPformat}
+	{\frontmatter@RRAPformat{\produce@RRAP{*#1\href{mailto:#2}{#2}}}\frontmatter@RRAPformat}
+	{}{}
+}%
+\makeatother
+
+\begin{document}
+	
+\title{Prediction of XPS binding energies for molecules grafted on calcium surfaces}
 
 \author{Pierre Beaujean}
-\affiliation[Unamur]
-{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
 \email{pierre.beaujean@unamur.be}
+\affiliation
+{University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
 
 
 \author{Benoît Champagne}
-\affiliation[Unamur]
+\affiliation
 {University of Namur, Theoretical Chemistry Lab, Unit of Theoretical and Structural Physical Chemistry, Namur Institute of Structured Matter, rue de Bruxelles, 61, B-5000 Namur (Belgium)}
 
-\title{Prediction of XPS binding energies for molecules grafted on calcium surfaces}
+\date{\today}
 
-\def\dbe{\ensuremath{\Delta\text{BE}}}
-
-\begin{document}
-\maketitle
-
-\begin{abstract}
-	This study investigates the adsorption of tetrahydrofuran (THF) and its potential degradation products on various calcium surfaces using quantum chemistry calculations. Slabs of metallic calcium (\ce{Ca^0}), calcium oxide (\ce{CaO}), and calcium hydride (\ce{CaH2}) were modeled, with additional consideration given to full hydroxide coverage on \ce{CaO}. Two primary reaction types were identified: reactions between the carbon atoms of the adsorbates and the surface, particularly with \ce{CO2}, and proton transfer from the alcohol moiety in the adsorbates to the \ce{CaO} surface.
-	
-	To complement the structural insights, simulated X-ray photoelectron spectroscopy (XPS) spectra were analyzed to provide detailed information on the chemical environments of atoms during adsorption. After a careful methodological evaluation, it was applied to the different systems, showing significant changes in O 1s and C 1s spectra after adsorption, while Ca 2s binding energies remained less affected. Interactions between oxygen and metallic calcium (\ce{Ca^0}) were also clearly observed in the spectra. Our results aligns with experimental data, when available.	These findings provide valuable trends for analyzing XPS spectra in the context of solid-electrolyte interphase (SEI) formation. 
+\begin{abstract} %% note: 250 words max
+	This study investigates the adsorption of tetrahydrofuran (THF) and its potential degradation products on various calcium surfaces using quantum chemistry calculations. Slabs of metallic calcium (\ce{Ca^0}), calcium oxide (\ce{CaO}), and calcium hydride (\ce{CaH2}) were modeled, with additional consideration given to full hydroxide coverage on \ce{CaO}. Two primary reaction types were identified: reactions between the carbon atoms of the adsorbates and the surface, particularly with \ce{CO2}, and proton transfer from the alcohol moiety in the adsorbates to the \ce{CaO} surface. To complement the structural insights, simulated X-ray photoelectron spectroscopy (XPS) spectra were analyzed to provide detailed information on the chemical environments of atoms during adsorption. After a careful methodological evaluation, it was applied to the different systems, showing significant changes in O 1s and C 1s spectra after adsorption, while Ca 2s binding energies remained less affected. Interactions between oxygen and metallic calcium (\ce{Ca^0}) were also clearly observed in the spectra. Our results aligns with experimental data, when available.	These findings provide valuable trends for analyzing XPS spectra in the context of solid-electrolyte interphase (SEI) formation. 
 \end{abstract}
+
+\maketitle
 
 
 \clearpage
@@ -55,7 +73,7 @@ Therefore, this study explores the XPS spectra related to the degradation and po
 
 \begin{figure}
 	\centering
-	\includegraphics{Figure1}
+	\includegraphics[width=\linewidth]{Figure1}
 	\caption{The main polymerization pathway of THF leads to PTMEG (black). \textbf{j} is used as a model for the PTMEG (with n=2), while fragmentation can lead to (un)saturated hydrocarbons (\textbf{a}-\textbf{d}) or carbohydrates (\textbf{e}-\textbf{i}). Numbers indicates correspondence with the XPS dataset of Pueyo Bellafont \emph{et al.}\cite{pueyobellafontPerformanceTPSSFunctional2016} (Fig. S1).}
 	\label{fig:THFdegradation}
 \end{figure}
@@ -171,20 +189,21 @@ Thus, using these (100) orientation, 3x3 (\ce{Ca^0} and CaO) and 2x2 (\ce{CaH2})
 
 Additionally, given that it reported to be favorable\cite{deleeuwDensityFunctionalTheory2000,fujimoriInteractionWaterCaO2016a}, the adsorption of water on the CaO surface was investigated. In fact, the contamination of CaO by surface hydroxyls was reported in many experiments\cite{dupinSystematicXPSStudies2000,bebenseeAdsorptionOxygenWater2008,fujimoriInteractionWaterCaO2016a,cristXPSLibraryWebsite2021a}. Thus, an additional slab with full coverage (1 water molecule per surface Ca), denoted as \ce{CaO.H_2O}, was built and its geometry was also optimized. 
 
-\begin{table}[!h]
-	\centering
+\begin{table*}
+	\caption{Surface energies ($\gamma^{hkl}$, in \si{\joule\per\meter\squared}) of Ca, CaO, and \ce{CaH2} slabs along different orientations, as determined through Eq.~\eqref{eq:surf} using the $N$ values given in parentheses.}
+	\label{tab:surf}
+	\begin{ruledtabular}
 	\begin{tabular}{lccc}
-		\toprule
+		
 		&	\ce{Ca^0} & \ce{CaO} &	\ce{CaH2} \\
-		\midrule
+		\hline
 		(100) & 0.555 ($N\in[6,16]$) & 0.470 ($N\in[6,16]$) & 0.871  ($N\in[12,32]$)\\
 		(110) & 0.630  ($N\in[6,16]$)& 1.777  ($N\in[6,16]$)& 1.109 ($N\in[12,32]$)\\
 		(111) & 0.563  ($N\in[6,16]$) & 4.080  ($N\in[5,15]$)  & 1.117   ($N\in[12,32]$) \\ 
-		\bottomrule
+		
 	\end{tabular}
-	\caption{Surface energies ($\gamma^{hkl}$, in \si{\joule\per\meter\squared}) of Ca, CaO, and \ce{CaH2} slabs along different orientations, as determined through Eq.~\eqref{eq:surf} using the $N$ values given in parentheses.}
-	\label{tab:surf}
-\end{table}
+\end{ruledtabular}
+\end{table*}
 
 Finally, compounds \textbf{a}--\textbf{j} (Fig.~\ref{fig:THFdegradation}) were positioned on both sides of the slabs, initially placed approximately \SI{6}{\angstrom} from the surface. A final optimization was then performed, keeping the cell parameters and the two central layers fixed.
 
@@ -200,61 +219,60 @@ Finally, the \dbe{} values were calculated for each atom of interest in the mole
 
 \section{Results}\label{sec:results}
 
-\NewDocumentCommand{\cp}{O{}m}{SJ\IfNoValueTF{#1}{}{\textsuperscript{#1}}+$E_{ref} = #2$}
+\NewDocumentCommand{\cpx}{O{}m}{SJ\IfNoValueTF{#1}{}{\textsuperscript{#1}}+$E_{ref} = #2$}
 
 \subsection{Selection of a computational protocol for binding energies}\label{sec:proto}
 
-A comparison between experimental and computed \dbe{} values for carbon is shown in Fig.~\ref{fig:xps_C185_C}. Consistent with previous studies \cite{pueyobellafontPredictingCoreLevel2017,golzeAccurateAbsoluteRelative2020}, the \cp[n]{0} protocol provides reliable results for all atoms, exhibiting a very small mean error and an acceptable standard deviation. However, achieving this level of agreement requires using a reference per atom (Table S1), as the discrepancy between experimental and computed absolute BEs tends to increase with the atomic number. Similarly, using \cp[n]{\varepsilon_{Ar,2s}} results in small errors, which is consistent with the observation of Garcià-Gil \textit{et al.}\cite{garcia-gilCalculationCoreLevel2012} (although they only used IS calculations). Across the entire set of 184 \dbe{} values, the combination of each reference energy with the SJ\textsuperscript{n} approach yields comparable results (Fig.~\ref{fig:xps_C185}). 
+A comparison between experimental and computed \dbe{} values for carbon is shown in Fig.~\ref{fig:xps_C185_C}. Consistent with previous studies \cite{pueyobellafontPredictingCoreLevel2017,golzeAccurateAbsoluteRelative2020}, the \cpx[n]{0} protocol provides reliable results for all atoms, exhibiting a very small mean error and an acceptable standard deviation. However, achieving this level of agreement requires using a reference per atom (Table S1), as the discrepancy between experimental and computed absolute BEs tends to increase with the atomic number. Similarly, using \cpx[n]{\varepsilon_{Ar,2s}} results in small errors, which is consistent with the observation of Garcià-Gil \textit{et al.}\cite{garcia-gilCalculationCoreLevel2012} (although they only used IS calculations). Across the entire set of 184 \dbe{} values, the combination of each reference energy with the SJ\textsuperscript{n} approach yields comparable results (Fig.~\ref{fig:xps_C185}). 
 
-In contrast, other reference energies significantly degrade the accuracy of the predicted gas-phase \dbe{}. The largest errors are observed when using the Fermi energy, \cp{E_F}, \cp[n]{E_F}, or \cp [n]{E_F'}. In combination with the SJ\textsuperscript{n} protocol it leads to underestimated \dbe{} values. Then, \cp{0}, \cp{\varepsilon_{Ar,2s}}, and \cp{E_\infty} perform similarly, and finally, the lowest error found when using \cp{\phi}, although it remains substantial. Moreover, all reference energies combined with the SJ protocol tend to overestimate the \dbe{} values. One possible reason is that placing a (half) electron in the LUMO of a molecule significantly alters its electronic structure (see Fig.~S10),~ often more so than the effect of the core-hole itself, which appears to be better captured by the SJ\textsuperscript{n} approach.\cite{taucherFinalStateSimulationsCoreLevel2020}
+In contrast, other reference energies significantly degrade the accuracy of the predicted gas-phase \dbe{}. The largest errors are observed when using the Fermi energy, \cpx{E_F}, \cpx[n]{E_F}, or \cpx [n]{E_F'}. In combination with the SJ\textsuperscript{n} protocol it leads to underestimated \dbe{} values. Then, \cpx{0}, \cpx{\varepsilon_{Ar,2s}}, and \cpx{E_\infty} perform similarly, and finally, the lowest error found when using \cpx{\phi}, although it remains substantial. Moreover, all reference energies combined with the SJ protocol tend to overestimate the \dbe{} values. One possible reason is that placing a (half) electron in the LUMO of a molecule significantly alters its electronic structure (see Fig.~S10),~ often more so than the effect of the core-hole itself, which appears to be better captured by the SJ\textsuperscript{n} approach.\cite{taucherFinalStateSimulationsCoreLevel2020}
 
 
 
-\begin{figure}[!h]
+\begin{figure*}
 	\centering
 	\includegraphics[width=\linewidth]{Figure3}
 	\caption{Error in the calculated gas-phase \dbe{}  (in \si{\electronvolt}) with respect to experiment, computed using the SJ (left) and SJ\textsuperscript{n} (right) method and different reference energies, for the carbon atom ($N=107$). For each reference, the violin plot illustrates the error distribution (horizontal lines represent, from bottom to top, the minimum, 1\textsuperscript{st} quartile, median, 3\textsuperscript{rd} quartile, and maximum). Additionally, the mean $\pm$ standard deviation is displayed}
 	\label{fig:xps_C185_C}
-\end{figure}
+\end{figure*}
 
 
-\begin{figure}[!h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.85\linewidth]{Figure4}
+	\includegraphics[width=.8\linewidth]{Figure4}
 	\caption{Comparison between experimental and calculated gas phase \dbe{} (in \si{\electronvolt}), as computed with thetwo best-performing protocols, on the different atoms. For each of them, the error (as mean $\pm$ standard deviation) is given.}
 	\label{fig:xps_C185}
 \end{figure}
-
 
 \clearpage
 
 The situation differs for slabs. The impact of slab thickness ($N$) on the Ca 2s binding energy, evaluated using both protocols, is shown in Figs.~\ref{fig:slabsthicknessSJ}--\ref{fig:slabsthicknessSJn}. The results reveal a substantial difference (exceeding \SI{0.5}{\electronvolt} for certain reference energies) between the surface layers (defined as the first and last layers of the slab) and the bulk \dbe{}, with relatively small standard deviation (values are provided in Tables S4-S5). With all protocols, BE(surface Ca 2s) $>$ BE(bulk Ca 2s). The difference between bulk and surface BEs are referred to as surface core level shifts (SCLS),\cite{olovssonCorelevelShiftsComplex2006,bagusChemicalSignificanceXray2023} which as been reported for metals\cite{aldenInitioSurfaceCorelevel1993,weinertCorelevelShiftsBulk1995,olovssonCorelevelShiftsComplex2006} and oxides\cite{harmerSpeciesFormedCuprite2009,lousadaFirstStagesOxide2018,bagusRevisitingSurfaceCorelevel2019}. One of the main cause of this difference is the change in Madelung energy between bulk and surface atoms\cite{nelinSurfaceCorelevelBinding2014}, thought this is not the only effect\cite{bagusRevisitingSurfaceCorelevel2019,bagusChemicalSignificanceXray2023,bagusXrayPhotoelectronSpectroscopy2024}.
 
-Another key observation is that slab thickness influences some results more than others. For calculations with \cp{E_F}, \cp{\varepsilon_{Ar,2s}}, and \cp{E_\infty}, the predicted values remain nearly constant as $N$ increases. Conversely, the SJ\textsuperscript{n} method appears very sensitive to the system size. It should however be noted that with $E_{ref}=\varepsilon_{Ar,2s}$, calculation fails to converge or provide slightly different values, resulting in large standard deviations, notably for CaO with $N=16$ layers. 
+Another key observation is that slab thickness influences some results more than others. For calculations with \cpx{E_F}, \cpx{\varepsilon_{Ar,2s}}, and \cpx{E_\infty}, the predicted values remain nearly constant as $N$ increases. Conversely, the SJ\textsuperscript{n} method appears very sensitive to the system size. It should however be noted that with $E_{ref}=\varepsilon_{Ar,2s}$, calculation fails to converge or provide slightly different values, resulting in large standard deviations, notably for CaO with $N=16$ layers. 
 
-For O 1s, as illustrated in Fig.~\ref{fig:slabOH2}, where simulated XPS spectra for CaO and \ce{CaO.H2O} (both with 6 layers) are shown, the distinction between bulk and surface contributions is notable. In the case of CaO, BE(bulk O 1s in CaO) $\geq$ BE(surface O 1s in CaO), whereas in \ce{CaO.H2O}, the reverse trend is observed, consistent across all protocols. Furthermore, BE(bulk O 1s in CaO) $\approx$ BE(bulk O 1s in \ce{CaO.H2O}) when using \cp{E_F}, \cp{E_\infty}, or \cp{\varepsilon_{Ar,2s}}. However, the latter yields unreliable results, as evidenced by the spurious peak at \dbe{} = \SI{0}{\electronvolt} in the O 1s spectra, suggesting an artificial differentiation between hydroxyl environments that is not reflected when using other reference energies. Finally, for the hydroxylated slabs, BE(surface O 1s) $\geq$ BE(hydroxyl O 1s). This latter results was also found by Fujimori \emph{et al.} \cite{fujimoriInteractionWaterCaO2016a} via calculations using a similar method to ours, which also showed than the separation between these two BEs depends on the hydroxyl coverage of the surface.
+For O 1s, as illustrated in Fig.~\ref{fig:slabOH2}, where simulated XPS spectra for CaO and \ce{CaO.H2O} (both with 6 layers) are shown, the distinction between bulk and surface contributions is notable. In the case of CaO, BE(bulk O 1s in CaO) $\geq$ BE(surface O 1s in CaO), whereas in \ce{CaO.H2O}, the reverse trend is observed, consistent across all protocols. Furthermore, BE(bulk O 1s in CaO) $\approx$ BE(bulk O 1s in \ce{CaO.H2O}) when using \cpx{E_F}, \cpx{E_\infty}, or \cpx{\varepsilon_{Ar,2s}}. However, the latter yields unreliable results, as evidenced by the spurious peak at \dbe{} = \SI{0}{\electronvolt} in the O 1s spectra, suggesting an artificial differentiation between hydroxyl environments that is not reflected when using other reference energies. Finally, for the hydroxylated slabs, BE(surface O 1s) $\geq$ BE(hydroxyl O 1s). This latter results was also found by Fujimori \emph{et al.} \cite{fujimoriInteractionWaterCaO2016a} via calculations using a similar method to ours, which also showed than the separation between these two BEs depends on the hydroxyl coverage of the surface.
 
 
 
-\begin{figure}[!h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.85\linewidth]{Figure5}
+	\includegraphics[width=.8\linewidth]{Figure5}
 	\caption{Effect of slab thickness (expressed as the number of layers, $N/N_0$, where $N_0 = 2$ for \ce{Ca^0} and CaO and 4 for \ce{CaH2} represents the number of layers in the unit cell) on the mean bulk (filled markers) and surface (empty markers) \dbe{} for Ca 2s (in \si{\electronvolt}), calculated using the SJ method and various reference energies. The vertical lines indicate standard deviation.}
 	\label{fig:slabsthicknessSJ}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.85\linewidth]{Figure6}
+	\includegraphics[width=.8\linewidth]{Figure6}
 	\caption{Effect of slab thickness (expressed as the number of layers, $N/N_0$, where $N_0 = 2$ for \ce{Ca^0} and CaO and 4 for \ce{CaH2} represents the number of layers in the unit cell)  on the mean bulk (filled markers) and surface (empty markers) \dbe{} for Ca 2s (in \si{\electronvolt}), calculated using the SJ\textsuperscript{n} method and various reference energies. The vertical lines indicate standard deviation.}
 	\label{fig:slabsthicknessSJn}
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\linewidth]{Figure7a}
-	\includegraphics[width=\linewidth]{Figure7b}
+	\includegraphics[width=.8\linewidth]{Figure7a}
+	\includegraphics[width=.8\linewidth]{Figure7b}
 	\caption{Effect of the reference energy on the simulated XPS spectra of CaO (dashed line)  and \ce{CaO.H2O} (plain line), calculated using the different protocols. Letters indicate mean values for bulk (``b"), surface (``s"), and surface hydroxides (``h", only for \ce{CaO.H2O}  O 1s).}
 	\label{fig:slabOH2}
 \end{figure}
@@ -264,8 +282,7 @@ Experimentally, XPS spectra for calcium metal slabs and their oxides, including 
 	\item BE(Bulk O 1s in CaO) $\approx$ BE(bulk O 1s in \ce{CaO.H2O}) $<$ BE(hydroxyls O 1s in \ce{CaO.H2O}) \cite{dupinSystematicXPSStudies2000,bebenseeAdsorptionOxygenWater2008,fujimoriInteractionWaterCaO2016a,cristXPSLibraryWebsite2021a}.
 \end{inparaenum}
 
-Only the \cp{E_\infty} protocol satisfies these two criteria, and provide the correct trends. Consequently, a consistent treatment of both gas-phase systems and slabs using the same method is not feasible in this work. Also note that it globally underestimates the \dbe{} for O 1s (which is, \textit{e.g.}, smaller than \SI{-7}{\electronvolt} for bulk CaO\cite{cristXPSLibraryWebsite2021a}). Finally, Bagus \emph{et al.}\cite{bagusRevisitingSurfaceCorelevel2019} also argued recently that the difference between bulk and surface O 1s in CaO, which amounts to \SI{0.5}{\electronvolt} with this protocol, is overestimated  and should be $<\SI{0.1}{\electronvolt}$.
-
+Only the \cpx{E_\infty} protocol satisfies these two criteria, and provide the correct trends. Consequently, a consistent treatment of both gas-phase systems and slabs using the same method is not feasible in this work. Also note that it globally underestimates the \dbe{} for O 1s (which is, \textit{e.g.}, smaller than \SI{-7}{\electronvolt} for bulk CaO\cite{cristXPSLibraryWebsite2021a}). Finally, Bagus \emph{et al.}\cite{bagusRevisitingSurfaceCorelevel2019} also argued recently that the difference between bulk and surface O 1s in CaO, which amounts to \SI{0.5}{\electronvolt} with this protocol, is overestimated  and should be $<\SI{0.1}{\electronvolt}$.
 
 
 
@@ -291,37 +308,38 @@ The optimized geometries of compounds \textbf{a}–\textbf{j}, following their a
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=.7\linewidth]{Figure10}
+	\includegraphics[width=\linewidth]{Figure10}
 	\caption{Geometrical structures of the adsorbate (\textbf{j}) + substrates systems, after geometry optimization, described by representative intermolecular distances (in \si{\angstrom}).}
 	\label{fig:distsj}
 \end{figure}
 
 \begin{table}[!h]
-	\centering
+	\caption{Interaction energy ($\Delta E_{int}$, in \si{\electronvolt}) between the adsorbate and the substrate.}
+	\label{tab:int}
+	\begin{ruledtabular}
 	\begin{tabular}{>{\bfseries}lcccc}
-		\toprule
 		& Ca & \ce{CaO} & \ce{CaO.H2O} & \ce{CaH2} \\
-		\midrule
+		\hline
 		& \multicolumn{4}{c}{Hydrocarbons} \\
 		a & -0.67 & -0.44 & -0.65 & -0.41 \\
 		b & -0.42 & -0.63 & -0.87 & -0.52 \\
 		c & -0.95 & -0.34 & -0.78 & -0.80 \\
 		d & -1.04 & -0.53 & -0.98 & -0.84 \\
-		\midrule
+		\hline
 		& \multicolumn{4}{c}{Polar carbohydrates} \\
 		e & -2.03 & -0.37 & -0.67 & -6.42 \\
 		f & -3.21 & -0.41 & -0.97 & -1.99 \\
 		g & -1.52 & -0.70 & -1.18 & -2.72 \\
 		h & -1.62 & 2.08 & -1.31 & -1.61 \\
-		\midrule
+		\hline
 		& \multicolumn{4}{c}{Protic carbohydrates} \\
 		i & -1.81 & -1.60 & -2.19 & -1.64 \\
 		j & -4.53 & -2.54 & -5.60 & -4.31 \\
-		\bottomrule
 	\end{tabular}
-	\caption{Interaction energy ($\Delta E_{int}$, in \si{\electronvolt}) between the adsorbate and the substrate.}
-	\label{tab:int}
+\end{ruledtabular}
 \end{table}
+
+\clearpage
 
 There are three primary modes of interaction between the substrate and the adsorbate: \begin{inparaenum}[i)] \item van der Waals (vdW) forces, 
 \item hydrogen bonding (HB), and 
@@ -336,14 +354,14 @@ Interestingly, the CaO slab follows a different trend. While interactions with p
 
 These observations provide insights into potential degradation mechanisms. The proton transfers on the CaO surface support the hypothesis of hydroxyl formation on the slab. Moreover, reactions involving hydrogen from the \ce{CaH2} slab indicate possible surface reactivity under certain conditions.  It should be noted that these reaction are not necessarily associated with a important modification of the slab structure, as measured by the mean displacements of the calcium atoms after adsorption (Table S2). In fact, \ce{CaH2} tends to be the most affected by adsorption, regardless of the adsorbate.
 
-\clearpage
+%\clearpage
 \subsection{Binding energies of adsorbate on slabs}\label{sec:BEs}
 
 \newcommand{\XPSsa}[2]{
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=\linewidth]{Figure#1}
-		\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cp{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
+		\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cpx{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
 		\label{fig:spectraXPSads#2}
 	\end{figure}
 }
@@ -354,7 +372,7 @@ The spectra corresponding to the adsorption of compound \textbf{a} (Fig.~\ref{fi
 
 \XPSsa{11}{a}
 
-\clearpage
+%\clearpage
 
 Next, the spectra of compound \textbf{c} (Fig.~\ref{fig:spectraXPSadsc}) is analyzed. In this case, the surface calcium atoms in close contact with the adsorbate (labeled ``s$^\star$") experience a shift towards lower BEs. No significant changes are observed in the oxygen atoms, whose BE values remain consistent with the previous spectra. A distinct peak corresponding to the unsaturated carbon atoms appears around $\dbe = \SI{-1}{\electronvolt}$. This peak also show that the distance between the adsorbate and the surface can have an impact (here, the large the distance, the smaller \dbe{}), as reported by Taucher \emph{et al.}\cite{taucherFinalStateSimulationsCoreLevel2020}. The spectra for compound \textbf{d} (Fig.~S8) show a similar trend, with a separate peak for each type of carbon.
 
@@ -381,7 +399,7 @@ Finally, the spectra of THF (Fig.~\ref{fig:spectraXPSadsh}) and its polymer (Fig
 The trends among all the spectra are reported in Fig.~\ref{fig:trends}. Since Ca 2s is not very sensitive to the environment, it was not reported. The BE value for C 1s and O 1s are proportional to the electronegativity of their neighbours, as expected.\cite{stevieIntroductionXrayPhotoelectron2020} An important results of this paper is the large impact of the interaction between oxygen and \ce{Ca^0} on the BE.
 
 
-\begin{figure}[!h]
+\begin{figure*}
 	\centering
 	\begin{tikzpicture}[xscale=-1.5]
 		\foreach \i in {-4,-3,...,4}{
@@ -407,40 +425,42 @@ The trends among all the spectra are reported in Fig.~\ref{fig:trends}. Since Ca
 	\end{tikzpicture}
 	\caption{Trends among \dbe{} (in \si{\electronvolt}) of C 1s (top) and O 1s (bottom) for compound \textbf{a}-\textbf{j} when grafted on different surfaces. Blue bars indicates change due to interaction with \ce{Ca^0}.}
 	\label{fig:trends}
-\end{figure}
+\end{figure*}
 
 \clearpage
+
 \section{Conclusions}\label{sec:conclusions}
 
 In this study, the adsorption of a model system, THF, and its potential degradation products on various calcium surfaces was investigated using quantum chemistry calculations. Slabs of calcium (\ce{Ca^0}), its oxide (\ce{CaO}), and its hydride (\ce{CaH2}) were carefully constructed, with full hydroxide coverage also considered for \ce{CaO}. Geometry optimizations were performed for both the bare slabs and the adsorbate-slab complexes. The interactions ranged from van der Waals forces to chemisorption. Two key reaction types were identified: reactions between the adsorbate’s carbon atoms and the surface (notably with \ce{CO2}), and proton transfers between alcohol moiety in the adsorbate and the \ce{CaO} surface. The first reaction is known to lead to the formation of calcite\cite{dahleSituPreparationCalcium2012}, while the second might indicate some of the mecanism for the formation of hydroxyls.
 
-Since XPS provides valuable insights into the chemical environment of atoms and the transformations they undergo during adsorption to experimentalists, the simulation of these spectra was performed. However, careful attention must be paid to the methodologies employed, as direct comparisons between results can be problematic due to potential inconsistencies across different systems. To address these issues, a thorough assessment of the methodological approaches was conducted. This evaluation indicates that while the \cp[n]{0} protocol is suitable for gas-phase molecules, the \cp{E_\infty} protocol more accurately reproduces experimental trends for calcium slabs and their derivatives.
+Since XPS provides valuable insights into the chemical environment of atoms and the transformations they undergo during adsorption to experimentalists, the simulation of these spectra was performed. However, careful attention must be paid to the methodologies employed, as direct comparisons between results can be problematic due to potential inconsistencies across different systems. To address these issues, a thorough assessment of the methodological approaches was conducted. This evaluation indicates that while the \cpx[n]{0} protocol is suitable for gas-phase molecules, the \cpx{E_\infty} protocol more accurately reproduces experimental trends for calcium slabs and their derivatives.
 
 After validating the methodology, it was applied to the various systems. The reactions between the adsorbate and the surface led to significant changes in the O 1s and C 1s spectra, although the Ca 2s binding energies appeared less affected. Notably, the interactions between oxygen and \ce{Ca^0} were also clearly observable in the spectra. Our results are also in line with experimental studies on the adsorption of \ce{CO2} on calcium surfaces.\cite{voigtsAdsorptionCO2CO2009}
 
 Taken together, these findings establish trends for analyzing XPS spectra in the context of SEI formation. Future studies should now explore the impact of incorporating boron derivatives or other counterions to coordinates \ce{Ca^2+}. For example, fluorinated byproducts should be important if  \ce{BF4-} is considered. However, conducting such research requires a detailed mechanistic understanding of the degradation reactions involving these species.\cite{youngPreventingElectrolyteDecomposition2021,yamijalaStabilityCalciumIon2021,baonguyenInvestigatingAbnormalConductivity2022,nguyenSolvationReductionCoupling2023}
 
 
-\begin{acknowledgement}
+\begin{acknowledgements}
 	This work was supported by the Excellence of Science (EOS) programme  ECOBAT (EOS No. 40007515). 
 	The calculations were performed on: \begin{inparaenum}[(i)]
 	\item the computers of the Consortium des \'{E}quipements de Calcul Intensif (C\'{E}CI, \url{http://www.ceci-hpc.be}) and particularly those of the Technological Platform of High-Performance Computing, for which the author gratefully acknowledge the financial support of the F.R.S-FNRS, of the Walloon Region, and of the University of Namur (Conventions No. 2.5020.11, U.G006.15, U.G018.19, U.G011.22, 1610468, and RW/GEQ2016), and
 	\item on Lucia, the Tier-1 supercomputer of the Walloon Region, infrastructure funded by the Walloon Region (grant agreement No. 1910247).
 	\end{inparaenum} 
-\end{acknowledgement}
-
-\begin{suppinfo}
-	The supporting information includes: \begin{inparaenum}[(i)]
-		\item chemical structures of the 68 molecules from the dataset by Pueyo Bellafont \textit{et al.}\cite{pueyobellafontPredictingCoreLevel2017},
-		\item the evolution of surface energies as a function of the number of layers,
-		\item a survey of experimental binding energies (BEs) for Ca, CaO, and \ce{CaCO3},
-		\item the variation of bulk and surface Ca 2s BEs with increasing slab thickness, and
-		\item XPS spectra for selected compounds.
-	\end{inparaenum}
-\end{suppinfo}
+\end{acknowledgements}
 
 
-\clearpage
+%\begin{suppinfo}
+%	The supporting information includes: \begin{inparaenum}[(i)]
+%		\item chemical structures of the 68 molecules from the dataset by Pueyo Bellafont \textit{et al.}\cite{pueyobellafontPredictingCoreLevel2017},
+%		\item the evolution of surface energies as a function of the number of layers,
+%		\item a survey of experimental binding energies (BEs) for Ca, CaO, and \ce{CaCO3},
+%		\item the variation of bulk and surface Ca 2s BEs with increasing slab thickness, and
+%		\item XPS spectra for selected compounds.
+%	\end{inparaenum}
+%\end{suppinfo}
+
+
+%\clearpage
 \bibliography{biblio}
 	
 \end{document}

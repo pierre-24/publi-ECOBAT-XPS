@@ -19,5 +19,9 @@
 ## for v3
 
 - [ ] Fig. or Figure?
-- [ ] abstract (& keywords?)
 - [ ] avoid label on top of each other (Fig. 7 and others)
+- [ ] Description of supplementary materials?
+- [ ] PACS?
+- [ ] Keywords?
+- [ ] prb vs prl style?
+- [ ] citation style?
