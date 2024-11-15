@@ -23,7 +23,7 @@
 - [x] PACS? → no, 
 - [x] Keywords? → yes
 - [x] prb vs prl style? → no, jcp
-- [ ] citation style?
+- [x] citation style?
 - [x] "carbohydrate" → polar/protic molecules
 - [x] Data Availability Statement? (https://publishing.aip.org/resources/researchers/author-instructions/#data)
 
