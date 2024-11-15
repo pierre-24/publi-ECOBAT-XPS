@@ -18,11 +18,11 @@
 
 ## for v3
 
-- [ ] Fig. or Figure?
+- [x] Fig. or Figure? → Fig.
 - [x] Description of supplementary materials?
-- [ ] PACS?
-- [ ] Keywords?
-- [ ] prb vs prl style?
+- [x] PACS? → no, 
+- [x] Keywords? → yes
+- [x] prb vs prl style? → no, jcp
 - [ ] citation style?
 - [x] "carbohydrate" → polar/protic molecules
 - [x] Data Availability Statement? (https://publishing.aip.org/resources/researchers/author-instructions/#data)
