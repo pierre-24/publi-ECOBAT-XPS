@@ -49,7 +49,7 @@ def prepare_data(data: pandas.DataFrame, data_height: pandas.DataFrame):
     return data_out
         
 
-def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, marker: str, label: str):
+def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, marker: str, label: str, maxstd: float = .5):
     
     bulk_vals = []
     surf_vals = []
@@ -57,12 +57,14 @@ def plot_atom(ax, data: pandas.DataFrame, slab: str, atom: str, color: str, mark
     for i in range(3, 9):
         subdata = data[(data['System'] == '{}_slab/{}'.format(slab, i)) & (data['Atom'] == atom)]
         surf_data = subdata[subdata['Is_surf'] == True]
-        surf_vals.append((numpy.mean(surf_data['Delta_computed']), numpy.std(surf_data['Delta_computed'])))
+        if numpy.std(surf_data['Delta_computed']) < maxstd:
+            surf_vals.append((i, numpy.mean(surf_data['Delta_computed']), numpy.std(surf_data['Delta_computed'])))
         bulk_data = subdata[subdata['Is_bulk'] == True]
-        bulk_vals.append((numpy.mean(bulk_data['Delta_computed']), numpy.std(bulk_data['Delta_computed'])))
+        if numpy.std(bulk_data['Delta_computed']) < maxstd:
+            bulk_vals.append((i, numpy.mean(bulk_data['Delta_computed']), numpy.std(bulk_data['Delta_computed'])))
     
-    ax.errorbar(numpy.arange(3, 9) - .1, [x[0] for x in bulk_vals], fmt=marker + '-', color=color, yerr=[x[1] for x in bulk_vals], label=label)
-    ax.errorbar(numpy.arange(3, 9) + .1, [x[0] for x in surf_vals], fmt=marker + '--', fillstyle='none', color=color, yerr=[x[1] for x in surf_vals])
+    ax.errorbar([x[0] - .1 for x in bulk_vals], [x[1] for x in bulk_vals], fmt=marker + '-', color=color, yerr=[x[2] for x in bulk_vals], label=label)
+    ax.errorbar([x[0] + .1 for x in surf_vals], [x[1] for x in surf_vals], fmt=marker + '--', fillstyle='none', color=color, yerr=[x[2] for x in surf_vals])
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
