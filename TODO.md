@@ -25,5 +25,5 @@
 - [ ] Keywords?
 - [ ] prb vs prl style?
 - [ ] citation style?
-- [ ] "carbohydrate"
+- [x] "carbohydrate" → polar/protic molecules
 - [x] Data Availability Statement? (https://publishing.aip.org/resources/researchers/author-instructions/#data)
