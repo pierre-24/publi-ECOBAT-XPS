@@ -19,7 +19,6 @@
 ## for v3
 
 - [ ] Fig. or Figure?
-- [ ] avoid label on top of each other (Fig. 7 and others)
 - [x] Description of supplementary materials?
 - [ ] PACS?
 - [ ] Keywords?
@@ -27,3 +26,7 @@
 - [ ] citation style?
 - [x] "carbohydrate" → polar/protic molecules
 - [x] Data Availability Statement? (https://publishing.aip.org/resources/researchers/author-instructions/#data)
+
+## for v4
+
+- [ ] avoid label on top of each other (Fig. 7 and others)
