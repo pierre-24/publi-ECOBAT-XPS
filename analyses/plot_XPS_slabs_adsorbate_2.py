@@ -8,7 +8,7 @@ from scipy.signal import argrelextrema
 
 from XPS.commons import create_spectrum_BE, get_annotations, annotate_graph
 
-FAC = 3.35
+FAC = 3.5
 SLBS = [('Ca', 'black'), ('CaO', 'black'), ('CaO_OH2', 'black'), ('CaH2', 'black')]
 
 
@@ -48,7 +48,7 @@ def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbat
             ax.plot(x, i * FAC + y, color=color)
         
             if slab_ads_system in annotations:
-                annotate_graph(ax, subdata, annotations[slab_ads_system], x, i * FAC + y, color=color)
+                annotate_graph(ax, subdata, annotations[slab_ads_system], x, i * FAC + y, color=color, mindx=.5, fontsize=9)
         
         if atom in slab_system and atom != 'C':
             y_slab = create_spectrum_BE(subdata_slabs, x)
@@ -56,7 +56,7 @@ def plot_atom(ax, data: pandas.DataFrame, data_slabs: pandas.DataFrame, adsorbat
             ax.plot(x, i * FAC - y_slab + y, ':', color=color)
                 
             if slab_system in annotations:
-                annotate_graph(ax, subdata_slabs, annotations[slab_system], x, i * FAC - y_slab, color=color, position='bottom')
+                annotate_graph(ax, subdata_slabs, annotations[slab_system], x, i * FAC - y_slab, color=color, mindx=.5, position='bottom', fontsize=9)
                 
     ax.set_xlim(*xrange)
     
@@ -75,7 +75,7 @@ args = parser.parse_args()
 data = prepare_data(pandas.read_csv(args.input), no_C=False)
 data_slabs = prepare_data(pandas.read_csv(args.input_slabs))
 
-figure = plt.figure(figsize=(11, 7))
+figure = plt.figure(figsize=(11, 7.5))
 axes = figure.subplots(1, 3, sharey=True)
 axes[0].set_ylim(-1.8, FAC * len(SLBS) - .5)
 

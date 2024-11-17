@@ -29,4 +29,4 @@
 
 ## for v4
 
-- [ ] avoid label on top of each other (Fig. 7 and others)
+- [x] avoid label on top of each other (Fig. 7 and others)

@@ -43,7 +43,7 @@ def plot_atom(ax, data: pandas.DataFrame, systems: list, atom: str, color: str, 
     if systems[0] in annotations:
         annotate_graph(ax, subdata_sys1, annotations[systems[0]], lspace, shift_y + y_sys1, color=color, fontsize=9)
     if systems[1] in annotations:
-        annotate_graph(ax, subdata_sys2, annotations[systems[1]], lspace, shift_y - y_sys2, color=color, position='bottom', fontsize=9)
+        annotate_graph(ax, subdata_sys2, annotations[systems[1]], lspace, shift_y - y_sys2, color=color, position='bottom', fontsize=9, mindx=.7)
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
@@ -65,12 +65,12 @@ data = []
 for inp in args.inputs:
     data.append(prepare_data(pandas.read_csv(inp), data_height, args.systems))
 
-figure = plt.figure(figsize=(len(args.atoms) * 4, len(args.names) * 1.2))
+figure = plt.figure(figsize=(len(args.atoms) * 4, len(args.names) * 1.3))
 axes = figure.subplots(1, len(args.atoms), sharey=True)
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']
 
-YS = 4.5
+YS = 5
 
 for i, subdata in enumerate(data):
     for j, atom_d in enumerate(args.atoms):

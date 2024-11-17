@@ -1,4 +1,4 @@
 Ca_009@Ca_slab/3=b,Ca_017@Ca_slab/3=s,
 Ca_001@CaH2_slab/3=b+s,
-Ca_009@CaO_OH2_slab/3=b,Ca_009@CaO_OH2_slab/3=b,Ca_025@CaO_OH2_slab/3=s,O_041@CaO_OH2_slab/3=b,O_057@CaO_OH2_slab/3=s+h,
+Ca_009@CaO_OH2_slab/3=b,Ca_025@CaO_OH2_slab/3=s,O_041@CaO_OH2_slab/3=b,O_057@CaO_OH2_slab/3=s+h,
 Ca_005@CaO_slab/3=s,Ca_009@CaO_slab/3=b,O_033@CaO_slab/3=b,O_041@CaO_slab/3=s

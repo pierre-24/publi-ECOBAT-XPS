@@ -42,21 +42,50 @@ def get_annotations(inp: str):
     
     return annotations
 
-def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: float, color='black', position: str = 'top', shift=.1, fontsize=8):
+class Annotation:
+    def __init__(self, atom, label, x, y, sx: float = .0, sy: float = 5):
+        self.atom = atom
+        self.label = label
+        self.x = x
+        self.y = y
+        self.sx = sx
+        self.sy = sy
+        self.arrow = False
+    
+    def annotate(self, ax, color='black', position: str = 'top', fontsize=8):
+        ax.annotate(
+            '{lab}\n{val:.1f}' .format(lab=self.label, val=self.x), 
+            (self.x, self.y), 
+            (self.sx, self.sy if (position == 'top' or self.sx != 0) else -self.sy),
+            textcoords='offset pixels',
+            va=('bottom' if position == 'top' else 'top'), 
+            ha='center', 
+            color=color,
+            arrowprops=dict(facecolor='black', headwidth=3, headlength=3, width=1, color=color),
+            fontsize=fontsize
+        )
+
+def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: float, color='black', position: str = 'top', shift=5, fontsize=8, mindx=.2):
+    to_annotate = []
     for a_atom, a_label in annotations:
         d = data[data['Atom_indices'].str.contains(a_atom)]
         if len(d) > 0:
             v = d.iloc[0]['Delta_computed']
             iloc = int((v - x[0]) / (x[-1] - x[0]) * len(x))
-            ax.text(
-                v, 
-                y[iloc] + (shift if position == 'top' else -shift),
-                '{lab}\n{val:.1f}' .format(lab=a_label, val=v), 
-                va=('bottom' if position == 'top' else 'top'), 
-                ha='center', 
-                color=color,
-                # rotation=90,
-                fontsize=fontsize
-            )
+            to_annotate.append(Annotation(a_atom, a_label, v, y[iloc]))
+    
+    to_annotate.sort(key=lambda x: x.x)
+    for i in range(len(to_annotate)):
+        if i == 0:
+            continue
+        
+        if (to_annotate[i].x - to_annotate[i-1].x) < mindx:
+            to_annotate[i-1].sx += 15
+            to_annotate[i-1].arrow = True
+            to_annotate[i].sx -= 15
+            to_annotate[i].arrow = True
+            
+    for annotation in to_annotate:
+        annotation.annotate(ax, color, position, fontsize)
 
 
