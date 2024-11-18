@@ -43,7 +43,7 @@ def get_annotations(inp: str):
     return annotations
 
 class Annotation:
-    def __init__(self, label, x, y, sx: float = .0, sy: float = 5):
+    def __init__(self, label, x, y, sx: float = .0, sy: float = 12):
         self.label = label
         self.x = x
         self.y = y
@@ -55,12 +55,12 @@ class Annotation:
         ax.annotate(
             '{lab}\n{val:.1f}' .format(lab=self.label, val=self.x), 
             (self.x, self.y), 
-            (self.sx, self.sy if (position == 'top' or self.sx != 0) else -self.sy),
+            (self.sx, self.sy if position == 'top' else (self.sy - 10 if self.sx != 0 else -self.sy)),
             textcoords='offset pixels',
             va=('bottom' if position == 'top' else 'top'), 
             ha='center', 
             color=color,
-            arrowprops=dict(facecolor='black', headwidth=3, headlength=3, width=1, color=color),
+            arrowprops=dict(color=color, arrowstyle='->'),
             fontsize=fontsize
         )
 
@@ -73,9 +73,9 @@ def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: f
             iloc = int((v - x[0]) / (x[-1] - x[0]) * len(x))
             to_annotate.append(Annotation(a_label, v, y[iloc]))
     
-    _annotate_graph(ax, to_annotate, color, position, shift, fontsize, mindx)
+    _annotate_graph(ax, to_annotate, color, position, fontsize, mindx)
 
-def annotate_graph2(ax, annotations: list, x: float, y: float, color='black', position: str = 'top', shift=5, fontsize=8, mindx=.2):
+def annotate_graph2(ax, annotations: list, x: float, y: float, color='black', position: str = 'top', shift=10, fontsize=8, mindx=.2):
     """Same as annotate_graph, but using the mean of a bunch of data"""
     
     to_annotate = []
@@ -84,19 +84,21 @@ def annotate_graph2(ax, annotations: list, x: float, y: float, color='black', po
         iloc = int((v - x[0]) / (x[-1] - x[0]) * len(x))
         to_annotate.append(Annotation(a_label, v, y[iloc]))
     
-    _annotate_graph(ax, to_annotate, color, position, shift, fontsize, mindx)
+    _annotate_graph(ax, to_annotate, color, position, fontsize, mindx)
             
 
-def _annotate_graph(ax, to_annotate: list, color='black', position: str = 'top', shift=5, fontsize=8, mindx=.2):
+def _annotate_graph(ax, to_annotate: list, color='black', position: str = 'top', fontsize=8, mindx=.2):
     to_annotate.sort(key=lambda x: x.x)
     for i in range(len(to_annotate)):
         if i == 0:
             continue
         
         if (to_annotate[i].x - to_annotate[i-1].x) < mindx:
-            to_annotate[i-1].sx += 15
+            to_annotate[i-1].sx += 20
+            #to_annotate[i-1].sy -= 5
             to_annotate[i-1].arrow = True
-            to_annotate[i].sx -= 15
+            to_annotate[i].sx -= 20
+            #to_annotate[i].sy -= 5
             to_annotate[i].arrow = True
             
     for annotation in to_annotate:
