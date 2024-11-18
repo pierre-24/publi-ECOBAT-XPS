@@ -43,8 +43,7 @@ def get_annotations(inp: str):
     return annotations
 
 class Annotation:
-    def __init__(self, atom, label, x, y, sx: float = .0, sy: float = 5):
-        self.atom = atom
+    def __init__(self, label, x, y, sx: float = .0, sy: float = 5):
         self.label = label
         self.x = x
         self.y = y
@@ -72,8 +71,23 @@ def annotate_graph(ax, data: pandas.DataFrame, annotations: list, x: float, y: f
         if len(d) > 0:
             v = d.iloc[0]['Delta_computed']
             iloc = int((v - x[0]) / (x[-1] - x[0]) * len(x))
-            to_annotate.append(Annotation(a_atom, a_label, v, y[iloc]))
+            to_annotate.append(Annotation(a_label, v, y[iloc]))
     
+    _annotate_graph(ax, to_annotate, color, position, shift, fontsize, mindx)
+
+def annotate_graph2(ax, annotations: list, x: float, y: float, color='black', position: str = 'top', shift=5, fontsize=8, mindx=.2):
+    """Same as annotate_graph, but using the mean of a bunch of data"""
+    
+    to_annotate = []
+    for a_data, a_label in annotations:
+        v = a_data['Delta_computed'].mean()
+        iloc = int((v - x[0]) / (x[-1] - x[0]) * len(x))
+        to_annotate.append(Annotation(a_label, v, y[iloc]))
+    
+    _annotate_graph(ax, to_annotate, color, position, shift, fontsize, mindx)
+            
+
+def _annotate_graph(ax, to_annotate: list, color='black', position: str = 'top', shift=5, fontsize=8, mindx=.2):
     to_annotate.sort(key=lambda x: x.x)
     for i in range(len(to_annotate)):
         if i == 0:

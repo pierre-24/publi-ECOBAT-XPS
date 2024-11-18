@@ -75,62 +75,21 @@ preprint,%
 \end{ruledtabular}
 \end{table}
 
-\begin{table}[!h]
-	\centering
-	\caption{Mean displacement (in \si{\angstrom}) of the calcium atoms of the slab due to the adsorption of a substrate.}
-	\label{tab:disp}
-	\begin{ruledtabular}
-	\begin{tabular}{>{\bfseries}lcccc}
-		& Ca & \ce{CaO} & \ce{CaO.H2O} & \ce{CaH2} \\
-		\hline
-		& \multicolumn{4}{c}{Hydrocarbons} \\
-		a & 0.011 & 0.008 & --- & 0.045 \\
-		b & 0.014 & 0.007 & 0.013 & 0.047 \\
-		c & 0.011 & 0.007 & 0.014 & 0.052 \\
-		d & 0.020 & 0.007 & 0.035 & 0.051 \\
-		\hline
-		& \multicolumn{4}{c}{Polar molecules} \\
-		e & 0.037 & 0.009 & 0.009 & 0.086 \\
-		f & 0.067 & 0.010 & 0.010 & 0.055 \\
-		g & 0.015 & 0.012 & 0.013 & 0.065 \\
-		h & 0.013 & 0.008 & 0.027 & 0.051 \\
-		\hline
-		& \multicolumn{4}{c}{Protic molecules} \\
-	i & 0.019 & 0.029 & 0.077 & 0.054 \\
-	j & 0.057 & 0.044 & 0.091 & 0.067 \\
-	\end{tabular}
-\end{ruledtabular}
-\end{table}
-
-\begin{table}[!h]
-	\caption{Value of peak maximum energies  (in \si{\electronvolt}) for Ca, CaO, and  \ce{CaCO3}, from different sources. It is now recognized than for surfaces, a peak is not necessarily equivalent to a single binding energies (peak fitting is required), and that the spectra for pure CaO are difficult to obtain without contamination.\cite{dupinSystematicXPSStudies2000}}
-	\begin{ruledtabular}
-	\begin{tabular}{c ccc c ccc cl}
-		\ce{Ca^0} & & \multicolumn{2}{c}{CaO} & & \multicolumn{3}{c}{\ce{CaCO3}} & Ref. & Note\\
-		\cline{1-1} \cline{3-4} \cline{6-8}
-		Ca 2s & & Ca 2s & O 1s  & & Ca 2s & O 1s & C 1s\\
-		\hline
-		438.8 & &---&---&& --- & --- &--- & \citenum{fuggleCorelevelBindingEnergies1980} & Relative to VBM\\
-		436.6 & & 437.9 & 528.9& & 439.1 &531.6 & 289.7& \citenum{sosulnikovXrayPhotoelectronStudies1992}& Relative to C 1s = \SI{285.0}{\electronvolt}\\
-		 --- && 437.4 & 531.2&& 437.8 & 531.0 & 289.0 & \citenum{demriXPSStudyCalcium1995} & Relative to C 1s = \SI{284.6}{\electronvolt}\\
-		 $\sim$450 & & 441.0 & 532.2 & & --- & --- & --- & \citenum{ochsCO2ChemisorptionCa1998} & Relative to $E_F$ \\
-		 --- & & 439.0 & 531.9 & & 438.4 & 531.4 & 285.4 & \citenum{cristHandbookMonochromaticXPS2000a} & Relative to C 1s = \SI{285.0}{\electronvolt}\\
-		 442.5 & & 438.15 & 531.15 & & 439.08 & 531.58 & 290.08 & \citenum{cristXPSLibraryWebsite2021a} & Relative to C 1s = \SI{285.0}{\electronvolt}\\
-		
-	\end{tabular}
-\end{ruledtabular}
-\end{table}
+\begin{figure}[!h]
+\includegraphics[width=\linewidth]{FigureS3}
+\caption{Change in electron density (visualized with an isocontour of 0.003 a.u.) due to the creation of a core-hole in the 1s orbital of C1, with the SJ (left) or SJ\textsuperscript{n} (right) methods. Yellow (blue) corresponds to zone of depletion (increase) of the electron density.}
+\end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=\linewidth]{FigureS3}
+\includegraphics[width=\linewidth]{FigureS4}
 \caption{Impact of the slab thickness (indicated as the number of layers, $N$) on the mean bulk (filled markers)  and surface (empty markers) \dbe{} (in \si{\electronvolt}), as computed with the SJ method and different reference energies. The vertical lines indicates standard deviation.}
 \label{fig:slabsthicknessSJ}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=\linewidth]{FigureS4}
+\includegraphics[width=\linewidth]{FigureS5}
 \caption{Impact of the slab thickness (indicated as the number of layers) on the mean bulk (round markers)  and surface (square markers) \dbe{} (in \si{\electronvolt}), as computed with the SJ\textsuperscript{n} protocol and different references. The vertical lines indicates standard deviation.}
 \label{fig:slabsthicknessSJn}
 \end{figure}
@@ -213,27 +172,76 @@ preprint,%
 \end{ruledtabular}
 \end{table}
 
+
+
+\begin{table}[!h]
+	\caption{Experimental value of peak maximum energies  (in \si{\electronvolt}) for Ca, CaO, and  \ce{CaCO3}, from different sources. It is now recognized that for surfaces, a peak is not necessarily equivalent to a single binding energies (peak fitting is required), and that the spectra for pure CaO are difficult to obtain without contamination.\cite{dupinSystematicXPSStudies2000}}
+	\begin{ruledtabular}
+		\begin{tabular}{c ccc c ccc cl}
+			\ce{Ca^0} & & \multicolumn{2}{c}{CaO} & & \multicolumn{3}{c}{\ce{CaCO3}} & Ref. & Note\\
+			\cline{1-1} \cline{3-4} \cline{6-8}
+			Ca 2s & & Ca 2s & O 1s  & & Ca 2s & O 1s & C 1s\\
+			\hline
+			438.8 & &---&---&& --- & --- &--- & \citenum{fuggleCorelevelBindingEnergies1980} & Relative to VBM\\
+			436.6 & & 437.9 & 528.9& & 439.1 &531.6 & 289.7& \citenum{sosulnikovXrayPhotoelectronStudies1992}& Relative to C 1s = \SI{285.0}{\electronvolt}\\
+			--- && 437.4 & 531.2&& 437.8 & 531.0 & 289.0 & \citenum{demriXPSStudyCalcium1995} & Relative to C 1s = \SI{284.6}{\electronvolt}\\
+			$\sim$450 & & 441.0 & 532.2 & & --- & --- & --- & \citenum{ochsCO2ChemisorptionCa1998} & Relative to $E_F$ \\
+			--- & & 439.0 & 531.9 & & 438.4 & 531.4 & 285.4 & \citenum{cristHandbookMonochromaticXPS2000a} & Relative to C 1s = \SI{285.0}{\electronvolt}\\
+			442.5 & & 438.15 & 531.15 & & 439.08 & 531.58 & 290.08 & \citenum{cristXPSLibraryWebsite2021a} & Relative to C 1s = \SI{285.0}{\electronvolt}\\
+			
+		\end{tabular}
+	\end{ruledtabular}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{Mean displacement (in \si{\angstrom}) of the calcium atoms of the slab due to the adsorption of a substrate.}
+\label{tab:disp}
+\begin{ruledtabular}
+	\begin{tabular}{>{\bfseries}lcccc}
+		& Ca & \ce{CaO} & \ce{CaO.H2O} & \ce{CaH2} \\
+		\hline
+		& \multicolumn{4}{c}{Hydrocarbons} \\
+		a & 0.011 & 0.008 & --- & 0.045 \\
+		b & 0.014 & 0.007 & 0.013 & 0.047 \\
+		c & 0.011 & 0.007 & 0.014 & 0.052 \\
+		d & 0.020 & 0.007 & 0.035 & 0.051 \\
+		\hline
+		& \multicolumn{4}{c}{Polar molecules} \\
+		e & 0.037 & 0.009 & 0.009 & 0.086 \\
+		f & 0.067 & 0.010 & 0.010 & 0.055 \\
+		g & 0.015 & 0.012 & 0.013 & 0.065 \\
+		h & 0.013 & 0.008 & 0.027 & 0.051 \\
+		\hline
+		& \multicolumn{4}{c}{Protic molecules} \\
+		i & 0.019 & 0.029 & 0.077 & 0.054 \\
+		j & 0.057 & 0.044 & 0.091 & 0.067 \\
+	\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \newcommand{\XPSsa}[2]{
-	\begin{turnpage}
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=.9\linewidth]{Figure#1}
-	\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cpx{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
-	\label{fig:spectraXPSads#2}
-\end{figure}
-\end{turnpage}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\linewidth]{Figure#1}
+		\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds \textbf{#2} on various substrates, as computed using the \cpx{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
+		\label{fig:spectraXPSads#2}
+	\end{figure}
 }
 
-\XPSsa{S5}{b}
-\XPSsa{S6}{d}
-\XPSsa{S7}{f}
-\XPSsa{S8}{g}
-\XPSsa{S9}{i}
+\newcommand{\XPSsab}[4]{
+	\begin{figure}[p]
+		\centering
+		\includegraphics[width=\linewidth]{Figure#1}
+		\includegraphics[width=\linewidth]{Figure#2}
+		\caption{Difference (dotted line) between the XPS spectra before (dashed line) and after (solid line) adsorption for compounds (a) \textbf{#3} and (b) \textbf{#4} on various substrates, as computed using the \cpx{E_\infty} protocol. Letters indicate mean binding energies for bulk (``b"), surface (``s", with $\star$ marking the atom closest to the adsorbate), surface hydroxides (``h"), and different atoms of the adsorbate.}
+		\label{fig:spectraXPSads#3#4}
+	\end{figure}
+}
 
-\begin{figure}[!h]
-	\includegraphics[width=\linewidth]{FigureS10}
-	\caption{Change in electron density (visualized with an isocontour of 0.003) due to the creation of a core-hole in the 1s orbital of C1, with the SJ (left) or SJ\textsuperscript{n} (right) methods. Yellow (blue) corresponds to zone of depletion (increase) of the electron density.}
-\end{figure}
+\XPSsab{S6a}{S6b}{b}{d}
+\XPSsab{S7a}{S7b}{f}{g}
+\XPSsa{S8}{i}
 
 \clearpage
 \bibliography{biblio}

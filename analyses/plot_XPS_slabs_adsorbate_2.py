@@ -8,7 +8,7 @@ from scipy.signal import argrelextrema
 
 from XPS.commons import create_spectrum_BE, get_annotations, annotate_graph
 
-FAC = 3.5
+FAC = 4
 SLBS = [('Ca', 'black'), ('CaO', 'black'), ('CaO_OH2', 'black'), ('CaH2', 'black')]
 
 
@@ -75,9 +75,9 @@ args = parser.parse_args()
 data = prepare_data(pandas.read_csv(args.input), no_C=False)
 data_slabs = prepare_data(pandas.read_csv(args.input_slabs))
 
-figure = plt.figure(figsize=(11, 7.5))
+figure = plt.figure(figsize=(12 * .75, 7 * .75))
 axes = figure.subplots(1, 3, sharey=True)
-axes[0].set_ylim(-1.8, FAC * len(SLBS) - .5)
+axes[0].set_ylim(-1.8, FAC * len(SLBS) - 1.2)
 
 annotations = args.annotate if args.annotate is not None else {}
 

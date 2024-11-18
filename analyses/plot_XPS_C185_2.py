@@ -37,7 +37,7 @@ def prepare_data(data: pandas.DataFrame, data_ref: pandas.DataFrame):
     return final_data
         
 
-def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple, label: str):
+def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple, label: str, uplabel: str):
     subdata = data[data['Atom'].str.contains(atom)]
     
     ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
@@ -45,7 +45,7 @@ def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple
     ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({})'.format(numpy.mean(error), numpy.std(error), label), color=color, rotation=45)
     
     if color == 'tab:blue':
-        ax.text(-4, 8, '{} 1s (N={})'.format(atom, len(error)), fontsize=12)
+        ax.text(.05, .9, '({}) {} 1s (N={})'.format(uplabel, atom, len(error)), fontsize=12, transform=ax.transAxes,)
         
 parser = argparse.ArgumentParser()
 parser.add_argument('inputs', nargs='*')
@@ -80,11 +80,11 @@ COLORS = ['tab:blue', 'tab:green']
 POSITIONS = [(-4.5, -1), (-1, -4.5)]
 
 for i, subdata in enumerate(data):
-    plot_atom(axes[0, 0], subdata, 'C', COLORS[i], POSITIONS[i], args.names[i])
-    plot_atom(axes[0, 1], subdata, 'N', COLORS[i], POSITIONS[i], args.names[i])
-    plot_atom(axes[1, 0], subdata, 'O', COLORS[i], POSITIONS[i], args.names[i])
-    plot_atom(axes[1, 1], subdata, 'B', COLORS[i], POSITIONS[i], args.names[i])
-    plot_atom(axes[2, 0], subdata, 'F', COLORS[i], POSITIONS[i], args.names[i])
+    plot_atom(axes[0, 0], subdata, 'C', COLORS[i], POSITIONS[i], args.names[i], 'a')
+    plot_atom(axes[0, 1], subdata, 'N', COLORS[i], POSITIONS[i], args.names[i], 'b')
+    plot_atom(axes[1, 0], subdata, 'O', COLORS[i], POSITIONS[i], args.names[i], 'c')
+    plot_atom(axes[1, 1], subdata, 'B', COLORS[i], POSITIONS[i], args.names[i], 'd')
+    plot_atom(axes[2, 0], subdata, 'F', COLORS[i], POSITIONS[i], args.names[i], 'e')
 
 plt.tight_layout()
 figure.savefig(args.output)

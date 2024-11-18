@@ -91,6 +91,9 @@ for data_, name in zip(data, args.names):
     plot_atom(axes[graphs.index(graph)], data_, 'C', COLORS[indexes[graph]], indexes[graph], '{}+{}'.format(graph,ref))
     indexes[graph] += 1
 
+for i, (graph, ax) in enumerate(zip(graphs, axes.flatten())):
+    ax.text(.05, .9, '({}) {}'.format(chr(97 + i), graph), transform=ax.transAxes, fontsize=14)
+
 [ax.set_xlim(-1, 5) for ax in axes]
 [ax.tick_params('x', bottom=False, labelbottom=False) for ax in axes]
 axes[0].set_ylabel('Error on $\\Delta$BE (eV)')
