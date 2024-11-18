@@ -85,7 +85,7 @@ for inp in args.inputs:
     data.append(prepare_data(pandas.read_csv(inp), data_height))
 
 NY = int(numpy.ceil(len(args.inputs) / 2))
-figure = plt.figure(figsize=(6, NY * 3))
+figure = plt.figure(figsize=(8, NY * 3))
 axes = figure.subplots(NY, 2, sharey=True)
 
 COLORS = ['tab:blue', 'tab:pink', 'tab:green', 'tab:red', 'tab:cyan']

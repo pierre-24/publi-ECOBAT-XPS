@@ -41,7 +41,7 @@ def plot_atom(ax, data: pandas.DataFrame, systems: list, atom: str, color: str, 
     ax.set_xlim(*xrange)
     
     if systems[0] in annotations:
-        annotate_graph(ax, subdata_sys1, annotations[systems[0]], lspace, shift_y + y_sys1, color=color, fontsize=9)
+        annotate_graph(ax, subdata_sys1, annotations[systems[0]], lspace, shift_y + y_sys1, color=color, fontsize=9, mindx=.7)
     if systems[1] in annotations:
         annotate_graph(ax, subdata_sys2, annotations[systems[1]], lspace, shift_y - y_sys2, color=color, position='bottom', fontsize=9, mindx=.7)
         

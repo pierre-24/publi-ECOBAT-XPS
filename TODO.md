@@ -30,3 +30,4 @@
 ## for v4
 
 - [x] avoid label on top of each other (Fig. 7 and others)
+- [ ] Identify figures with part [(a), (b) ...]
