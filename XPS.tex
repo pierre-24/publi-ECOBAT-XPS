@@ -19,6 +19,11 @@ showkeys,
 \usepackage{rotating}
 \usepackage{chngcntr}
 
+
+\usepackage[
+%final
+]{changes}
+
 \def\dbe{\ensuremath{\Delta\text{BE}}}
 
 %% Apr 2021: AIP requests that the corresponding 
@@ -304,7 +309,7 @@ Only the \cpx{E_\infty} protocol satisfies these two criteria, and provide the c
 
 \subsection{Adsorption on slab: geometrical and energetic aspects}\label{sec:geom}
 
-The optimized geometries of compounds \textbf{a}-\textbf{j}, following their adsorption on each side of the slabs, are depicted in Figs.~\ref{fig:distsad}-\ref{fig:distsj}. The interaction energy, calculated as $\Delta E_{int} = E_{2X@Y} - E_Y - 2E_X$ (where $E_X$ represents the energy of a single adsorbate, in gas phase, and $E_Y$ is the energy of the neat substrate), is presented in Table~\ref{tab:int}. Note that no thermochemical corrections (i.e., zero-point vibrational energy and thermal corrections) have been applied in these calculations.
+The optimized geometries of compounds \textbf{a}-\textbf{j}, following their adsorption on each side of the slabs, are depicted in Figs.~\ref{fig:distsad}-\ref{fig:distsj}. The interaction energy, calculated as $\Delta E_{int} = E_{2X@Y} - E_Y - 2E_X$ (where $E_X$ represents the energy of a single adsorbate, \added{optimized} in \added{the} gas phase, and $E_Y$ is the energy of the neat substrate), is presented in Table~\ref{tab:int}. Note that no thermochemical corrections (i.e., zero-point vibrational energy and thermal corrections) have been applied in these calculations.
 
 \begin{figure}[!b]
 	\centering
@@ -331,24 +336,25 @@ The optimized geometries of compounds \textbf{a}-\textbf{j}, following their ads
 	\caption{Interaction energy ($\Delta E_{int}$, in \si{\electronvolt}) between the adsorbate and the substrate.}
 	\label{tab:int}
 	\begin{ruledtabular}
+		\color{blue}
 	\begin{tabular}{>{\bfseries}lcccc}
 		& Ca & \ce{CaO} & \ce{CaO.H2O} & \ce{CaH2} \\
 		\hline
 		& \multicolumn{4}{c}{Hydrocarbons} \\
-		a & -0.67 & -0.44 & -0.65 & -0.41 \\
-		b & -0.42 & -0.63 & -0.87 & -0.52 \\
-		c & -0.95 & -0.34 & -0.78 & -0.80 \\
-		d & -1.04 & -0.53 & -0.98 & -0.84 \\
+		a & -0.42 & -0.67 & -0.46 & -0.69 \\
+		b & -0.52 & -0.87 & -0.63 & -0.42 \\
+		c & -0.80 & -0.78 & -0.34 & -0.95 \\
+		d & -0.84 & -0.98 & -0.53 & -1.04 \\
 		\hline
 		& \multicolumn{4}{c}{Polar molecules} \\
-		e & -2.03 & -0.37 & -0.67 & -6.42 \\
-		f & -3.21 & -0.41 & -0.97 & -1.99 \\
-		g & -1.52 & -0.70 & -1.18 & -2.72 \\
-		h & -1.62 & 2.08 & -1.31 & -1.61 \\
+		e & -6.42 & -0.67 & -0.37 & -2.03 \\
+		f & -1.91 & -0.89 & -0.33 & -3.13 \\
+		g & -2.62 & -1.08 & -0.60 & -1.42 \\
+		h & -1.61 & -1.31 & -0.74 & -1.62 \\
 		\hline
 		& \multicolumn{4}{c}{Protic molecules} \\
-		i & -1.81 & -1.60 & -2.19 & -1.64 \\
-		j & -4.53 & -2.54 & -5.60 & -4.31 \\
+		i & -1.64 & -2.19 & -1.60 & -1.81 \\
+		j & -4.31 & -5.60 & -2.54 & -4.53 \\
 	\end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -361,12 +367,12 @@ There are three primary modes of interaction between the substrate and the adsor
 \end{inparaenum}
 First, hydrocarbons (\textbf{a}–\textbf{d}) mainly interact through vdW forces, as indicated by the relatively large distances between the adsorbate and substrate (Fig.~\ref{fig:distsad}) and the low interaction energies ($\Delta E_{int} > \SI{-1}{\electronvolt}$). However, for unsaturated hydrocarbons (\textbf{c}-\textbf{d}), the distances are shorter ($\sim\SI{3}{\angstrom}$) compared to saturated ones (\textbf{a}-\textbf{b}) on the \ce{Ca^0} and \ce{CaH2} slabs, leading to slightly higher interaction energies.
 
-Second, HB interactions are significant between \ce{CaO.H2O} and oxygen-containing mole\-cules (\textbf{e}-\textbf{j}). For non-protic molecules (\textbf{e} to \textbf{h}), interaction energies decrease (\textit{i.e.}, the binding is stronger) as the oxygen(substrate)--hydrogen(slab) distance decreases (up to $\Delta E_{int}<\SI{-1.3}{\electronvolt}$ for \textbf{h}), with the molecule's oxygen acting as the HB donor. For protic molecules (\textbf{i} and \textbf{j}), additional HB interactions form between the substrate hydrogen and slab oxygens. The multiplication of slab-substrate HB interactions correlates with a further increase of the interaction energies (in absolute value).
+Second, HB interactions are significant between \ce{CaO.H2O} and oxygen-containing mole\-cules (\textbf{e}-\textbf{j}). For non-protic molecules (\textbf{e} to \textbf{h}), interaction energies decrease (\textit{i.e.}, the binding is stronger) as the oxygen(substrate)--hydrogen(slab) distance decreases (up to $\Delta E_{int}<-$\deleted{1.3}$\SI{0.7}{\electronvolt}$ for \textbf{h}), with the molecule's oxygen acting as the HB donor. For protic molecules (\textbf{i} and \textbf{j}), additional HB interactions form between the substrate hydrogen and slab oxygens. The multiplication of slab-substrate HB interactions correlates with a further increase of the interaction energies (in absolute value).
 
 
-Lastly, oxygen-containing molecules can exhibit significant interaction energies ($\Delta E_{int} < \SI{-1.5}{\electronvolt}$) with the \ce{Ca^0} and \ce{CaH2} slabs, primarily driven by strong oxygen--calcium interactions. These are often accompanied by small interatomic distances, indicative of chemisorption. This effect is particularly pronounced for PTMEG (\textbf{j}), where multiple interactions account for the large interaction energy. Similarly, \ce{CO2} (\textbf{e}) and \ce{CH2=O} (\textbf{f}) display notable interactions with the \ce{CaH2} slab. Note that for \ce{CO2}, two binding configurations are possible (Fig.~\ref{fig:distsei}), with the reported interaction energy representing the sum of the contributions from both configurations. These cases are distinguishable by their difference of hybridization (\textit{e.g.}, from \ce{sp^2} to \ce{sp^3} for \textbf{f}). These transformations are facilitated by interactions with a slab’s hydrogen atoms.
+Lastly, oxygen-containing molecules can exhibit significant interaction energies ($\Delta E_{int} < \SI{-1.5}{\electronvolt}$) with the \ce{Ca^0} and \ce{CaH2} slabs, primarily driven by strong oxygen--calcium interactions. These are often accompanied by small interatomic distances, indicative of chemisorption. This effect is particularly pronounced for PTMEG (\textbf{j}), where multiple interactions account for the large interaction energy. Similarly, \ce{CO2} (\textbf{e}) and \ce{CH2=O} (\textbf{f}) display notable interactions with the \added{Ca and }\ce{CaH2} slab. Note that for \ce{CO2} \added{on \ce{CaH2}}, two binding configurations are possible (Fig.~\ref{fig:distsei}), with the reported interaction energy representing the sum of the contributions from both configurations. These cases are distinguishable by their difference of hybridization (\textit{e.g.}, from \ce{sp^2} to \ce{sp^3} for \textbf{f}). These transformations are facilitated by interactions with a slab’s \added{calcium (Ca slab) or }hydrogen \added{(\ce{CaH2} slab)} atoms.
 
-Interestingly, the \ce{CaO} slab exhibits a distinct trend. Interactions with polar molecules (\textbf{e}-\textbf{h}) yield low interaction energies, comparable to van der Waals forces, or even positive values in the case of \textbf{h}. For protic molecules (\textbf{i}-\textbf{j}), while HB accounts for some of the slab-substrate interactions, the small hydrogen(substrate)--oxygen(slab) distances observed suggest the occurrence of proton transfer between the substrate and the slab.
+Interestingly, the \ce{CaO} slab exhibits a distinct trend. Interactions with \replaced{non-protic}{polar} molecules (\textbf{\replaced{a}{e}}-\textbf{h}) yield low interaction energies, comparable to van der Waals forces\added{, thought larger than HB}\deleted{, or even positive values in the case of \textbf{h}}. For protic molecules (\textbf{i}-\textbf{j}), while HB accounts for some of the slab-substrate interactions, the small hydrogen(substrate)--oxygen(slab) distances observed suggest the occurrence of proton transfer between the substrate and the slab\added{, resulting in a large interaction energy (in absolute value) for \textbf{j}}.
 
 These observations provide insights into potential degradation mechanisms involving these molecules. The proton transfers to the CaO surface support the hypothesis of hydroxyl formation on the slab. Moreover, reactions involving hydrogen from the \ce{CaH2} slab indicate possible surface reactivity under certain conditions.  It should be noted that these reactions are not necessarily associated with an important modification of the slab structure, as measured by the mean displacements of the calcium atoms after adsorption (Table S5). In fact, \ce{CaH2} tends to be the most affected by adsorption, regardless of the adsorbate.
 
