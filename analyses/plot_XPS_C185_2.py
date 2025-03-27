@@ -40,7 +40,7 @@ def prepare_data(data: pandas.DataFrame, data_ref: pandas.DataFrame):
 def plot_atom(ax, data: pandas.DataFrame, atom: str, color: str, position: tuple, label: str, uplabel: str):
     subdata = data[data['Atom'].str.contains(atom)]
     
-    ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o', color=color)
+    ax.plot(subdata['Delta_exp'], subdata['Delta_computed'], 'o' if color == 'tab:green' else 's', color=color, ms=3.0 if color == 'tab:green' else 5.0)
     error = subdata['Delta_exp'] - subdata['Delta_computed']
     ax.text(*position, '{:.2f} $\\pm$ {:.2f} ({})'.format(numpy.mean(error), numpy.std(error), label), color=color, rotation=45)
     

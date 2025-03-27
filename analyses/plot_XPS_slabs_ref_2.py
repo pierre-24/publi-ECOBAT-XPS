@@ -77,7 +77,6 @@ args = parser.parse_args()
 if len(args.inputs) != len(args.names):
     raise Exception('len({}) and len({}) do not match'.format(repr(args.inputs), repr(args.names)))
 
-
 data_height = pandas.read_csv(args.height)
 
 data = []
@@ -98,7 +97,7 @@ for i, (ax, subdata) in enumerate(zip(axes.flatten(), data)):
     ax.text(.05, .9, args.names[i], transform=ax.transAxes, fontsize=12, color=COLORS[i])
 
 [ax.legend() for ax in axes.flatten()]
-[ax.set_ylabel('Computed $\\Delta$BE (eV)') for ax in [axes[0, 0], axes[1, 0]]]
+[ax.set_ylabel('Computed $\\Delta$BE (eV)') for ax in axes[:, 0]]
 [ax.set_xlabel('$N / N_0$') for ax in axes.flatten()]
 
 if len(args.inputs) % 2 != 0:
